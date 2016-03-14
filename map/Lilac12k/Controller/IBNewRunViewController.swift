@@ -25,7 +25,7 @@ class IBNewRunViewController: UIViewController {
     
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
-    
+    var startOnFlag: Bool = false
     @IBOutlet weak var mapView: MKMapView!
     
     //t
@@ -74,7 +74,6 @@ class IBNewRunViewController: UIViewController {
     var centerBound = CLLocationCoordinate2D()
     
     var runners = 0;
-    //var arrayOfRunnerCoordinates : Array<CLLocationCoordinate2D> = []
     var currentRunner = 1;
     var runnerDictionary = [String: Int]()
     struct runnerCoordinates {
@@ -83,6 +82,7 @@ class IBNewRunViewController: UIViewController {
         var lastCoordinate : CLLocationCoordinate2D
     }
     var arrayOfRunnerCoordinates = [String: runnerCoordinates]()
+    var dictionaryOfLastAnnotations = [String: AttractionAnnotation]()
 
     
     lazy var locationManager : CLLocationManager = {
@@ -112,8 +112,6 @@ class IBNewRunViewController: UIViewController {
         centerButton.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         initUI()
         
-        // Do any additional setup after loading the view.
-        
         //t
         let filename = "MagicMountain"
         let filePath = NSBundle.mainBundle().pathForResource(filename, ofType: "plist")
@@ -135,9 +133,7 @@ class IBNewRunViewController: UIViewController {
             CLLocationDegrees(overlayBottomLeftPoint.y))
         
         let boundaryPoints = properties!["boundary"] as! NSArray
-        
         boundaryPointsCount = boundaryPoints.count
-        
         boundary = []
         
         for i in 0...boundaryPointsCount-1 {
@@ -150,13 +146,11 @@ class IBNewRunViewController: UIViewController {
         
         // think of a span as a tv size, measure from one corner to another
         let span = MKCoordinateSpanMake(fabs(latDelta), 0.075)
-        
         let region = MKCoordinateRegionMake(midCoordinate, span)
         
         mapView.region = region
         addOverlay()
         addAttractionPins()
-        
         //t
     }
     
@@ -227,12 +221,17 @@ class IBNewRunViewController: UIViewController {
     
     //sprata: maybe put in core data then call here?
     func userPin(coordinates: CLLocationCoordinate2D, name: String, indexNumber: String) {
+        if(dictionaryOfLastAnnotations[name] != nil)
+        {
+            self.mapView.removeAnnotation(dictionaryOfLastAnnotations[name]!)
+        }
         let newCoordinate = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
         let title = name
         let typeRawValue: Int? = Int(4)
         let type = AttractionType(rawValue: typeRawValue!)!
         let annotation = AttractionAnnotation(coordinate: newCoordinate, title: title, desc: indexNumber, type: type)
         mapView.addAnnotation(annotation)
+        dictionaryOfLastAnnotations[name] = annotation;
     }
     
     func buttonClicked(sender:UIButton)
@@ -298,12 +297,23 @@ class IBNewRunViewController: UIViewController {
             }
             
         }
-        
+        flagStartLocation = false
+        startOnFlag = true
         startLocation()
+        /*
+        if(UserInformation.sharedInstance.isUserBeingTrackedArray[0])
+        {
+            startLocation()
+        }else
+        {
+            recieveFriendLocationData()
+        }*/
+        
     }
     
     @IBAction func stopAction(sender: UIButton)
     {
+        startOnFlag = false;
         startButton.removeTarget(self, action: "stopAction:", forControlEvents: UIControlEvents.TouchUpInside)
         startButton.addTarget(self, action: "startAction:", forControlEvents: UIControlEvents.TouchUpInside)
         startButton.setTitle("START", forState: UIControlState.Normal)
@@ -346,6 +356,11 @@ class IBNewRunViewController: UIViewController {
         
     }
     func eachSecond(timer : NSTimer) {
+        if(!UserInformation.sharedInstance.isUserBeingTrackedArray[0] && startOnFlag)
+        {
+            print("\n\nHERE!\n\n")
+            recieveFriendLocationData()
+        }
         seconds++
         //floor(1.5679999 * 1000) / 1000
         let secondsQuantity =  Int((floor((seconds)*100)/100) % 60)
@@ -388,13 +403,12 @@ class IBNewRunViewController: UIViewController {
     //This locationManager helps you find your friends
     //TRY CATCH NEEDED
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.mapView.removeAnnotations(self.mapView.annotations)
         for location in locations as [CLLocation] {
             let howRecent = location.timestamp.timeIntervalSinceNow
             if abs(howRecent) < 10 && location.horizontalAccuracy < 20 {
-                var coords = [CLLocationCoordinate2D]()
-                var curLocation = location.coordinate // self.locations.last!.coordinate;
-                var prevLocation = curLocation
+                //var coords = [CLLocationCoordinate2D]()
+                let curLocation = location.coordinate // self.locations.last!.coordinate;
+                //var prevLocation = curLocation
                 
                 //update user distance if selected, transmitting data
                 if(self.locations.count > 0 && UserInformation.sharedInstance.isUserBeingTrackedArray[0])
@@ -416,83 +430,85 @@ class IBNewRunViewController: UIViewController {
                     }
                 }
                 //Update distances for everyone else
-                for var i = 1; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
-                    if self.locations.count > 0 && UserInformation.sharedInstance.isUserBeingTrackedArray[i]
-                    {
-                        let x = i
-                        ///print("HERE for", UserInformation.sharedInstance.friendNames[x-1])
-                        //let dispatchGroup = dispatch_group_create()
-                        //dispatch_group_enter(dispatchGroup) // enter group
-                        returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[x], userArrayNumber: x, completionClosure: { (success,lat,lon, userIDSame) -> Void in
-                            // When download completes,control flow goes here.
-                            if (success != nil) {
-                                if(!self.flagStartLocation){ //make sure not first run
-                                    self.arrayOfRunnerCoordinates[userIDSame!] = runnerCoordinates(runnerID: userIDSame!, lastCoordinate: CLLocationCoordinate2DMake(lat!, lon!))
-                                    curLocation.latitude = lat!
-                                    curLocation.longitude = lon!
-                                    //coords.append(prevLocation)
-                                    coords.append(curLocation)
-                                    self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
-                                    //Required to change the visual within a thread
-                                    dispatch_async(dispatch_get_main_queue(), {
-                                        self.currentRunner = self.runnerDictionary[userIDSame!]!;
-                                        print("Current Runner:", self.currentRunner)
-                                        var lC = self.arrayOfRunnerCoordinates[userIDSame!]!.lastCoordinate
-                                        self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
-                                        self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
-                                        //self.userPin(coords.last!, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
-                                    })
-                                    //note after appended!
-                                    prevLocation.latitude = lat!
-                                    prevLocation.longitude = lon!
-                                }else if(self.notStartLocation) {
-                                    print("------------First time, set lat&lon different")
-                                    prevLocation.latitude = lat!
-                                    prevLocation.longitude = lon!
-                                    self.flagStartLocation = false
-                                } else {
-                                    print("First time, set lat&lon different")
-                                    prevLocation.latitude = lat!
-                                    prevLocation.longitude = lon!
-                                    
-                                }
-                                // set this to false after first for loop
-                            } else {
-                                // download fail
-                                print("Something went wrong in locationManager()")
-                            }
-                            //leave group
-                            //dispatch_group_leave(dispatchGroup)
-                        })
-                        // this line block while loop until the async task above completed
-                        //dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER)
-                        ///self.mapView.showsUserLocation = true;
-                    }
-                }
+                recieveFriendLocationData();
                 //save location
                 self.locations.append(CLLocation(latitude: curLocation.latitude, longitude: curLocation.longitude))
                 notStartLocation = true
             }
-            dispatch_async(dispatch_get_main_queue(), {
-                
-                if(!(self.smallestYbound >= 180.0 || self.largestYbound <= -180.0 || self.smallestXbound >= 180.0 || self.smallestXbound <= -180.0) && self.isCenterOn )
-                {
-                    var zoom = 0.01
-                    if(self.runners > 1)
-                    {
-                        zoom = 0.001
-                    }
-                    let span =  MKCoordinateSpanMake(self.largestYbound-self.smallestYbound+0.001, self.largestXbound-self.smallestXbound+zoom)
-                    let region = MKCoordinateRegionMake(CLLocationCoordinate2D(latitude: (self.smallestYbound+self.largestYbound)/2, longitude: (self.smallestXbound+self.largestXbound)/2), span)
-                    self.mapView.setRegion(region, animated: true)
-                }
-                self.resetBounds()
-                //let region = MKCoordinateRegionMakeWithDistance(self.centerBound, 500, 500)
-                
-            })
+            recenterMapView();
         }
     }
     
+    func recenterMapView()
+    {
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            if(!(self.smallestYbound >= 180.0 || self.largestYbound <= -180.0 || self.smallestXbound >= 180.0 || self.smallestXbound <= -180.0) && self.isCenterOn )
+            {
+                var zoom = 0.01
+                if(self.runners > 1)
+                {
+                    zoom = 0.001
+                }
+                let span =  MKCoordinateSpanMake(self.largestYbound-self.smallestYbound+0.001, self.largestXbound-self.smallestXbound+zoom)
+                let region = MKCoordinateRegionMake(CLLocationCoordinate2D(latitude: (self.smallestYbound+self.largestYbound)/2, longitude: (self.smallestXbound+self.largestXbound)/2), span)
+                self.mapView.setRegion(region, animated: true)
+            }
+            self.resetBounds()
+            //let region = MKCoordinateRegionMakeWithDistance(self.centerBound, 500, 500)
+            
+        })
+    }
+    func recieveFriendLocationData()
+    {
+        for var i = 1; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
+            if UserInformation.sharedInstance.isUserBeingTrackedArray[i] //self.locations.count > 0 &&
+            {
+                let x = i
+                returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[x], userArrayNumber: x, completionClosure: { (success,lat,lon, userIDSame) -> Void in
+                    // When download completes,control flow goes here.
+                    print("\nCalled return prev location...")
+                    if (success != nil) {
+                        print("\nSucessfully returned Previous location from server")
+                        if(!self.flagStartLocation){ //make sure not first run
+                            self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
+                            self.arrayOfRunnerCoordinates[userIDSame!] = runnerCoordinates(runnerID: userIDSame!, lastCoordinate: CLLocationCoordinate2DMake(lat!, lon!))
+                            //Required to change the visual within a thread
+                            dispatch_async(dispatch_get_main_queue(), {
+                                print("\nin main queue");
+                                self.currentRunner = self.runnerDictionary[userIDSame!]!;
+                                print("Current Runner:", self.currentRunner, " lastCoord", self.arrayOfRunnerCoordinates[userIDSame!]?.lastCoordinate)
+                                var lC = self.arrayOfRunnerCoordinates[userIDSame!]!.lastCoordinate
+                                self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
+                                self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
+                            })
+                            //note after appended!
+                            ////prevLocation.latitude = lat!
+                            ////prevLocation.longitude = lon!
+                        }else if(self.notStartLocation) {
+                            print("------------First time, set lat&lon different")
+                            ////prevLocation.latitude = lat!
+                            ////prevLocation.longitude = lon!
+                            self.flagStartLocation = false
+                        } else {
+                            print("First time, set lat&lon different")
+                            ////prevLocation.latitude = lat!
+                            ////prevLocation.longitude = lon!
+                            
+                        }
+                        // set this to false after first for loop
+                    } else {
+                        // download fail
+                        print("Something went wrong in locationManager()")
+                    }
+                })
+                // this line block while loop until the async task above completed
+                //dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER)
+                ///self.mapView.showsUserLocation = true;
+            }
+        }
+        recenterMapView();
+    }
     
     
     /**

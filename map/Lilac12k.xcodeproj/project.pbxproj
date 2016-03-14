@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		262493E01C93B08A00C6003B /* map_pin55x75_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 262493DF1C93B08A00C6003B /* map_pin55x75_black.png */; };
+		262493E21C93B56E00C6003B /* PinImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262493E11C93B56E00C6003B /* PinImages.swift */; };
 		26C3D54E1C8068D500D7EEF3 /* bloomsdaylogo_clean.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C3D54D1C8068D500D7EEF3 /* bloomsdaylogo_clean.png */; };
 		26F40D961C8F924F0021CA33 /* map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F40D951C8F924F0021CA33 /* map_pin.png */; };
 		26F40D9C1C8F98640021CA33 /* Map_pin55X75.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F40D9B1C8F98640021CA33 /* Map_pin55X75.png */; };
@@ -79,6 +81,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		262493DF1C93B08A00C6003B /* map_pin55x75_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin55x75_black.png; sourceTree = "<group>"; };
+		262493E11C93B56E00C6003B /* PinImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinImages.swift; sourceTree = "<group>"; };
 		26C3D54D1C8068D500D7EEF3 /* bloomsdaylogo_clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bloomsdaylogo_clean.png; sourceTree = "<group>"; };
 		26F40D951C8F924F0021CA33 /* map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin.png; sourceTree = "<group>"; };
 		26F40D9B1C8F98640021CA33 /* Map_pin55X75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Map_pin55X75.png; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 				C272EFD61B5ACEE7001A4375 /* Location+CoreDataProperties.swift */,
 				C272EFD71B5ACEE7001A4375 /* Location.swift */,
 				CBB7AF5E1C6870DF004B09E3 /* FacebookImages.swift */,
+				262493E11C93B56E00C6003B /* PinImages.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				AF5A79C61C4832AB000D54AA /* Geo-fence Filled-25.png */,
 				AF5A79C71C4832AB000D54AA /* Geo-fence-25.png */,
 				26C3D54D1C8068D500D7EEF3 /* bloomsdaylogo_clean.png */,
+				262493DF1C93B08A00C6003B /* map_pin55x75_black.png */,
 				26F40D9B1C8F98640021CA33 /* Map_pin55X75.png */,
 				AF5A79C81C4832AB000D54AA /* logo.png */,
 				26F40D951C8F924F0021CA33 /* map_pin.png */,
@@ -423,6 +429,7 @@
 				AF5A79CF1C4832AB000D54AA /* Settings-25.png in Resources */,
 				C2ED7D291B5A97E8003E9A81 /* Assets.xcassets in Resources */,
 				26F40D9C1C8F98640021CA33 /* Map_pin55X75.png in Resources */,
+				262493E01C93B08A00C6003B /* map_pin55x75_black.png in Resources */,
 				AFBE6AE41C6AA53E00F862B3 /* back.png in Resources */,
 				AF5A79CC1C4832AB000D54AA /* Geo-fence Filled-25.png in Resources */,
 				AFF46A131C74D6830048140D /* firstaid.png in Resources */,
@@ -466,6 +473,7 @@
 				C20EA5561B5AB5A100B3A820 /* IBNewRunViewController.swift in Sources */,
 				CBB7AF611C68859F004B09E3 /* FriendsPageCell.swift in Sources */,
 				AFF46A351C74F3860048140D /* RunPageCell.swift in Sources */,
+				262493E21C93B56E00C6003B /* PinImages.swift in Sources */,
 				AFF46A301C74D6B70048140D /* RunMapOverlayView.swift in Sources */,
 				C272EFDE1B5ACEE7001A4375 /* Location.swift in Sources */,
 				AFF46A261C74D6B70048140D /* AttractionAnnotation.swift in Sources */,

@@ -34,4 +34,10 @@ class AttractionAnnotation: NSObject, MKAnnotation {
         }
         self.subtitle = nil
     }
+    override init() {
+        self.coordinate = CLLocationCoordinate2DMake(0.0, 0.0)
+        self.title = nil
+        self.type = AttractionType(rawValue: 4)!
+        self.subtitle = nil
+    }
 }

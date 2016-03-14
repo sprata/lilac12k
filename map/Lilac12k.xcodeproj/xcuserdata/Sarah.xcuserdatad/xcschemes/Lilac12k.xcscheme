@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C2ED7D1A1B5A97E8003E9A81"
-               BuildableName = "Bloomsday Connect.app"
+               BuildableName = "Lilac12k.app"
                BlueprintName = "Lilac12k"
                ReferencedContainer = "container:Lilac12k.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C2ED7D1A1B5A97E8003E9A81"
-            BuildableName = "Bloomsday Connect.app"
+            BuildableName = "Lilac12k.app"
             BlueprintName = "Lilac12k"
             ReferencedContainer = "container:Lilac12k.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C2ED7D1A1B5A97E8003E9A81"
-            BuildableName = "Bloomsday Connect.app"
+            BuildableName = "Lilac12k.app"
             BlueprintName = "Lilac12k"
             ReferencedContainer = "container:Lilac12k.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C2ED7D1A1B5A97E8003E9A81"
-            BuildableName = "Bloomsday Connect.app"
+            BuildableName = "Lilac12k.app"
             BlueprintName = "Lilac12k"
             ReferencedContainer = "container:Lilac12k.xcodeproj">
          </BuildableReference>
