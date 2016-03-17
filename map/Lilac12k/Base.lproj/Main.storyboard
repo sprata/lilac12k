@@ -907,8 +907,8 @@
                             <scrollView clipsSubviews="YES" contentMode="top" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ds4-Tz-kqG">
                                 <rect key="frame" x="25" y="146" width="270" height="364"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aQ-2q-5CX">
-                                        <rect key="frame" x="92" y="300" width="86" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aQ-2q-5CX">
+                                        <rect key="frame" x="92" y="284" width="86" height="30"/>
                                         <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Run History">
                                             <color key="titleColor" red="0.98934962339999999" green="0.99883858209999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -923,7 +923,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4c0-FR-Zm8">
-                                        <rect key="frame" x="11" y="128" width="249" height="160"/>
+                                        <rect key="frame" x="11" y="112" width="249" height="160"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="04m-fA-4D1">
                                                 <rect key="frame" x="0.0" y="0.0" width="249" height="25"/>
@@ -993,7 +993,7 @@
                                         </constraints>
                                         <attributedString key="attributedText">
                                             <fragment>
-                                                <string key="content">Welcome to Lilac12k, also known as the official, Unofficial Bloomsday App!  Use this app to track your race results or watch from the comfort of your own home as your friends race on the day of Bloomsday! The tabs bellow will help you navigate the app.</string>
+                                                <string key="content">Welcome to Lilac12k, the Unofficial Bloomsday App!  Use this app to track your race results or watch from the comfort of your own home as your friends run Bloomsday!</string>
                                                 <attributes>
                                                     <color key="NSColor" red="0.42745098040000001" green="0.1333333333" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="12" name="HelveticaNeue"/>
@@ -1008,12 +1008,13 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="4c0-FR-Zm8" firstAttribute="top" secondItem="0OE-d0-7Ji" secondAttribute="bottom" constant="28" id="5GQ-Yx-c4x"/>
+                                    <constraint firstItem="4c0-FR-Zm8" firstAttribute="top" secondItem="0OE-d0-7Ji" secondAttribute="bottom" constant="12" id="5GQ-Yx-c4x"/>
                                     <constraint firstAttribute="trailing" secondItem="0OE-d0-7Ji" secondAttribute="trailing" constant="17" id="Lk5-Lj-NWA"/>
+                                    <constraint firstAttribute="bottom" secondItem="4c0-FR-Zm8" secondAttribute="bottom" constant="92" id="Tcv-dx-Q5I"/>
                                     <constraint firstItem="0OE-d0-7Ji" firstAttribute="top" secondItem="Ds4-Tz-kqG" secondAttribute="top" id="abV-Tz-XtT"/>
                                     <constraint firstItem="4c0-FR-Zm8" firstAttribute="centerX" secondItem="Ds4-Tz-kqG" secondAttribute="centerX" id="l47-8t-mcm"/>
                                     <constraint firstItem="0OE-d0-7Ji" firstAttribute="leading" secondItem="Ds4-Tz-kqG" secondAttribute="leading" constant="19" id="mWF-lz-4tJ"/>
-                                    <constraint firstItem="9aQ-2q-5CX" firstAttribute="top" secondItem="ttt-i5-qYb" secondAttribute="bottom" constant="12" id="wvq-s1-SoN"/>
+                                    <constraint firstItem="9aQ-2q-5CX" firstAttribute="top" secondItem="4c0-FR-Zm8" secondAttribute="bottom" constant="12" id="pTe-lI-add"/>
                                     <constraint firstItem="4c0-FR-Zm8" firstAttribute="centerX" secondItem="Ds4-Tz-kqG" secondAttribute="centerX" id="xYh-o8-Pur"/>
                                     <constraint firstItem="9aQ-2q-5CX" firstAttribute="leading" secondItem="Ds4-Tz-kqG" secondAttribute="leading" constant="92" id="yQs-ma-3rB"/>
                                     <constraint firstAttribute="bottom" secondItem="9aQ-2q-5CX" secondAttribute="bottom" constant="35" id="zg9-HL-qWA" userLabel="bottom = Run History.bottom + 100"/>
