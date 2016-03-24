@@ -57,6 +57,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func stateChanged(TrackerSwitch: UISwitch!)
     {
+        ToastView.showToastInParentView(self.view, withText: "You selected someone.", withDuration: 2.0)
         print("Switch Changed")
         if (TrackerSwitch.on == true){
             ///Not best implementation, but simple
