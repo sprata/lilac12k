@@ -61,6 +61,7 @@
 		CB5D6CD51C63D4DB001C13EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6CD41C63D4DB001C13EC /* HomeViewController.swift */; };
 		CBB7AF5F1C6870DF004B09E3 /* FacebookImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7AF5E1C6870DF004B09E3 /* FacebookImages.swift */; };
 		CBB7AF611C68859F004B09E3 /* FriendsPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7AF601C68859F004B09E3 /* FriendsPageCell.swift */; };
+		FE02A4F91CA46FBF004559D6 /* ToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE02A4F81CA46FBF004559D6 /* ToastView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,8 @@
 		CB5D6CD41C63D4DB001C13EC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		CBB7AF5E1C6870DF004B09E3 /* FacebookImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookImages.swift; sourceTree = "<group>"; };
 		CBB7AF601C68859F004B09E3 /* FriendsPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsPageCell.swift; sourceTree = "<group>"; };
+		FE02A4F71CA46FBF004559D6 /* ToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToastView.h; path = Lilac12k/ToastView.h; sourceTree = "<group>"; };
+		FE02A4F81CA46FBF004559D6 /* ToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToastView.m; path = Lilac12k/ToastView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,8 @@
 		AF4E50B41C121923002D5F1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FE02A4F71CA46FBF004559D6 /* ToastView.h */,
+				FE02A4F81CA46FBF004559D6 /* ToastView.m */,
 				AF4E50B51C1219A4002D5F1C /* FBSDKCoreKit.framework */,
 				AF4E50B61C1219A4002D5F1C /* FBSDKLoginKit.framework */,
 				AF4E50B71C1219A4002D5F1C /* FBSDKShareKit.framework */,
@@ -464,6 +469,7 @@
 				CB5D6CCF1C5F4B17001C13EC /* UserInformation.swift in Sources */,
 				AFF46A2B1C74D6B70048140D /* IBRunDetailViewController.swift in Sources */,
 				AFF46A371C74F3A10048140D /* RunTableViewController.swift in Sources */,
+				FE02A4F91CA46FBF004559D6 /* ToastView.m in Sources */,
 				AFF46A291C74D6B70048140D /* IBMulticolorPolylineSegment.swift in Sources */,
 				C272EFDC1B5ACEE7001A4375 /* Location+CoreDataProperties.swift in Sources */,
 				CBB7AF5F1C6870DF004B09E3 /* FacebookImages.swift in Sources */,

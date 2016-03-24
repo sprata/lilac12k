@@ -57,27 +57,33 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func stateChanged(TrackerSwitch: UISwitch!)
     {
-        ToastView.showToastInParentView(self.view, withText: "You selected someone.", withDuration: 2.0)
         print("Switch Changed")
         if (TrackerSwitch.on == true){
             ///Not best implementation, but simple
             UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag] = true
             if(TrackerSwitch.tag == 0 ) {
                 print(UserInformation.sharedInstance.name, "  ",UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag])
-            }else {
+            } else {
                 print(UserInformation.sharedInstance.friendNames[TrackerSwitch.tag-1], "  ",UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag])
             }
-        }
-        else{
-            
+        } else {
             UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag] = false
-            if(TrackerSwitch.tag == 0 ) {
+            if (TrackerSwitch.tag == 0 ) {
                 print(UserInformation.sharedInstance.name, "  ",UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag])
-            }else {
+            } else {
                 print(UserInformation.sharedInstance.friendNames[TrackerSwitch.tag-1], "  ",UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag])
             }
-            
         }
+        //On switch changes, notify user with ToastView (Frameworks/ToastView)
+        var name = "yourself"
+        if (TrackerSwitch.tag > 0) {
+            name = UserInformation.sharedInstance.friendNames[TrackerSwitch.tag - 1];
+        }
+        var action = "deselected"
+        if (UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag]) {
+            action = "selected"
+        }
+        ToastView.showToastInParentView(self.view, withText: "You " + action + " " + name + ".", withDuration: 1.0)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
