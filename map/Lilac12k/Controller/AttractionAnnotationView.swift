@@ -12,22 +12,28 @@ class AttractionAnnotationView: MKAnnotationView {
         super.init(frame: frame)
     }
     
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-        
-        /*let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        
-        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
-        image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        */
+    func resizeImage(image: UIImage, newWidth: CGFloat, color: UIColor) -> UIImage {
         
         let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
         
+        /*
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        let newRect = CGRectIntegral(CGRectMake(0,0, newSize.width, newSize.height))
+        let imageRef = image.CGImage
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
+        let context = UIGraphicsGetCurrentContext()
+        CGContextSetInterpolationQuality(context, CGInterpolationQuality.High)
+        let flipVertical = CGAffineTransformMake(1,0,0,-1,0, newSize.height)
+        CGContextConcatCTM(context, flipVertical)
+        CGContextDrawImage(context, newRect, imageRef)
+        let newImageRef = CGBitmapContextCreateImage(context)! as CGImage
+        let newImage = UIImage(CGImage: newImageRef)
+        UIGraphicsEndImageContext()
+        return newImage
+        */
         
-        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))//imageView.bounds.size)
+        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
         image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         
@@ -46,29 +52,27 @@ class AttractionAnnotationView: MKAnnotationView {
         //now add pin to background
         let mapPin = UIImage(named: "map_pin55x75_black.png")
         let theImageView : UIImageView = UIImageView(image: mapPin)
-
-        
         
         let finalSize = CGSize(width: 55, height: 150)
         UIGraphicsBeginImageContext(finalSize)
-        UIColor.purpleColor().setFill()
+        
+        color.setFill()
         //UIRectFill(finalSize)
         //setFill()
+        
         theImageView.image = theImageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        theImageView.tintColor = UIColor.purpleColor()
-
+        theImageView.tintColor = UIColor.redColor()
         
         theImageView.image!.drawInRect(CGRectMake(0, 0, finalSize.width, 75))
-        roundedImage!.drawInRect(CGRectMake(finalSize.width/2-newWidth/2, 8, newWidth, newHeight))//(areaSize)
+        roundedImage!.drawInRect(CGRectMake(finalSize.width/2-newWidth/2, 3, newWidth, newHeight))//(areaSize)
         
         let finalImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
         return finalImage
         
         /*mapPin!.drawInRect(CGRectMake(0, 0, finalSize.width, 75))
         roundedImage!.drawInRect(CGRectMake(finalSize.width/2-newWidth/2, 8, newWidth, newHeight))//(areaSize)
-
+        
         let finalImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
@@ -85,11 +89,14 @@ class AttractionAnnotationView: MKAnnotationView {
         UIGraphicsEndImageContext()
         
         return roundedImage*/
+        
+        
     }
     
     override init(annotation: MKAnnotation!, reuseIdentifier: String!) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         let attractionAnnotation = self.annotation as! AttractionAnnotation
+        var color = UIColor(red: 250/255, green: 121/255, blue: 33/255, alpha: 1.0)
         switch (attractionAnnotation.type) {
         case .AttractionFirstAid:
             image = UIImage(named: "firstaid")
@@ -98,10 +105,22 @@ class AttractionAnnotationView: MKAnnotationView {
         case .AttractionWater:
             image = UIImage(named: "water")
         case .ProfilePicture:
-            image = resizeImage(FacebookImages.sharedInstance.dictionaryOfProfilePictures[attractionAnnotation.desc!]!, newWidth: 40)
+            switch (attractionAnnotation.color) {
+            case .color1:
+                color = UIColor(red: 250/255, green: 121/255, blue: 33/255, alpha: 1.0)
+            case .color2:
+                color = UIColor(red: 91/255, green: 192/255, blue: 235/255, alpha: 1.0)
+            case .color3:
+                color = UIColor(red: 155/255, green: 197/255, blue: 61/255, alpha: 1.0)
+            case .color4:
+                color = UIColor(red: 229/255, green: 89/255, blue: 52/255, alpha: 1.0)
+            case .color5:
+                color = UIColor(red: 253/255, green: 231/255, blue: 76/255, alpha: 1.0)
+            }
+            image = resizeImage(FacebookImages.sharedInstance.dictionaryOfProfilePictures[attractionAnnotation.desc!]!, newWidth: 50, color: color)
         default:
             image = UIImage(named: "star")
         }
     }
-
+    
 }

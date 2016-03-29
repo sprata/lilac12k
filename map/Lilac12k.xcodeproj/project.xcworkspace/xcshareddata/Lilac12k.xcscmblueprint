@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F806F536F069EF25CBCBC8B9D9F56406FAFBC6CC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F806F536F069EF25CBCBC8B9D9F56406FAFBC6CC" : 0,
+    "6470AC711749183A8D987C8BEFEAE845D50C4F0E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A37E8E30-055E-4BA7-890D-183EC6106B43",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F806F536F069EF25CBCBC8B9D9F56406FAFBC6CC" : "lilac12k\/",
+    "6470AC711749183A8D987C8BEFEAE845D50C4F0E" : "Facebook-Integration\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Lilac12k",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "map\/Lilac12k.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/BloomsdayRun\/Facebook-Integration.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6470AC711749183A8D987C8BEFEAE845D50C4F0E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sprata\/lilac12k.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F806F536F069EF25CBCBC8B9D9F56406FAFBC6CC"
+    }
+  ]
+}
