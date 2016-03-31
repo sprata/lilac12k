@@ -456,6 +456,7 @@ class IBNewRunViewController: UIViewController {
                     //transmit data if transmit on
                     if(UserInformation.sharedInstance.isRunnerTransmittingData && isTransmitOn)
                     {
+                        //locationManager will send at most 1 post request per second
                         self.sendDistanceInformationToServerWithUserID(curLocation.latitude, lon: curLocation.longitude, userID: UserInformation.sharedInstance.userIDsArray[0])
                     }
                 }

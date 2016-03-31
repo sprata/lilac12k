@@ -13,7 +13,6 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     var friendImages = [UIImage]()
         
-        
     override func viewDidLoad() {
         super.viewDidLoad()
         //FacebookImages.sharedInstance //instantiate??
@@ -23,8 +22,9 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
         self.tableView.bounces = true;
         //self.tableView.frame.size.height = 200;
         //self.tableView.contentSize = CGSizeMake(0, 800)
-
         self.view.bringSubviewToFront(tableView)
+        
+        adjustSwitches()
     }
     
     
@@ -43,7 +43,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
             cell.TrackerSwitch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
             cell.TrackerSwitch.on = true
             UserInformation.sharedInstance.isUserBeingTrackedArray[0] = true
-        }else {
+        } else {
             cell.CellName.text = UserInformation.sharedInstance.friendNames[indexPath.row-1] as String
             let imageView = UIImageView()
             imageView.contentMode = .ScaleAspectFit
@@ -53,6 +53,34 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
             
         }
         return cell
+    }
+    
+    //Disable tracker switches if over 5 runners selected
+    //TODO: Test that this works for 5 friends
+    //TODO: Verify the loop works even for non-visible cells (i.e. screen overflow)
+    func adjustSwitches() {
+        var count = 0;
+        //count number selected
+        for (var row = 0; row < self.tableView.numberOfRowsInSection(0); row++) {
+            let indexPath = NSIndexPath(forRow: row, inSection: 0)
+            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FriendsPageCell
+            if (cell.TrackerSwitch.on) {
+                count++;
+            }
+        }
+        
+        //if tracking 5, disable the currently-off switches
+        for (var row = 0; row < self.tableView.numberOfRowsInSection(0); row++) {
+            let indexPath = NSIndexPath(forRow: row, inSection: 0)
+            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FriendsPageCell
+            if (count >= 5) {
+                if (!cell.TrackerSwitch.on) {
+                    cell.TrackerSwitch.enabled = false
+                }
+            } else {
+                cell.TrackerSwitch.enabled = true;
+            }
+        }
     }
     
     func stateChanged(TrackerSwitch: UISwitch!)
@@ -84,9 +112,16 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
             action = "selected"
         }
         ToastView.showToastInParentView(self.view, withText: "You " + action + " " + name + ".", withDuration: 1.0)
+        //Don't track >5 friends
+        adjustSwitches()
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FriendsPageCell
+        if (cell.TrackerSwitch.enabled == false) {
+            ToastView.showToastInParentView(self.view, withText: "Sorry, you can't track over 5 runners at once", withDuration: 1.0)
+        }
+        //print("Selected someone at: \(indexPath)")
         //sender.selected=!sender.selected;
         ////UserInformation.sharedInstance.currentPersonTrackingByIndex = indexPath.row
     }
