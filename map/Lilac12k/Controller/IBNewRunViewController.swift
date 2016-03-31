@@ -262,48 +262,38 @@ class IBNewRunViewController: UIViewController {
         dictionaryOfLastAnnotations[name] = annotation;
     }
     
-    func buttonClicked(sender:UIButton)
-    {
-        if(sender.titleLabel!.text == "TRANSMIT OFF" || sender.titleLabel!.text == "TRANSMIT ON")
-        {
-            dispatch_async(dispatch_get_main_queue(), {
-                if self.isTransmitOn == false{
-                    sender.setTitle("TRANSMIT ON", forState: UIControlState.Normal)
-                    sender.backgroundColor = UIColor(red: 56.0/255.0, green: 134.0/255.0, blue: 121.0/255.0, alpha: 1.0)
-                    //sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-                    
-                    //sender.highlighted = true;
-                    self.isTransmitOn = true
-                }else{
-                    sender.setTitle("TRANSMIT OFF", forState: UIControlState.Normal)
-                    //sender.backgroundColor = UIColor(red: 0, green: 100, blue: 0, alpha: 1.0)
-                    sender.backgroundColor = UIColor(red: 14.0/255.0, green: 91.0/255.0, blue: 78.0/255.0, alpha: 1.0)
-                    sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-                    //sender.highlighted = false;
-                    self.isTransmitOn = false
-                }
-            });
-        }else
-        {
-            dispatch_async(dispatch_get_main_queue(), {
-                if self.isCenterOn == false{
-                    //sender.setTitle("Center ON", forState: UIControlState.Normal)
-                    //sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-                    sender.backgroundColor = UIColor(red: 191.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
-                    //sender.highlighted = true;
-                    self.isCenterOn = true
-                }else{
-                    //sender.setTitle("Center OFF", forState: UIControlState.Normal)
-                    sender.backgroundColor = UIColor(red: 255.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 1.0)
-                    //sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-                    //sender.highlighted = false;
-                    self.isCenterOn = false
-                }
-            });
+    func buttonClicked(sender:UIButton) {
+        if (sender.titleLabel!.text == "TRANSMIT OFF" || sender.titleLabel!.text == "TRANSMIT ON") {
+            if self.isTransmitOn == false {
+                sender.setTitle("TRANSMIT ON", forState: UIControlState.Normal)
+                sender.backgroundColor = UIColor(red: 56.0/255.0, green: 134.0/255.0, blue: 121.0/255.0, alpha: 1.0)
+                //sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+                //sender.highlighted = true;
+                self.isTransmitOn = true
+            } else {
+                sender.setTitle("TRANSMIT OFF", forState: UIControlState.Normal)
+                //sender.backgroundColor = UIColor(red: 0, green: 100, blue: 0, alpha: 1.0)
+                sender.backgroundColor = UIColor(red: 14.0/255.0, green: 91.0/255.0, blue: 78.0/255.0, alpha: 1.0)
+                sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                //sender.highlighted = false;
+                self.isTransmitOn = false
+            }
+        } else {
+            if self.isCenterOn == false {
+                //sender.setTitle("Center ON", forState: UIControlState.Normal)
+                //sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+                sender.backgroundColor = UIColor(red: 191.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
+                //sender.highlighted = true;
+                self.isCenterOn = true
+            } else {
+                //sender.setTitle("Center OFF", forState: UIControlState.Normal)
+                sender.backgroundColor = UIColor(red: 255.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 1.0)
+                //sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                //sender.highlighted = false;
+                self.isCenterOn = false
+            }
         }
-        
     }
-    
     
     @IBAction func startAction(sender: UIButton)
     {
