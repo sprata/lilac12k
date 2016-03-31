@@ -295,31 +295,34 @@ class IBNewRunViewController: UIViewController {
         }
     }
     
-    @IBAction func startAction(sender: UIButton)
-    {
+    @IBAction func startAction(sender: UIButton) {
         //If they denied GPS permission, disable start
         if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedAlways) {
             ToastView.showToastInParentView(self.view, withText: "Sorry, you must enable GPS permissions to use this app!", withDuration: 2.0)
             return
         }
-        startButton.removeTarget(self, action: "startAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        startButton.addTarget(self, action: "stopAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        startButton.setTitle("STOP", forState: UIControlState.Normal)
+        
         seconds = 0.0
         distance = 0.0
         runners = 0
+        //figure out number of runners:
+        for var i = 0; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
+            if(UserInformation.sharedInstance.isUserBeingTrackedArray[i]) {
+                self.runners += 1;
+            }
+        }
+        //If nobody is running, disable start
+        if (self.runners == 0) {
+            ToastView.showToastInParentView(self.view, withText: "You must select at least one friend to track!", withDuration: 2.0)
+            return
+        }
+        startButton.removeTarget(self, action: "startAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        startButton.addTarget(self, action: "stopAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        startButton.setTitle("STOP", forState: UIControlState.Normal)
         
         locations.removeAll(keepCapacity: false)
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "eachSecond:", userInfo: nil, repeats: true)
-        //figure out number of runners:
-        for var i = 0; i < UserInformation.sharedInstance.userIDsArray.count; i++
-        {
-            if(UserInformation.sharedInstance.isUserBeingTrackedArray[i])
-            {
-                self.runners += 1;
-            }
-            
-        }
+
         flagStartLocation = false
         startOnFlag = true
         startLocation()
@@ -331,7 +334,6 @@ class IBNewRunViewController: UIViewController {
         {
         recieveFriendLocationData()
         }*/
-        
     }
     
     @IBAction func stopAction(sender: UIButton)
