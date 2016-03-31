@@ -307,6 +307,11 @@ class IBNewRunViewController: UIViewController {
     
     @IBAction func startAction(sender: UIButton)
     {
+        //If they denied GPS permission, disable start
+        if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedAlways) {
+            ToastView.showToastInParentView(self.view, withText: "Sorry, you must enable GPS permissions to use this app!", withDuration: 2.0)
+            return
+        }
         startButton.removeTarget(self, action: "startAction:", forControlEvents: UIControlEvents.TouchUpInside)
         startButton.addTarget(self, action: "stopAction:", forControlEvents: UIControlEvents.TouchUpInside)
         startButton.setTitle("STOP", forState: UIControlState.Normal)
