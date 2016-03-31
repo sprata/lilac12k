@@ -498,7 +498,13 @@ class IBNewRunViewController: UIViewController {
                 returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[x], userArrayNumber: x, completionClosure: { (success,lat,lon, userIDSame) -> Void in
                     // When download completes,control flow goes here.
                     print("\nCalled return prev location...")
-                    if (success != nil) {
+                        //if a succesful get has no associated position, friend is not transmitting position
+                    if (success != nil && lat == nil && lon == nil) {
+                       dispatch_async(dispatch_get_main_queue(), {
+                            let name = UserInformation.sharedInstance.friendNames[i]
+                            ToastView.showToastInParentView(self.view, withText: name + " is not transmitting position", withDuration: 1.5)
+                        })
+                    } else if (success != nil) {
                         if(!self.flagStartLocation){ //make sure not first run
                             self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
                             self.arrayOfRunnerCoordinates[userIDSame!] = runnerCoordinates(runnerID: userIDSame!, lastCoordinate: CLLocationCoordinate2DMake(lat!, lon!))
@@ -516,7 +522,7 @@ class IBNewRunViewController: UIViewController {
                             //note after appended!
                             ////prevLocation.latitude = lat!
                             ////prevLocation.longitude = lon!
-                        }else if(self.notStartLocation) {
+                        } else if(self.notStartLocation) {
                             print("------------First time, set lat&lon different")
                             ////prevLocation.latitude = lat!
                             ////prevLocation.longitude = lon!
@@ -604,8 +610,8 @@ class IBNewRunViewController: UIViewController {
                         lonFromServer = jsonResult["Longitude"] as! String
                         timeFromServer = jsonResult["Timestamp"] as! Double //Double(jsonResult["Timestamp"] as! String)!
                         let timeDifference = abs(timeFromServer - NSDate().timeIntervalSince1970)
-                        //TODO ACTUALLY IMPLEMENT THIS just add <
-                        if timeDifference != 648000 //if the time difference is less than 3 hours
+                        //TODO: 3 hours seems longer then necessary; choose a smaller delta
+                        if timeDifference < 648000 //if the time difference is less than 3 hours
                         {
                             print("time difference is ok!")
                             completionClosure(success: true, lat: Double(latFromServer), lon: Double(lonFromServer), userIDSame: userID)
@@ -617,7 +623,8 @@ class IBNewRunViewController: UIViewController {
                             print("time difference is too big :( ", timeDifference)
                             self.runners -= 1
                             UserInformation.sharedInstance.isUserBeingTrackedArray[userArrayNumber] = false
-                            completionClosure(success: nil, lat: nil,lon: nil, userIDSame: userID)
+                            //success with nil lat/lon implies the runner has no recently defined position
+                            completionClosure(success: true, lat: nil,lon: nil, userIDSame: userID)
                         }
                         
                     } else {
