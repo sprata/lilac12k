@@ -29,7 +29,13 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserInformation.sharedInstance.friendNames.count+1;
+        print("Here3", UserInformation.sharedInstance.countOfRunners)
+        if(UserInformation.sharedInstance.countOfRunners == 0) //either no friends or network error
+        {
+            print("Currently no friends")
+            ToastView.showToastInParentView(self.view, withText: "Please check your network connection. Unable to retrieve friend information.", withDuration: 60.0)
+        }
+        return UserInformation.sharedInstance.countOfRunners;//UserInformation.sharedInstance.friendNames.count+1;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
