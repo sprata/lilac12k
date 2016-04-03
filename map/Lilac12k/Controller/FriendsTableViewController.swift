@@ -46,7 +46,8 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
             let imageView = UIImageView()
             imageView.contentMode = .ScaleAspectFit
             cell.CellImage.image = FacebookImages.sharedInstance.profilePic
-            cell.TrackerSwitch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+            //cell.TrackerSwitch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+            cell.TrackerSwitch.addTarget(self, action: #selector(FriendsTableViewController.stateChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
             cell.TrackerSwitch.on = true
             UserInformation.sharedInstance.isUserBeingTrackedArray[0] = true
         } else {
@@ -55,7 +56,8 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
             imageView.contentMode = .ScaleAspectFit
             cell.CellImage.image = FacebookImages.sharedInstance.dictionaryOfProfilePictures[UserInformation.sharedInstance.userIDsArray[indexPath.row]]
             cell.TrackerSwitch.tag = indexPath.row
-            cell.TrackerSwitch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+            //cell.TrackerSwitch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+            cell.TrackerSwitch.addTarget(self, action: #selector(FriendsTableViewController.stateChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
             
         }
         return cell
