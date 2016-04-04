@@ -23,6 +23,7 @@ public class UserInformation {
     var currentPersonTrackingByIndex : Int //0 is self
     var isUserBeingTrackedArray : [Bool]
     var isRunnerTransmittingData : Bool
+    var countOfRunners = 0;
     //var userInfoNotRecievedFlag : Bool
     ///This prevents others from using the default '()' initializer for this class.
     private init()
@@ -57,7 +58,7 @@ public class UserInformation {
                 //print(self.token, self.name); print("FBACCESSTOKEN:"); print(self.accesstoken);
                 //print(self.friends);
                 self.accesstoken = FBSDKAccessToken.currentAccessToken().tokenString
-                
+                self.countOfRunners += 1; //the user is at least there
                 self.friends = result.valueForKey("friends") as! NSDictionary
                 self.isUserBeingTrackedArray.append(true)
                 self.userIDsArray.append(self.token as String)
@@ -72,6 +73,7 @@ public class UserInformation {
                     self.friendIDs.append(id)
                     self.isUserBeingTrackedArray.append(false)
                     self.userIDsArray.append(id)
+                    self.countOfRunners += 1; //each friend is a runner
                     //print("the id value is \(id) for \(name)")
                 }
                 

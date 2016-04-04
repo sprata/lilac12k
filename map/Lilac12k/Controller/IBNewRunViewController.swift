@@ -274,69 +274,68 @@ class IBNewRunViewController: UIViewController {
         dictionaryOfLastAnnotations[name] = annotation;
     }
     
-    func buttonClicked(sender:UIButton)
-    {
-        if(sender.titleLabel!.text == "TRANSMIT OFF" || sender.titleLabel!.text == "TRANSMIT ON")
-        {
-            dispatch_async(dispatch_get_main_queue(), {
-                if self.isTransmitOn == false{
-                    sender.setTitle("TRANSMIT ON", forState: UIControlState.Normal)
-                    sender.backgroundColor = UIColor(red: 56.0/255.0, green: 134.0/255.0, blue: 121.0/255.0, alpha: 1.0)
-                    //sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-                    
-                    //sender.highlighted = true;
-                    self.isTransmitOn = true
-                }else{
-                    sender.setTitle("TRANSMIT OFF", forState: UIControlState.Normal)
-                    //sender.backgroundColor = UIColor(red: 0, green: 100, blue: 0, alpha: 1.0)
-                    sender.backgroundColor = UIColor(red: 14.0/255.0, green: 91.0/255.0, blue: 78.0/255.0, alpha: 1.0)
-                    sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-                    //sender.highlighted = false;
-                    self.isTransmitOn = false
-                }
-            });
-        }else
-        {
-            dispatch_async(dispatch_get_main_queue(), {
-                if self.isCenterOn == false{
-                    //sender.setTitle("Center ON", forState: UIControlState.Normal)
-                    //sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-                    sender.backgroundColor = UIColor(red: 191.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
-                    //sender.highlighted = true;
-                    self.isCenterOn = true
-                }else{
-                    //sender.setTitle("Center OFF", forState: UIControlState.Normal)
-                    sender.backgroundColor = UIColor(red: 255.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 1.0)
-                    //sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-                    //sender.highlighted = false;
-                    self.isCenterOn = false
-                }
-            });
+    func buttonClicked(sender:UIButton) {
+        if (sender.titleLabel!.text == "TRANSMIT OFF" || sender.titleLabel!.text == "TRANSMIT ON") {
+            if self.isTransmitOn == false {
+                sender.setTitle("TRANSMIT ON", forState: UIControlState.Normal)
+                sender.backgroundColor = UIColor(red: 56.0/255.0, green: 134.0/255.0, blue: 121.0/255.0, alpha: 1.0)
+                //sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+                //sender.highlighted = true;
+                self.isTransmitOn = true
+            } else {
+                sender.setTitle("TRANSMIT OFF", forState: UIControlState.Normal)
+                //sender.backgroundColor = UIColor(red: 0, green: 100, blue: 0, alpha: 1.0)
+                sender.backgroundColor = UIColor(red: 14.0/255.0, green: 91.0/255.0, blue: 78.0/255.0, alpha: 1.0)
+                sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                //sender.highlighted = false;
+                self.isTransmitOn = false
+            }
+        } else {
+            if self.isCenterOn == false {
+                //sender.setTitle("Center ON", forState: UIControlState.Normal)
+                //sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+                sender.backgroundColor = UIColor(red: 255.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 1.0)
+                //sender.highlighted = true;
+                self.isCenterOn = true
+            } else {
+                //sender.setTitle("Center OFF", forState: UIControlState.Normal)
+                sender.backgroundColor = UIColor(red: 191.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
+                
+                //sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                //sender.highlighted = false;
+                self.isCenterOn = false
+            }
         }
-        
     }
     
-    
-    @IBAction func startAction(sender: UIButton)
-    {
-        startButton.removeTarget(self, action: "startAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        startButton.addTarget(self, action: "stopAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        startButton.setTitle("STOP", forState: UIControlState.Normal)
+    @IBAction func startAction(sender: UIButton) {
+        //If they denied GPS permission, disable start
+        if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedAlways) {
+            ToastView.showToastInParentView(self.view, withText: "Sorry, you must enable GPS permissions to use this app!", withDuration: 2.0)
+            return
+        }
+        
         seconds = 0.0
         distance = 0.0
         runners = 0
+        //figure out number of runners:
+        for var i = 0; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
+            if(UserInformation.sharedInstance.isUserBeingTrackedArray[i]) {
+                self.runners += 1;
+            }
+        }
+        //If nobody is running, disable start
+        if (self.runners == 0) {
+            ToastView.showToastInParentView(self.view, withText: "You must select at least one friend to track!", withDuration: 2.0)
+            return
+        }
+        startButton.removeTarget(self, action: "startAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        startButton.addTarget(self, action: "stopAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        startButton.setTitle("STOP", forState: UIControlState.Normal)
         
         locations.removeAll(keepCapacity: false)
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "eachSecond:", userInfo: nil, repeats: true)
-        //figure out number of runners:
-        for var i = 0; i < UserInformation.sharedInstance.userIDsArray.count; i++
-        {
-            if(UserInformation.sharedInstance.isUserBeingTrackedArray[i])
-            {
-                self.runners += 1;
-            }
-            
-        }
+
         flagStartLocation = false
         startOnFlag = true
         startLocation()
@@ -348,15 +347,13 @@ class IBNewRunViewController: UIViewController {
         {
         recieveFriendLocationData()
         }*/
-        
     }
     
     @IBAction func stopAction(sender: UIButton)
     {
-        startOnFlag = false;
-        startButton.removeTarget(self, action: "stopAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        startButton.addTarget(self, action: "startAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        startButton.setTitle("START", forState: UIControlState.Normal)
+        
+        
+        //startButton.setTitle("START", forState: UIControlState.Normal)
         let actionSheetController = UIAlertController (title: "Run Stopped", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
         
         //Add Cancle-Action
@@ -364,6 +361,10 @@ class IBNewRunViewController: UIViewController {
         
         //Add Save-Action
         actionSheetController.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: { (actionSheetController) -> Void in
+            self.startButton.removeTarget(self, action: "stopAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            self.startButton.addTarget(self, action: "startAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            self.startButton.setTitle("START", forState: UIControlState.Normal)
+            self.startOnFlag = false;
             self.saveRun()
             self.performSegueWithIdentifier("ShowRunDetail", sender: nil)
             self.stopLocation()
@@ -371,7 +372,10 @@ class IBNewRunViewController: UIViewController {
         
         //Add Discard-Action
         actionSheetController.addAction(UIAlertAction(title: "Discard", style: UIAlertActionStyle.Default, handler: { (actionSheetController) -> Void in
-            
+            self.startButton.removeTarget(self, action: "stopAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            self.startButton.addTarget(self, action: "startAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            self.startButton.setTitle("START", forState: UIControlState.Normal)
+            self.startOnFlag = false;
             self.stopLocation()
         }))
         
@@ -422,16 +426,16 @@ class IBNewRunViewController: UIViewController {
         
         let milesFromMeters = distance * 0.000621371
         let distanceQuantity = HKQuantity(unit: HKUnit.mileUnit(), doubleValue: floor(milesFromMeters * 100)/100)
-        //Good for just meters:
-        //let distanceQuantity = HKQuantity(unit: HKUnit.meterUnit(), doubleValue: floor(distance * 100)/100)
         distanceLabel.text = distanceQuantity.description
-        print("Seconds: ", seconds, "Meters: ", distance, "Miles: ", milesFromMeters)
         let paceUnit = HKUnit.minuteUnit().unitDividedByUnit(HKUnit.mileUnit())
         let paceQuantity = HKQuantity(unit: paceUnit, doubleValue: floor(((seconds/60.0)/(distance * 0.000621371))*100)/100)
-        
-        //Old way, not sure if it works
-        //let paceQuantity = HKQuantity(unit: paceUnit, doubleValue: floor(((distance * 1609.34)/(seconds * 60 * 60))*100)/100)
-        paceLabel.text = paceQuantity.description
+        if(floor(((seconds/60.0)/(distance * 0.000621371))*100)/100 == Double.infinity)
+        {
+            paceLabel.text = "--"
+        }
+        else{
+            paceLabel.text = paceQuantity.description
+        }
         
     }
     
@@ -468,6 +472,7 @@ class IBNewRunViewController: UIViewController {
                     //transmit data if transmit on
                     if(UserInformation.sharedInstance.isRunnerTransmittingData && isTransmitOn)
                     {
+                        //locationManager will send at most 1 post request per second
                         self.sendDistanceInformationToServerWithUserID(curLocation.latitude, lon: curLocation.longitude, userID: UserInformation.sharedInstance.userIDsArray[0])
                     }
                 }
@@ -512,8 +517,19 @@ class IBNewRunViewController: UIViewController {
                 let x = i
                 returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[x], userArrayNumber: x, completionClosure: { (success,lat,lon, userIDSame) -> Void in
                     // When download completes,control flow goes here.
+<<<<<<< HEAD
                     //print("\nCalled return prev location...")
                     if (success != nil) {
+=======
+                    print("\nCalled return prev location...")
+                        //if a succesful get has no associated position, friend is not transmitting position
+                    if (success != nil && lat == nil && lon == nil) {
+                       dispatch_async(dispatch_get_main_queue(), {
+                            let name = UserInformation.sharedInstance.friendNames[i]
+                            ToastView.showToastInParentView(self.view, withText: name + " is not transmitting position", withDuration: 1.5)
+                        })
+                    } else if (success != nil) {
+>>>>>>> refs/remotes/origin/master
                         if(!self.flagStartLocation){ //make sure not first run
                             self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
                             self.arrayOfRunnerCoordinates[userIDSame!] = runnerCoordinates(runnerID: userIDSame!, lastCoordinate: CLLocationCoordinate2DMake(lat!, lon!))
@@ -543,7 +559,7 @@ class IBNewRunViewController: UIViewController {
                             //note after appended!
                             ////prevLocation.latitude = lat!
                             ////prevLocation.longitude = lon!
-                        }else if(self.notStartLocation) {
+                        } else if(self.notStartLocation) {
                             print("------------First time, set lat&lon different")
                             ////prevLocation.latitude = lat!
                             ////prevLocation.longitude = lon!
@@ -636,8 +652,8 @@ class IBNewRunViewController: UIViewController {
                         lonFromServer = jsonResult["Longitude"] as! String
                         timeFromServer = jsonResult["Timestamp"] as! Double //Double(jsonResult["Timestamp"] as! String)!
                         let timeDifference = abs(timeFromServer - NSDate().timeIntervalSince1970)
-                        //TODO ACTUALLY IMPLEMENT THIS just add <
-                        if timeDifference != 648000 //if the time difference is less than 3 hours
+                        //TODO: 3 hours seems longer then necessary; choose a smaller delta
+                        if timeDifference < 648000 //if the time difference is less than 3 hours
                         {
                             print("time difference is ok!")
                             completionClosure(success: true, lat: Double(latFromServer), lon: Double(lonFromServer), userIDSame: userID)
@@ -649,7 +665,8 @@ class IBNewRunViewController: UIViewController {
                             print("time difference is too big :( ", timeDifference)
                             self.runners -= 1
                             UserInformation.sharedInstance.isUserBeingTrackedArray[userArrayNumber] = false
-                            completionClosure(success: nil, lat: nil,lon: nil, userIDSame: userID)
+                            //success with nil lat/lon implies the runner has no recently defined position
+                            completionClosure(success: true, lat: nil,lon: nil, userIDSame: userID)
                         }
                         
                     } else {
