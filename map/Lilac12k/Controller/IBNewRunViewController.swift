@@ -30,7 +30,7 @@ class IBNewRunViewController: UIViewController {
     
     //t
     var Annotation: AttractionAnnotation!
-    
+    var updateTimer = 0
     var boundary: [CLLocationCoordinate2D] = []
     var boundaryPointsCount: NSInteger = 0
     var midCoordinate: CLLocationCoordinate2D!
@@ -247,7 +247,6 @@ class IBNewRunViewController: UIViewController {
     }
     
     func addUserPin(coordinates: CLLocationCoordinate2D, name: String, indexNumber: String) {
-        
         if(dictionaryOfLastAnnotations[name] != nil)
         {
             self.mapView.removeAnnotation(dictionaryOfLastAnnotations[name]!)
@@ -400,10 +399,11 @@ class IBNewRunViewController: UIViewController {
         
     }
     func eachSecond(timer : NSTimer) {
-        if(!UserInformation.sharedInstance.isUserBeingTrackedArray[0] && startOnFlag)
+        if(!UserInformation.sharedInstance.isUserBeingTrackedArray[0] && startOnFlag && updateTimer == 2)
         {
             print("\n\nHERE!\n\n")
             recieveFriendLocationData()
+            updateTimer = 0
         }
         seconds++
         //floor(1.5679999 * 1000) / 1000
@@ -436,7 +436,7 @@ class IBNewRunViewController: UIViewController {
         else{
             paceLabel.text = paceQuantity.description
         }
-        
+        updateTimer++
     }
     
     
@@ -520,7 +520,12 @@ class IBNewRunViewController: UIViewController {
                 returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[x], userArrayNumber: x, completionClosure: { (success,lat,lon, userIDSame) -> Void in
                     // When download completes,control flow goes here.
                     //print("\nCalled return prev location...")
-                    if (success != nil) {
+                    if (success != nil && lat == nil && lon == nil) {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            let name = UserInformation.sharedInstance.friendNames[i-2]
+                            ToastView.showToastInParentView(self.view, withText:  name + "is not transmitting position", withDuration:  1.5)
+                        })
+                    } else if (success != nil) {
                         if(!self.flagStartLocation){ //make sure not first run
                             self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
                             self.arrayOfRunnerCoordinates[userIDSame!] = runnerCoordinates(runnerID: userIDSame!, lastCoordinate: CLLocationCoordinate2DMake(lat!, lon!))
@@ -579,7 +584,65 @@ class IBNewRunViewController: UIViewController {
         print("########################")
         print(self.friendsRunning)
     }
-       /**
+
+    
+    ////////////
+    
+    /*
+    func recieveFriendLocationData()
+    {
+        for var i = 1; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
+            if UserInformation.sharedInstance.isUserBeingTrackedArray[i] //self.locations.count > 0 &&
+            {
+                let x = i
+                returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[x], userArrayNumber: x, completionClosure: { (success,lat,lon, userIDSame) -> Void in
+                    // When download completes,control flow goes here.
+                    print("\nCalled return prev location...")
+                    if (success != nil) {
+                        if(!self.flagStartLocation){ //make sure not first run
+                            self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
+                            self.arrayOfRunnerCoordinates[userIDSame!] = runnerCoordinates(runnerID: userIDSame!, lastCoordinate: CLLocationCoordinate2DMake(lat!, lon!))
+                            //Required to change the visual within a thread
+                            
+                            dispatch_async(dispatch_get_main_queue(), {
+                                self.currentRunner = self.runnerDictionary[userIDSame!]!;
+                                print("Current Runner:", self.currentRunner, " lastCoord", self.arrayOfRunnerCoordinates[userIDSame!]?.lastCoordinate)
+                                var lC = self.arrayOfRunnerCoordinates[userIDSame!]!.lastCoordinate
+                                self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
+                                
+                                self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
+                                //self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
+                            })
+                            //note after appended!
+                            ////prevLocation.latitude = lat!
+                            ////prevLocation.longitude = lon!
+                        }else if(self.notStartLocation) {
+                            print("------------First time, set lat&lon different")
+                            ////prevLocation.latitude = lat!
+                            ////prevLocation.longitude = lon!
+                            self.flagStartLocation = false
+                        } else {
+                            print("First time, set lat&lon different")
+                            ////prevLocation.latitude = lat!
+                            ////prevLocation.longitude = lon!
+                            
+                        }
+                        // set this to false after first for loop
+                    } else {
+                        // download fail
+                        print("Something went wrong in locationManager()")
+                    }
+                })
+                // this line block while loop until the async task above completed
+                //dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER)
+                ///self.mapView.showsUserLocation = true;
+            }
+        }
+        recenterMapView();
+    }
+    */
+    
+    /**
      * Sends runner's location to server by using their user ID. (don't need to use user ID since always same runner, but whatevs. Implemented with a closure
      */
     func sendDistanceInformationToServerWithUserID( lat: Double, lon: Double, userID: String)

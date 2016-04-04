@@ -462,10 +462,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="Facebook:" destination="kjf-2O-oue" eventType="touchUpInside" id="zGt-GZ-0tS"/>
                                     <action selector="Sponsors:" destination="kjf-2O-oue" eventType="touchUpInside" id="DwC-or-AtY"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHM-Ve-BZe" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="NAE-Mj-8eV"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6N-ME-gzB">
                                 <rect key="frame" x="16" y="400" width="288" height="46"/>
                                 <animations/>
@@ -479,18 +486,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="Facebook:" destination="kjf-2O-oue" eventType="touchUpInside" id="0ag-QN-NaY"/>
                                     <action selector="RacePhotos:" destination="kjf-2O-oue" eventType="touchUpInside" id="exz-MB-aJD"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHM-Ve-BZe" userLabel="Status Bar Background">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="NAE-Mj-8eV"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
