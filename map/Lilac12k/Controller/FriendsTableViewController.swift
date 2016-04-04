@@ -21,8 +21,6 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
         //self.tableView.contentSize = ;
         self.tableView.scrollEnabled = true
         self.tableView.bounces = true;
-        //self.tableView.frame.size.height = 200;
-        //self.tableView.contentSize = CGSizeMake(0, 800)
 
         self.view.bringSubviewToFront(tableView)
     }
