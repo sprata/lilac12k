@@ -506,30 +506,100 @@ class IBNewRunViewController: UIViewController {
             
         })
     }
-    func recieveFriendLocationData()
-    {
+    /*
+    //////////////////////
+    func recieveFriendLocationData() {
         var addedPin = false
         var numberOfFriends = 0;
-        
+        for var i = 1; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
+            if UserInformation.sharedInstance.isUserBeingTrackedArray[i] {
+                let x = i
+                returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[x], userArrayNumber: x, completionClosure: { (success,lat,lon, userIDSame) -> Void in
+                    // When download completes,control flow goes here.
+                    //<<<<<<< HEAD
+                    //print("\nCalled return prev location...")
+                    if (success != nil) {
+                        //=======
+                        print("\nCalled return prev location...")
+                        //if a succesful get has no associated position, friend is not transmitting position
+                        if (success != nil && lat == nil && lon == nil) {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                let name = UserInformation.sharedInstance.friendNames[i]
+                                ToastView.showToastInParentView(self.view, withText: name + " is not transmitting position", withDuration: 1.5)
+                            })
+                        } else if (success != nil) {
+                            //>>>>>>> refs/remotes/origin/master
+                            if(!self.flagStartLocation){ //make sure not first run
+                                self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
+                                self.arrayOfRunnerCoordinates[userIDSame!] = runnerCoordinates(runnerID: userIDSame!, lastCoordinate: CLLocationCoordinate2DMake(lat!, lon!))
+                                //Required to change the visual within a thread
+                                
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    self.currentRunner = self.runnerDictionary[userIDSame!]!;
+                                    //print("Current Runner:", self.currentRunner, " lastCoord", self.arrayOfRunnerCoordinates[userIDSame!]?.lastCoordinate)
+                                    var lC = self.arrayOfRunnerCoordinates[userIDSame!]!.lastCoordinate
+                                    
+                                    for trackedFriends in UserInformation.sharedInstance.isUserBeingTrackedArray {
+                                        if trackedFriends.boolValue == true {
+                                            numberOfFriends++
+                                        }
+                                    }
+                                    print("&&&&&&&&&&&&&&&&&&&&")
+                                    print(numberOfFriends)
+                                    print(self.friendsRunning)
+                                    self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
+                                    if numberOfFriends != self.friendsRunning {
+                                        self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
+                                        addedPin = true
+                                    }
+                                    self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
+                                    //self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
+                                })
+                                //note after appended!
+                                ////prevLocation.latitude = lat!
+                                ////prevLocation.longitude = lon!
+                            } else if(self.notStartLocation) {
+                                print("------------First time, set lat&lon different")
+                                ////prevLocation.latitude = lat!
+                                ////prevLocation.longitude = lon!
+                                self.flagStartLocation = false
+                            } else {
+                                print("First time, set lat&lon different")
+                                ////prevLocation.latitude = lat!
+                                ////prevLocation.longitude = lon!
+                                
+                            }
+                            // set this to false after first for loop
+                        } else {
+                            // download fail
+                            print("Something went wrong in locationManager()")
+                        }
+                    })
+                    // this line block while loop until the async task above completed
+                    //dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER)
+                    ///self.mapView.showsUserLocation = true;
+                }
+            }
+            recenterMapView();
+            if(addedPin) {
+                self.friendsRunning = numberOfFriends
+            }
+            print("########################")
+            print(self.friendsRunning)
+        }
+    }
+   */ //////////////////////
+    
+    func recieveFriendLocationData()
+    {
         for var i = 1; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
             if UserInformation.sharedInstance.isUserBeingTrackedArray[i] //self.locations.count > 0 &&
             {
                 let x = i
                 returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[x], userArrayNumber: x, completionClosure: { (success,lat,lon, userIDSame) -> Void in
                     // When download completes,control flow goes here.
-<<<<<<< HEAD
-                    //print("\nCalled return prev location...")
-                    if (success != nil) {
-=======
                     print("\nCalled return prev location...")
-                        //if a succesful get has no associated position, friend is not transmitting position
-                    if (success != nil && lat == nil && lon == nil) {
-                       dispatch_async(dispatch_get_main_queue(), {
-                            let name = UserInformation.sharedInstance.friendNames[i]
-                            ToastView.showToastInParentView(self.view, withText: name + " is not transmitting position", withDuration: 1.5)
-                        })
-                    } else if (success != nil) {
->>>>>>> refs/remotes/origin/master
+                    if (success != nil) {
                         if(!self.flagStartLocation){ //make sure not first run
                             self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
                             self.arrayOfRunnerCoordinates[userIDSame!] = runnerCoordinates(runnerID: userIDSame!, lastCoordinate: CLLocationCoordinate2DMake(lat!, lon!))
@@ -537,29 +607,17 @@ class IBNewRunViewController: UIViewController {
                             
                             dispatch_async(dispatch_get_main_queue(), {
                                 self.currentRunner = self.runnerDictionary[userIDSame!]!;
-                                //print("Current Runner:", self.currentRunner, " lastCoord", self.arrayOfRunnerCoordinates[userIDSame!]?.lastCoordinate)
+                                print("Current Runner:", self.currentRunner, " lastCoord", self.arrayOfRunnerCoordinates[userIDSame!]?.lastCoordinate)
                                 var lC = self.arrayOfRunnerCoordinates[userIDSame!]!.lastCoordinate
-                                
-                                for trackedFriends in UserInformation.sharedInstance.isUserBeingTrackedArray {
-                                    if trackedFriends.boolValue == true {
-                                        numberOfFriends++
-                                    }
-                                }
-                                print("&&&&&&&&&&&&&&&&&&&&")
-                                print(numberOfFriends)
-                                print(self.friendsRunning)
                                 self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
-                                if numberOfFriends != self.friendsRunning {
-                                    self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
-                                    addedPin = true
-                                }
-                                self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
-                                //self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
+                                
+                                self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
+                                //self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
                             })
                             //note after appended!
                             ////prevLocation.latitude = lat!
                             ////prevLocation.longitude = lon!
-                        } else if(self.notStartLocation) {
+                        }else if(self.notStartLocation) {
                             print("------------First time, set lat&lon different")
                             ////prevLocation.latitude = lat!
                             ////prevLocation.longitude = lon!
@@ -582,13 +640,8 @@ class IBNewRunViewController: UIViewController {
             }
         }
         recenterMapView();
-        if(addedPin) {
-            self.friendsRunning = numberOfFriends
-        }
-        print("########################")
-        print(self.friendsRunning)
     }
-    
+
     
     /**
      * Sends runner's location to server by using their user ID. (don't need to use user ID since always same runner, but whatevs. Implemented with a closure

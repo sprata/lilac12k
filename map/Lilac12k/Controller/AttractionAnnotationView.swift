@@ -17,22 +17,6 @@ class AttractionAnnotationView: MKAnnotationView {
         let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
         
-        /*
-        let newSize = CGSize(width: newWidth, height: newHeight)
-        let newRect = CGRectIntegral(CGRectMake(0,0, newSize.width, newSize.height))
-        let imageRef = image.CGImage
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
-        let context = UIGraphicsGetCurrentContext()
-        CGContextSetInterpolationQuality(context, CGInterpolationQuality.High)
-        let flipVertical = CGAffineTransformMake(1,0,0,-1,0, newSize.height)
-        CGContextConcatCTM(context, flipVertical)
-        CGContextDrawImage(context, newRect, imageRef)
-        let newImageRef = CGBitmapContextCreateImage(context)! as CGImage
-        let newImage = UIImage(CGImage: newImageRef)
-        UIGraphicsEndImageContext()
-        return newImage
-        */
-        
         UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
         image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -69,27 +53,6 @@ class AttractionAnnotationView: MKAnnotationView {
         let finalImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return finalImage
-        
-        /*mapPin!.drawInRect(CGRectMake(0, 0, finalSize.width, 75))
-        roundedImage!.drawInRect(CGRectMake(finalSize.width/2-newWidth/2, 8, newWidth, newHeight))//(areaSize)
-        
-        let finalImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return finalImage
-        */
-        /*
-        let imageView: UIImageView = UIImageView(image: newImage)
-        var layer: CALayer = CALayer()
-        layer = imageView.layer
-        layer.masksToBounds = true
-        layer.cornerRadius = CGFloat(10)//image.size.width/2)
-        layer.renderInContext(UIGraphicsGetCurrentContext()!)
-        let roundedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return roundedImage*/
-        
         
     }
     
