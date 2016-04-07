@@ -54,8 +54,7 @@ public class UserInformation {
                 self.isUserBeingTrackedArray.append(true)
                 self.userIDsArray.append(self.token as String)
                 let data : NSArray = self.friends.objectForKey("data") as! NSArray
-                let index = max(0, data.count - 1) //in case of no friends ;(
-                for i in 0..<index {
+                for i in 0..<data.count {
                     let valueDict : NSDictionary = data[i] as! NSDictionary
                     let id = valueDict.objectForKey("id") as! String
                     let name = valueDict.objectForKey("name") as! String
