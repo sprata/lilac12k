@@ -47,9 +47,9 @@ class HomeViewController : UIViewController{
         
         let bloomsdayDate = 1462093200.0
         let timeLeft = bloomsdayDate - NSDate().timeIntervalSince1970
-        let daysNum  = Double((ceil( timeLeft / 86400.0)))//43200.0)))
+        let daysNum  = Double((ceil( timeLeft / 86400.0)))+1.0//43200.0)))
         days.text = String(Int(daysNum))
-        let hourNum = floor( 23 - ((((timeLeft % 86400.0) / 3600.0) - 8))%24) //Greenwich is 8 hours ahead of us
+        let hourNum = floor( 23 - ((((timeLeft % 86400.0) / 3600.0) + 10 )))%24 //Greenwich is 8 hours ahead of us
         hours.text = formatDate(Int(hourNum))
 
         let minNum = floor( ((timeLeft % 3600.0) / 60.0))
@@ -116,11 +116,11 @@ class HomeViewController : UIViewController{
     func update() {
         // Something cool
         let min = (Int(self.minutes.text!)! - 1)%60;
-        if(min == 0)
+        if(min < 0)
         {
-            minutes.text = "60"
+            minutes.text = "59"
             let hour = (Int(self.hours.text!)! - 1)%24;
-            if(hour == 0 )
+            if(hour < 0 )
             {
                 hours.text = "24"
                 let day = (Int(self.days.text!)! - 1);
