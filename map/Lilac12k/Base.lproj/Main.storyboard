@@ -504,7 +504,7 @@
         <!--PostRace-->
         <scene sceneID="Bcm-IS-coW">
             <objects>
-                <tabBarController title="PostRace" id="YCN-eH-mrG" customClass="MainTabBarController" customModule="Lilac12k" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" title="PostRace" id="YCN-eH-mrG" customClass="MainTabBarController" customModule="Lilac12k" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" id="3AL-Hq-PIi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -876,7 +876,7 @@
         <!--Home-->
         <scene sceneID="1vS-wc-9DK">
             <objects>
-                <viewController id="Qcc-MG-kGO" customClass="HomeViewController" customModule="Lilac12k" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="Qcc-MG-kGO" customClass="HomeViewController" customModule="Lilac12k" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KJI-I6-ip5"/>
                         <viewControllerLayoutGuide type="bottom" id="Rh5-9a-ohy"/>
@@ -1433,6 +1433,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="agreeButton:" destination="G49-xF-z2q" eventType="touchUpInside" id="smp-5d-SRz"/>
                                     <segue destination="qaL-Be-jq4" kind="presentation" id="QAW-1R-TKO"/>
                                 </connections>
                             </button>

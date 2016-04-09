@@ -85,5 +85,15 @@ class TermsOfServiceViewController: UIViewController {
         
     }
     
+    @IBAction func agreeButton(sender: AnyObject) {
+        print("Agreed")
+        let privacyAgreementFlag = NSUserDefaults.standardUserDefaults()
+        if privacyAgreementFlag.valueForKey("privacyFlag") == nil{
+            privacyAgreementFlag.setValue(0, forKey: "privacyFlag")
+            print("Value set")
+        }
+    }
+
+    
 }
 

@@ -16,6 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        let privacyAgreementFlag = NSUserDefaults.standardUserDefaults()
+        if let flag = privacyAgreementFlag.valueForKey("privacyFlag"){
+            print("Thinking of going to Home");
+            if flag as! NSObject == 0{
+                //Code to go to home view controllera
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                let initialViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+                
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            }
+
+        }
+        
         
         //MainTabBarController tabBarController = (UITabBarController *)self.window.rootViewController;
         
