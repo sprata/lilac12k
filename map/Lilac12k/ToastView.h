@@ -12,5 +12,6 @@
 @property (strong, nonatomic) NSString *text;
 
 + (void)showToastInParentView: (UIView *)parentView withText:(NSString *)text withDuration:(float)duration;
++ (void)showToastInParentView: (UIView *)parentView withText:(NSString *)text withDuration:(float)duration withColor:(UIColor *)color;
 
 @end

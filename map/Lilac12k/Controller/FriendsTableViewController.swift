@@ -112,15 +112,26 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
         //On switch changes, notify user with ToastView (Frameworks/ToastView)
-        var name = "yourself"
-        if (TrackerSwitch.tag > 0) {
-            name = UserInformation.sharedInstance.friendNames[TrackerSwitch.tag - 1];
+        if (TrackerSwitch.tag == 0) { //toggled yourself
+            if (UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag]) {
+                let green = UIColor.init(red: 94/255, green: 128/255, blue: 83/255, alpha: 1)
+                ToastView.showToastInParentView(self.view, withText: "You are now in runner mode.", withDuration: 1.0, withColor: green)
+            } else {
+                let blue = UIColor.init(red: 83/255, green: 116/255, blue: 128/255, alpha: 1)
+                ToastView.showToastInParentView(self.view, withText: "You are now in spectator mode.", withDuration: 1.0, withColor: blue)
+            }
+        } else { //toggled a friend
+            var name = "yourself"
+            if (TrackerSwitch.tag > 0) {
+                name = UserInformation.sharedInstance.friendNames[TrackerSwitch.tag - 1];
+            }
+            var action = "deselected"
+            if (UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag]) {
+                action = "selected"
+            }
+            ToastView.showToastInParentView(self.view, withText: "You " + action + " " + name + ".", withDuration: 1.0)
         }
-        var action = "deselected"
-        if (UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag]) {
-            action = "selected"
-        }
-        ToastView.showToastInParentView(self.view, withText: "You " + action + " " + name + ".", withDuration: 1.0)
+        
         //Don't track >5 friends -> later feature
         ///adjustSwitches()
     }

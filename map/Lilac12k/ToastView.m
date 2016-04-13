@@ -85,6 +85,47 @@ float const ToastGap = 10.0f;
     
     
     [toast performSelector:@selector(hideSelf) withObject:nil afterDelay:duration];
+}
+
+//Show a colored toast (TODO: Don't repeat yourself; have the default showToast call this one with color = darkGrayColor)
++ (void)showToastInParentView: (UIView *)parentView withText:(NSString *)text withDuration:(float)duration withColor:(UIColor *)color ;
+{
+    
+    //Count toast views are already showing on parent. Made to show several toasts one above another
+    int toastsAlreadyInParent = 0;
+    for (UIView *subView in [parentView subviews]) {
+        if ([subView isKindOfClass:[ToastView class]])
+        {
+            toastsAlreadyInParent++;
+        }
+    }
+    
+    CGRect parentFrame = parentView.frame;
+    
+    float yOrigin = parentFrame.size.height / 2;
+    //    - (70.0 + ToastHeight * toastsAlreadyInParent + ToastGap * toastsAlreadyInParent);
+    
+    CGRect selfFrame = CGRectMake(parentFrame.origin.x + 20.0, yOrigin, parentFrame.size.width - 40.0, ToastHeight);
+    ToastView *toast = [[ToastView alloc] initWithFrame:selfFrame];
+    
+    toast.backgroundColor = color;
+    toast.alpha = 0.0f;
+    toast.layer.cornerRadius = 4.0;
+    toast.text = text;
+    
+    [parentView addSubview:toast];
+    
+    [UIView animateWithDuration:0.4 animations:^{
+        toast.alpha = 0.9f;
+        toast.textLabel.alpha = 0.9f;
+    }completion:^(BOOL finished) {
+        if(finished){
+            
+        }
+    }];
+    
+    
+    [toast performSelector:@selector(hideSelf) withObject:nil afterDelay:duration];
     
 }
 
