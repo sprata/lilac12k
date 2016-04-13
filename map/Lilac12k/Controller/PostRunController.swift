@@ -17,7 +17,7 @@ class PostRunController : UIViewController{
     @IBOutlet weak var RacePhotos: UIButton!
     
     @IBAction func GoodieBag(sender: AnyObject) {
-        if let url = NSURL(string: "http://bloomsdayrun.org/virtual-race-bags") {
+        if let url = NSURL(string: "https://app.virtualeventbags.com/lilac-bloomsday-run/spokane-2016") {
             UIApplication.sharedApplication().openURL(url)
         }
     }
