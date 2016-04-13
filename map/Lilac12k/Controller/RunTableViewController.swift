@@ -32,9 +32,6 @@ class RunTableViewController: UIViewController, UITableViewDelegate, UITableView
             let distanceQuantity = HKQuantity(unit: HKUnit.mileUnit(), doubleValue: floor(milesFromMeters * 100)/100)
             //Good for just meters:
             //let distanceQuantity = HKQuantity(unit: HKUnit.meterUnit(), doubleValue: floor(distance * 100)/100)
-            
-
-            
             //let distanceQuantity = HKQuantity(unit: HKUnit.mileUnit(), doubleValue: floor(((run.distance?.doubleValue)! / 1609.34)*1000)/1000)
             cell.CellDistance.text = distanceQuantity.description
             
@@ -42,8 +39,10 @@ class RunTableViewController: UIViewController, UITableViewDelegate, UITableView
             dateFormatter.dateStyle = .MediumStyle
             cell.CellTimestamp.text = dateFormatter.stringFromDate(run.timestamp!)
             
-            let secondQuantity = HKQuantity(unit: HKUnit.secondUnit(), doubleValue:(run.duration?.doubleValue)!)
-            cell.CellDuration.text = secondQuantity.description
+            //Convert seconds to HOURS:MINUTES:SECONDS
+            let seconds = Int((run.duration?.doubleValue)!)
+            let (h,m,s) = ( (seconds / 3600), (seconds % 3600) / 60, (seconds % 60) )
+            cell.CellDuration.text = String(format: "%02d", h) + ":" + String(format: "%02d", m)  + ":" + String(format: "%02d", s)
         }
         return cell
     }

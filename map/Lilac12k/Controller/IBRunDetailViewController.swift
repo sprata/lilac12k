@@ -57,7 +57,7 @@ class IBRunDetailViewController: UIViewController {
     
     func configureView()
     {
-        //        mapView.delegate = self
+        // mapView.delegate = self
         let milesFromMeters = (run.distance?.doubleValue)! * 0.000621371
         let distanceQuantity = HKQuantity(unit: HKUnit.mileUnit(), doubleValue: floor(milesFromMeters * 100)/100)
         
@@ -68,18 +68,21 @@ class IBRunDetailViewController: UIViewController {
         dateFormatter.dateStyle = .MediumStyle
         dateLabel.text = dateFormatter.stringFromDate(run.timestamp!)
         
-        let secondQuantity = HKQuantity(unit: HKUnit.secondUnit(), doubleValue:(run.duration?.doubleValue)!)
-        timeLabel.text = secondQuantity.description
+        let seconds = Int((run.duration?.doubleValue)!)
+        let (h,m,s) = ( (seconds / 3600), (seconds % 3600) / 60, (seconds % 60) )
+        timeLabel.text = String(format: "%02d", h) + ":" + String(format: "%02d", m)  + ":" + String(format: "%02d", s)
         
         let paceUnit = HKUnit.minuteUnit().unitDividedByUnit(HKUnit.mileUnit())
         let paceQuantity = HKQuantity(unit: paceUnit, doubleValue: floor((((run.duration?.doubleValue)!/60.0)/((run.distance?.doubleValue)! * 0.000621371))*100)/100)
         
         //let paceUnit = HKUnit.secondUnit().unitDividedByUnit(HKUnit.meterUnit())
         //let paceQuantity = HKQuantity(unit: paceUnit, doubleValue: (run.duration?.doubleValue)!/(run.duration?.doubleValue)!)
-        paceLabel.text = paceQuantity.description
-        
+        if (paceQuantity == Double.infinity) {
+            paceLabel.text = "--"
+        } else {
+            paceLabel.text = paceQuantity.description
+        }
         loadMap()
-        
     }
     
     func loadMap() {
