@@ -102,9 +102,6 @@ class IBNewRunViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for var i = 0; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
-            runnerDictionary[UserInformation.sharedInstance.userIDsArray[i]] = Int(i);
-        }
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.managedObjectContext = appDel.managedObjectContext
@@ -214,7 +211,10 @@ class IBNewRunViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        // runnerDictionary must be reinitialized each time the view appears (in case of changes to UserInformation)
+        for var i = 0; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
+            runnerDictionary[UserInformation.sharedInstance.userIDsArray[i]] = Int(i);
+        }
         locationManager.requestAlwaysAuthorization()
     }
     
@@ -324,8 +324,8 @@ class IBNewRunViewController: UIViewController {
                 self.runners += 1;
             }
         }
-        //If nobody is running, disable start
-        if (self.runners == 0) {
+        //If nobody is running or runnerDictionary hasn't initialized, disable start
+        if (self.runners == 0 || UserInformation.sharedInstance.countOfRunners == 0 || runnerDictionary[UserInformation.sharedInstance.userIDsArray[0]] == nil) {
             ToastView.showToastInParentView(self.view, withText: "You must select at least one friend to track!", withDuration: 2.0)
             return
         }
