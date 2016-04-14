@@ -14,9 +14,10 @@ class HomeViewController : UIViewController{
     @IBOutlet weak var scroller: UIScrollView!
     @IBOutlet weak var runHistory: UIButton!
     @IBOutlet weak var days: UILabel!
-
     @IBOutlet weak var hours: UILabel!
     @IBOutlet weak var minutes: UILabel!
+    @IBOutlet weak var secs: UILabel!
+
     @IBOutlet weak var welcomeMessage: UILabel!
     //@IBOutlet weak var runnerTransmit: UIButton!
     //@IBOutlet weak var runnerTransmit: UISwitch!
@@ -61,8 +62,10 @@ class HomeViewController : UIViewController{
         }*/
         //let scrollWidth = self.viewIfLoaded!.frame.size.width - 20;
 
-        scroller.contentSize = CGSizeMake(0, baseHeight)//2300
+        //scroller.contentSize = CGSizeMake(0, baseHeight)//2300
+        self.scroller.contentSize.height = 4000;
         
+        //scrollView.addSubview(scroller)
         let model = UIDevice.currentDevice().modelName
         let currentFont = welcomeMessage.font
         var sizeScale: CGFloat = 1.0;
@@ -102,6 +105,7 @@ class HomeViewController : UIViewController{
         //scrollView.addSubview(imageView)
         view.addSubview(scrollView)
         */
+        
         
     }
     
