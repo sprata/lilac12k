@@ -21,8 +21,8 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
         self.tableView.scrollEnabled = true
         self.tableView.bounces = true;
         self.view.bringSubviewToFront(tableView)
-        //Count how many users are being tracked
         
+        //Count how many users are being tracked
         numFriendsBeingTracked = 0;
         for i in 0..<UserInformation.sharedInstance.isUserBeingTrackedArray.count
         {
@@ -45,10 +45,10 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(UserInformation.sharedInstance.countOfRunners == 0) //either no friends or network error
         {
-            //print("Currently no friends")
+            //Currently no friends
             ToastView.showToastInParentView(self.view, withText: "Please check your network connection. \nUnable to retrieve friend information.", withDuration: 10.0)
         }
-        return UserInformation.sharedInstance.countOfRunners;//UserInformation.sharedInstance.friendNames.count+1;
+        return UserInformation.sharedInstance.countOfRunners;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -66,7 +66,6 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     //Disable tracker switches if over 5 runners selected
     func stateChanged(TrackerSwitch: UISwitch!)
     {
-        //print("Switch Changed")
         numFriendsBeingTracked = 0;
         for i in 0..<UserInformation.sharedInstance.isUserBeingTrackedArray.count
         {

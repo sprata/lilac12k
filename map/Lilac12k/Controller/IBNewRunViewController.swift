@@ -105,8 +105,8 @@ class IBNewRunViewController: UIViewController {
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.managedObjectContext = appDel.managedObjectContext
-        transmitButton.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        centerButton.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        transmitButton.addTarget(self, action: #selector(IBNewRunViewController.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        centerButton.addTarget(self, action: #selector(IBNewRunViewController.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         initUI()
         
         //t
@@ -212,7 +212,7 @@ class IBNewRunViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         // runnerDictionary must be reinitialized each time the view appears (in case of changes to UserInformation)
-        for var i = 0; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
+        for i in  0..<UserInformation.sharedInstance.userIDsArray.count {
             runnerDictionary[UserInformation.sharedInstance.userIDsArray[i]] = Int(i);
         }
         locationManager.requestAlwaysAuthorization()
@@ -319,7 +319,7 @@ class IBNewRunViewController: UIViewController {
         distance = 0.0
         runners = 0
         //figure out number of runners:
-        for var i = 0; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
+        for i in 0..<UserInformation.sharedInstance.userIDsArray.count {
             if(UserInformation.sharedInstance.isUserBeingTrackedArray[i]) {
                 self.runners += 1;
             }
@@ -329,12 +329,12 @@ class IBNewRunViewController: UIViewController {
             ToastView.showToastInParentView(self.view, withText: "You must select at least one friend to track!", withDuration: 2.0)
             return
         }
-        startButton.removeTarget(self, action: "startAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        startButton.addTarget(self, action: "stopAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        startButton.removeTarget(self, action: #selector(IBNewRunViewController.startAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        startButton.addTarget(self, action: #selector(IBNewRunViewController.stopAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         startButton.setTitle("STOP", forState: UIControlState.Normal)
         
         locations.removeAll(keepCapacity: false)
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "eachSecond:", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(IBNewRunViewController.eachSecond(_:)), userInfo: nil, repeats: true)
 
         flagStartLocation = false
         startOnFlag = true
@@ -361,8 +361,8 @@ class IBNewRunViewController: UIViewController {
         
         //Add Save-Action
         actionSheetController.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: { (actionSheetController) -> Void in
-            self.startButton.removeTarget(self, action: "stopAction:", forControlEvents: UIControlEvents.TouchUpInside)
-            self.startButton.addTarget(self, action: "startAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            self.startButton.removeTarget(self, action: #selector(IBNewRunViewController.stopAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            self.startButton.addTarget(self, action: #selector(IBNewRunViewController.startAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             self.startButton.setTitle("START", forState: UIControlState.Normal)
             self.startOnFlag = false;
             self.saveRun()
@@ -372,8 +372,8 @@ class IBNewRunViewController: UIViewController {
         
         //Add Discard-Action
         actionSheetController.addAction(UIAlertAction(title: "Discard", style: UIAlertActionStyle.Default, handler: { (actionSheetController) -> Void in
-            self.startButton.removeTarget(self, action: "stopAction:", forControlEvents: UIControlEvents.TouchUpInside)
-            self.startButton.addTarget(self, action: "startAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            self.startButton.removeTarget(self, action: #selector(IBNewRunViewController.stopAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            self.startButton.addTarget(self, action: #selector(IBNewRunViewController.startAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             self.startButton.setTitle("START", forState: UIControlState.Normal)
             self.startOnFlag = false;
             self.stopLocation()
@@ -402,11 +402,10 @@ class IBNewRunViewController: UIViewController {
     func eachSecond(timer : NSTimer) {
         if(!UserInformation.sharedInstance.isUserBeingTrackedArray[0] && startOnFlag && updateTimer == 2)
         {
-            print("\n\nHERE!\n\n")
             recieveFriendLocationData()
             updateTimer = 0
         }
-        seconds++
+        seconds += 1;
         //floor(1.5679999 * 1000) / 1000
         let secondsQuantity =  Int((floor((seconds)*100)/100) % 60)
         let minutesQuantity =  Int(((floor((seconds)*100)/100) / 60) % 60)
@@ -437,7 +436,7 @@ class IBNewRunViewController: UIViewController {
         else{
             paceLabel.text = paceQuantity.description
         }
-        updateTimer++
+        updateTimer += 1;
     }
     
     
@@ -518,21 +517,49 @@ class IBNewRunViewController: UIViewController {
             if UserInformation.sharedInstance.isUserBeingTrackedArray[i] //self.locations.count > 0 &&
             {
                 let x = i
-                returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[x], userArrayNumber: x, completionClosure: { (success,lat,lon, userIDSame) -> Void in
+                returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[x], userArrayNumber: x, completionClosure: { (success,lat,lon, err, userIDSame) -> Void in
                     // When download completes,control flow goes here.
-                    //print("\nCalled return prev location...")
-                    if (success != nil && lat == nil && lon == nil) {
+                    //The logic below should be simplified, but at least now it will print something out
+                    if (success == nil && lat == nil && lon == nil) {
+                        print("Error!!!!:", err)
+                        if((err?.containsString("transmit")) != nil && (err?.containsString("transmit"))!)
+                        {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                let name = UserInformation.sharedInstance.friendNames[x]
+                                ToastView.showToastInParentView(self.view, withText: name + " has not transmitted a run.\nMake sure your friend has \"Transmit On\" selected.", withDuration: 4.0)
+                            })
+                        }
+                        else if ((err?.containsString("time")) != nil && (err?.containsString("time"))!)
+                        {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                let name = UserInformation.sharedInstance.friendNames[x]
+                                ToastView.showToastInParentView(self.view, withText: name + " has not transmitted recently.\nMake sure your friend has \"Transmit On\" selected.", withDuration: 4.0)
+                            })
+                        }
+                        else if ((err?.containsString("standard")) != nil && (err?.containsString("standard"))!){
+                            dispatch_async(dispatch_get_main_queue(), {
+                                let name = UserInformation.sharedInstance.friendNames[x]
+                                ToastView.showToastInParentView(self.view, withText:  "Something has gone wrong retreiving " + name + "'s location", withDuration:  2.5)
+                            })
+                        }
+                        else {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                let name = UserInformation.sharedInstance.friendNames[x]
+                                ToastView.showToastInParentView(self.view, withText:  name + "is not transmitting their position", withDuration:  1.5)
+                            })
+                        }
+                        
+                    } else if ( success != nil && lat == nil && lon == nil ) {
                         dispatch_async(dispatch_get_main_queue(), {
-                            //Chauncy, check this please
-                            let name = UserInformation.sharedInstance.friendNames[i-1]
-                            ToastView.showToastInParentView(self.view, withText:  name + "is not transmitting position", withDuration:  1.5)
+                            let name = UserInformation.sharedInstance.friendNames[x]
+                            ToastView.showToastInParentView(self.view, withText:  name + "is not transmitting position", withDuration:  2.5)
                         })
                     } else if (success != nil) {
                         if(!self.flagStartLocation){ //make sure not first run
                             self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
                             self.arrayOfRunnerCoordinates[userIDSame!] = runnerCoordinates(runnerID: userIDSame!, lastCoordinate: CLLocationCoordinate2DMake(lat!, lon!))
-                            //Required to change the visual within a thread
                             
+                            //Required to change the visual within a thread
                             dispatch_async(dispatch_get_main_queue(), {
                                 self.currentRunner = self.runnerDictionary[userIDSame!]!;
                                 //print("Current Runner:", self.currentRunner, " lastCoord", self.arrayOfRunnerCoordinates[userIDSame!]?.lastCoordinate)
@@ -540,19 +567,15 @@ class IBNewRunViewController: UIViewController {
                                 
                                 for trackedFriends in UserInformation.sharedInstance.isUserBeingTrackedArray {
                                     if trackedFriends.boolValue == true {
-                                        numberOfFriends++
+                                        numberOfFriends += 1;
                                     }
                                 }
-                                print("&&&&&&&&&&&&&&&&&&&&")
-                                print(numberOfFriends)
                                 print(self.friendsRunning)
                                 self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
                                 if numberOfFriends != self.friendsRunning {
-                                    //Chauncy, check this please
                                     self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x], indexNumber: userIDSame!)
                                     addedPin = true
                                 }
-                                //Chauncy, check
                                 self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x], indexNumber: userIDSame!)
                                 //self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
                             })
@@ -568,7 +591,6 @@ class IBNewRunViewController: UIViewController {
                             print("First time, set lat&lon different")
                             ////prevLocation.latitude = lat!
                             ////prevLocation.longitude = lon!
-                            
                         }
                         // set this to false after first for loop
                     } else {
@@ -576,17 +598,13 @@ class IBNewRunViewController: UIViewController {
                         print("Something went wrong in locationManager()")
                     }
                 })
-                // this line block while loop until the async task above completed
-                //dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER)
-                ///self.mapView.showsUserLocation = true;
+
             }
         }
         recenterMapView();
         if(addedPin) {
             self.friendsRunning = numberOfFriends
         }
-        print("########################")
-        print(self.friendsRunning)
     }
 
     
@@ -683,7 +701,7 @@ class IBNewRunViewController: UIViewController {
     /**
      * Returns runner's previous location from server by using their user ID. Implemented with a closure
      */
-    func returnPreviousLocationFromServerByUserID(userID: String, userArrayNumber: Int, completionClosure: (success:Bool?, lat:Double?, lon:Double?, userIDSame:String?) -> Void ) -> (latitude: Double, longitude: Double, userIDSame: String) {
+    func returnPreviousLocationFromServerByUserID(userID: String, userArrayNumber: Int, completionClosure: (success:Bool?, lat:Double?, lon:Double?, err:String?, userIDSame:String?) -> Void ) -> (latitude: Double, longitude: Double, userIDSame: String) {
         var latFromServer = "0.0";
         var lonFromServer = "0.0";
         var timeFromServer = 0.0;
@@ -699,7 +717,7 @@ class IBNewRunViewController: UIViewController {
         let session = NSURLSession.sharedSession()
         let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             if (error != nil) {
-                completionClosure(success: nil, lat: nil,lon: nil, userIDSame: nil)
+                completionClosure(success: nil, lat: nil, lon: nil, err: "standard", userIDSame: nil)
                 print(error)
             } else {
                 do {
@@ -709,20 +727,22 @@ class IBNewRunViewController: UIViewController {
                         timeFromServer = jsonResult["Timestamp"] as! Double //Double(jsonResult["Timestamp"] as! String)!
                         let timeDifference = abs(timeFromServer - NSDate().timeIntervalSince1970)
                         //TODO: 3 hours seems longer then necessary; choose a smaller delta
-                        if timeDifference < 648000 //if the time difference is less than 3 hours
+                        if timeDifference < 172800// at the moment the buffer is 48 hours, change to 10800 (3 hours) for race day
                         {
                             print("time difference is ok!")
-                            completionClosure(success: true, lat: Double(latFromServer), lon: Double(lonFromServer), userIDSame: userID)
+                            completionClosure(success: true, lat: Double(latFromServer), lon: Double(lonFromServer), err: nil, userIDSame: userID)
                         }else //else we should probably stop tracking them if its been that long...
                         {
                             //TODO BUGCHECK!!!!!
                             print("TIMEFROMSERVER:", timeFromServer)
                             print("TIMEINTERVALSINCE1970:", NSDate().timeIntervalSince1970)
                             print("time difference is too big :( ", timeDifference)
+                           // let name = UserInformation.sharedInstance.friendNames[userArrayNumber]
+                        // ToastView.showToastInParentView(self.view, withText: name + " has not transmitted recently. Make sure your friend has \"Transmit On\" selected.", withDuration: 1.0)
                             self.runners -= 1
                             UserInformation.sharedInstance.isUserBeingTrackedArray[userArrayNumber] = false
                             //success with nil lat/lon implies the runner has no recently defined position
-                            completionClosure(success: true, lat: nil,lon: nil, userIDSame: userID)
+                            completionClosure(success: nil, lat: nil, lon: nil, err: "time",userIDSame: userID)
                         }
                         
                     } else {
@@ -739,15 +759,18 @@ class IBNewRunViewController: UIViewController {
                         self.runners -= 1 //set back the number of runners
                         //stop tracking the user
                         UserInformation.sharedInstance.isUserBeingTrackedArray[userArrayNumber] = false
+                        // let name = UserInformation.sharedInstance.friendNames[userArrayNumber]
+                        // ToastView.showToastInParentView(self.view, withText: "Cannot track " + name + "\nMake sure your friend has logged in to the app.", withDuration: 1.0)
                         //TODO notify the user that their friend is not on the app... not sure how that would happen
                     }else //if no location information for user (need to find command for that)
                     {
-                        
+                        // let name = UserInformation.sharedInstance.friendNames[userArrayNumber]
+                        // ToastView.showToastInParentView(self.view, withText: name + " has not transmitted a run. Make sure your friend has \"Transmit On\" selected.", withDuration: 1.0)
                         self.runners -= 1
                         UserInformation.sharedInstance.isUserBeingTrackedArray[userArrayNumber] = false
                         //TODO notify the user that their friend has not attempted to be tracked yet
                     }
-                    completionClosure(success: nil, lat: nil,lon: nil, userIDSame: userID)
+                    completionClosure(success: nil, lat: nil, lon: nil, err: "transmit", userIDSame: userID)
                 }
             }
             
