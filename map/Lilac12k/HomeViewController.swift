@@ -12,7 +12,7 @@ import Darwin
 class HomeViewController : UIViewController{
 
     @IBOutlet weak var scroller: UIScrollView!
-    @IBOutlet weak var runHistory: UIButton!
+    //@IBOutlet weak var runHistory: UIButton!
     @IBOutlet weak var days: UILabel!
     @IBOutlet weak var hours: UILabel!
     @IBOutlet weak var minutes: UILabel!
@@ -49,7 +49,7 @@ class HomeViewController : UIViewController{
         
         setCountdownText()
         
-        let baseHeight = runHistory.frame.origin.y + 150;
+        //let baseHeight = runHistory.frame.origin.y + 150;
         /*if(baseHeight < self.viewIfLoaded!.frame.height )
         {
             baseHeight = self.viewIfLoaded!.frame.height

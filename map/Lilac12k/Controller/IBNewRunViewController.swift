@@ -396,7 +396,6 @@ class IBNewRunViewController: UIViewController {
         distance = 0.0
         locations.removeAll(keepCapacity: false)
         timer.invalidate()
-        mapView.removeOverlays(mapView.overlays)
         
     }
     func eachSecond(timer : NSTimer) {
@@ -607,63 +606,6 @@ class IBNewRunViewController: UIViewController {
         }
     }
 
-    
-    ////////////
-    
-    /*
-    func recieveFriendLocationData()
-    {
-        for var i = 1; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
-            if UserInformation.sharedInstance.isUserBeingTrackedArray[i] //self.locations.count > 0 &&
-            {
-                let x = i
-                returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[x], userArrayNumber: x, completionClosure: { (success,lat,lon, userIDSame) -> Void in
-                    // When download completes,control flow goes here.
-                    print("\nCalled return prev location...")
-                    if (success != nil) {
-                        if(!self.flagStartLocation){ //make sure not first run
-                            self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
-                            self.arrayOfRunnerCoordinates[userIDSame!] = runnerCoordinates(runnerID: userIDSame!, lastCoordinate: CLLocationCoordinate2DMake(lat!, lon!))
-                            //Required to change the visual within a thread
-                            
-                            dispatch_async(dispatch_get_main_queue(), {
-                                self.currentRunner = self.runnerDictionary[userIDSame!]!;
-                                print("Current Runner:", self.currentRunner, " lastCoord", self.arrayOfRunnerCoordinates[userIDSame!]?.lastCoordinate)
-                                var lC = self.arrayOfRunnerCoordinates[userIDSame!]!.lastCoordinate
-                                self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
-                                
-                                self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
-                                //self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
-                            })
-                            //note after appended!
-                            ////prevLocation.latitude = lat!
-                            ////prevLocation.longitude = lon!
-                        }else if(self.notStartLocation) {
-                            print("------------First time, set lat&lon different")
-                            ////prevLocation.latitude = lat!
-                            ////prevLocation.longitude = lon!
-                            self.flagStartLocation = false
-                        } else {
-                            print("First time, set lat&lon different")
-                            ////prevLocation.latitude = lat!
-                            ////prevLocation.longitude = lon!
-                            
-                        }
-                        // set this to false after first for loop
-                    } else {
-                        // download fail
-                        print("Something went wrong in locationManager()")
-                    }
-                })
-                // this line block while loop until the async task above completed
-                //dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER)
-                ///self.mapView.showsUserLocation = true;
-            }
-        }
-        recenterMapView();
-    }
-    */
-    
     /**
      * Sends runner's location to server by using their user ID. (don't need to use user ID since always same runner, but whatevs. Implemented with a closure
      */
@@ -887,14 +829,7 @@ extension IBNewRunViewController : MKMapViewDelegate {
             renderer.strokeColor = UIColor(red: 253/255, green: 231/255, blue: 76/255, alpha: 1.0)
         }
         renderer.lineWidth = 5
-        /*
-        if currentRunner < runners {
-        currentRunner++;
-        }
-        else {
-        currentRunner = 1;
-        }
-        */
+
         return renderer
     }
 }
