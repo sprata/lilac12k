@@ -38,6 +38,7 @@ class HomeViewController : UIViewController{
         
         //var scrollView: UIScrollView!
         //var imageView: UIImageView!
+        //Note: updating only every 60 seconds could make countdown off by up to one minute
         timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "update", userInfo: nil, repeats: true)
 
         //let customTabBarItem:UITabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeImage"), selectedImage: UIImage(named: "homeIcon_white")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
@@ -46,15 +47,8 @@ class HomeViewController : UIViewController{
 
         super.viewDidLoad()
         
-        let bloomsdayDate = 1462093200.0
-        let timeLeft = bloomsdayDate - NSDate().timeIntervalSince1970
-        let daysNum  = Double((ceil( timeLeft / 86400.0)))+1.0//43200.0)))
-        days.text = String(Int(daysNum))
-        let hourNum = floor( 23 - ((((timeLeft % 86400.0) / 3600.0) + 10 )))%24 //Greenwich is 8 hours ahead of us
-        hours.text = formatDate(Int(hourNum))
-
-        let minNum = floor( ((timeLeft % 3600.0) / 60.0))
-        minutes.text = formatDate(Int(minNum))
+        setCountdownText()
+        
         let baseHeight = runHistory.frame.origin.y + 150;
         /*if(baseHeight < self.viewIfLoaded!.frame.height )
         {
@@ -105,8 +99,16 @@ class HomeViewController : UIViewController{
         //scrollView.addSubview(imageView)
         view.addSubview(scrollView)
         */
-        
-        
+    }
+    
+    func setCountdownText() {
+        let bloomsdayDate = 1462118400.0 //9:00 AM, May 1, 2016 (4:00 PM UTC)
+        let timeLeft = Int( bloomsdayDate - NSDate().timeIntervalSince1970 )
+        // s / (60*60*24) is whole days, then take remainder and divide by 3600 to get hours, then find minutes
+        let (d,h,m) = (timeLeft / (3600*24), (timeLeft % (3600*24)) / 3600, (timeLeft % 3600) / 60)
+        days.text = String(format: "%02d", d)
+        hours.text = String(format: "%02d", h)
+        minutes.text = String(format: "%02d", m)
     }
     
     
@@ -118,40 +120,10 @@ class HomeViewController : UIViewController{
     }
 
     func update() {
-        // Something cool
-        let min = (Int(self.minutes.text!)! - 1)%60;
-        if(min < 0)
-        {
-            minutes.text = "59"
-            let hour = (Int(self.hours.text!)! - 1)%24;
-            if(hour < 0 )
-            {
-                hours.text = "24"
-                let day = (Int(self.days.text!)! - 1);
-                days.text = String(day);
-            }
-            else
-            {
-                hours.text = formatDate(hour);
-            }
-        }
-        else
-        {
-            minutes.text = formatDate(min);
-        }
+        //Update countdown each minute
+        setCountdownText()
     }
     
-    func formatDate(time: Int) -> String
-    {
-        if(time < 10)
-        {
-            return("0"+String(time));
-        }
-        else
-        {
-            return(String(time))
-        }
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
