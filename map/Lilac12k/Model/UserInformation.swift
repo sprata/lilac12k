@@ -53,6 +53,7 @@ public class UserInformation {
                 self.friends = result.valueForKey("friends") as! NSDictionary
                 self.isUserBeingTrackedArray.append(true)
                 self.userIDsArray.append(self.token as String)
+                self.friendNames.append(self.name  as String)
                 let data : NSArray = self.friends.objectForKey("data") as! NSArray
                 for i in 0..<data.count {
                     let valueDict : NSDictionary = data[i] as! NSDictionary

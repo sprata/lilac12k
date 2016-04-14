@@ -13,6 +13,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     var friendImages = [UIImage]()
     var refreshControl:UIRefreshControl!
+    var numFriendsBeingTracked = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,16 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
         self.tableView.scrollEnabled = true
         self.tableView.bounces = true;
         self.view.bringSubviewToFront(tableView)
+        //Count how many users are being tracked
         
+        numFriendsBeingTracked = 0;
+        for i in 0..<UserInformation.sharedInstance.isUserBeingTrackedArray.count
+        {
+            if(UserInformation.sharedInstance.isUserBeingTrackedArray[i])
+            {
+                numFriendsBeingTracked += 1;
+            }
+        }
         //refresh
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -35,7 +45,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(UserInformation.sharedInstance.countOfRunners == 0) //either no friends or network error
         {
-            print("Currently no friends")
+            //print("Currently no friends")
             ToastView.showToastInParentView(self.view, withText: "Please check your network connection. \nUnable to retrieve friend information.", withDuration: 10.0)
         }
         return UserInformation.sharedInstance.countOfRunners;//UserInformation.sharedInstance.friendNames.count+1;
@@ -43,97 +53,74 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:FriendsPageCell = (self.tableView.dequeueReusableCellWithIdentifier("FriendCell"))! as! FriendsPageCell
-        if(indexPath.row == 0) {
-            cell.CellName.text = UserInformation.sharedInstance.name as String
-            cell.TrackerSwitch.tag = 0
-            let imageView = UIImageView()
-            imageView.contentMode = .ScaleAspectFit
-            cell.CellImage.image = FacebookImages.sharedInstance.profilePic
-            cell.TrackerSwitch.addTarget(self, action: #selector(FriendsTableViewController.stateChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
-            cell.TrackerSwitch.on = true
-            UserInformation.sharedInstance.isUserBeingTrackedArray[0] = true
-        } else {
-            cell.CellName.text = UserInformation.sharedInstance.friendNames[indexPath.row-1] as String
-            let imageView = UIImageView()
-            imageView.contentMode = .ScaleAspectFit
-            cell.CellImage.image = FacebookImages.sharedInstance.dictionaryOfProfilePictures[UserInformation.sharedInstance.userIDsArray[indexPath.row]]
-            cell.TrackerSwitch.tag = indexPath.row
-            cell.TrackerSwitch.addTarget(self, action: #selector(FriendsTableViewController.stateChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
-            
-        }
+        cell.CellName.text = UserInformation.sharedInstance.friendNames[indexPath.row] as String
+        let imageView = UIImageView()
+        imageView.contentMode = .ScaleAspectFit
+        cell.CellImage.image = FacebookImages.sharedInstance.dictionaryOfProfilePictures[UserInformation.sharedInstance.userIDsArray[indexPath.row]]
+        cell.TrackerSwitch.tag = indexPath.row;
+        cell.TrackerSwitch.on = UserInformation.sharedInstance.isUserBeingTrackedArray[indexPath.row];
+        cell.TrackerSwitch.addTarget(self, action: #selector(FriendsTableViewController.stateChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
         return cell
     }
     
     //Disable tracker switches if over 5 runners selected
-    //TODO: Test that this works for 5 friends
-    //TODO: Verify the loop works even for non-visible cells (i.e. screen overflow)
-    func adjustSwitches() {
-        var count = 0;
-        //count number selected
-        for row in 0..<self.tableView.numberOfRowsInSection(0) {
-            let indexPath = NSIndexPath(forRow: row, inSection: 0)
-            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FriendsPageCell
-            if (cell.TrackerSwitch.on) {
-                count += 1;
-            }
-        }
-        
-        //if tracking 5, disable the currently-off switches
-        for row in 0..<self.tableView.numberOfRowsInSection(0) {
-            let indexPath = NSIndexPath(forRow: row, inSection: 0)
-            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FriendsPageCell
-            if (count >= 5) {
-                if (!cell.TrackerSwitch.on) {
-                    cell.TrackerSwitch.enabled = false
-                }
-            } else {
-                cell.TrackerSwitch.enabled = true;
-            }
-        }
-    }
-    
     func stateChanged(TrackerSwitch: UISwitch!)
     {
         //print("Switch Changed")
-        if (TrackerSwitch.on == true){
-            ///Not best implementation, but simple
-            UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag] = true
-            if(TrackerSwitch.tag == 0 ) {
-                print(UserInformation.sharedInstance.name, "  ",UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag])
-            } else {
-                print(UserInformation.sharedInstance.friendNames[TrackerSwitch.tag-1], "  ",UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag])
+        numFriendsBeingTracked = 0;
+        for i in 0..<UserInformation.sharedInstance.isUserBeingTrackedArray.count
+        {
+            if(UserInformation.sharedInstance.isUserBeingTrackedArray[i])
+            {
+                numFriendsBeingTracked += 1;
             }
-        } else {
+        }
+        if( numFriendsBeingTracked >= 5 && TrackerSwitch.on == true )
+        {
             UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag] = false
-            if (TrackerSwitch.tag == 0 ) {
-                print(UserInformation.sharedInstance.name, "  ",UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag])
+            TrackerSwitch.on = false
+            ToastView.showToastInParentView(self.view, withText: "Sorry, you can't track over 5 runners at once", withDuration: 1.0)
+            print("Can't have more than 5 runners");
+        }
+        else{
+            if (TrackerSwitch.on == true){
+                numFriendsBeingTracked += 1;
+                UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag] = true
+                if(TrackerSwitch.tag == 0 ) {
+                    //print(UserInformation.sharedInstance.name, "  ",UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag])
+                } else {
+                    //print(UserInformation.sharedInstance.friendNames[TrackerSwitch.tag-1], "  ",UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag])
+                }
             } else {
-                print(UserInformation.sharedInstance.friendNames[TrackerSwitch.tag-1], "  ",UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag])
+                numFriendsBeingTracked -= 1;
+                UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag] = false
+                if (TrackerSwitch.tag == 0 ) {
+                    //print(UserInformation.sharedInstance.name, "  ",UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag])
+                } else {
+                    //print(UserInformation.sharedInstance.friendNames[TrackerSwitch.tag-1], "  ",UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag])
+                }
+            }
+            //On switch changes, notify user with ToastView (Frameworks/ToastView)
+            if (TrackerSwitch.tag == 0) { //toggled yourself
+                if (UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag]) {
+                    let green = UIColor.init(red: 94/255, green: 128/255, blue: 83/255, alpha: 1)
+                    ToastView.showToastInParentView(self.view, withText: "You are now in runner mode.", withDuration: 1.0, withColor: green)
+                } else {
+                    let blue = UIColor.init(red: 83/255, green: 116/255, blue: 128/255, alpha: 1)
+                    ToastView.showToastInParentView(self.view, withText: "You are now in spectator mode.", withDuration: 1.0, withColor: blue)
+                }
+            } else { //toggled a friend
+                var name = "yourself"
+                if (TrackerSwitch.tag > 0) {
+                    name = UserInformation.sharedInstance.friendNames[TrackerSwitch.tag ];
+                }
+                var action = "deselected"
+                if (UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag]) {
+                    action = "selected"
+                }
+                ToastView.showToastInParentView(self.view, withText: "You " + action + " " + name + ".", withDuration: 1.0)
             }
         }
-        //On switch changes, notify user with ToastView (Frameworks/ToastView)
-        if (TrackerSwitch.tag == 0) { //toggled yourself
-            if (UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag]) {
-                let green = UIColor.init(red: 94/255, green: 128/255, blue: 83/255, alpha: 1)
-                ToastView.showToastInParentView(self.view, withText: "You are now in runner mode.", withDuration: 1.0, withColor: green)
-            } else {
-                let blue = UIColor.init(red: 83/255, green: 116/255, blue: 128/255, alpha: 1)
-                ToastView.showToastInParentView(self.view, withText: "You are now in spectator mode.", withDuration: 1.0, withColor: blue)
-            }
-        } else { //toggled a friend
-            var name = "yourself"
-            if (TrackerSwitch.tag > 0) {
-                name = UserInformation.sharedInstance.friendNames[TrackerSwitch.tag - 1];
-            }
-            var action = "deselected"
-            if (UserInformation.sharedInstance.isUserBeingTrackedArray[TrackerSwitch.tag]) {
-                action = "selected"
-            }
-            ToastView.showToastInParentView(self.view, withText: "You " + action + " " + name + ".", withDuration: 1.0)
-        }
-        
-        //Don't track >5 friends -> later feature
-        ///adjustSwitches()
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -154,6 +141,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
         }
         self.refreshControl?.endRefreshing()
     }
+    
     
     
 }

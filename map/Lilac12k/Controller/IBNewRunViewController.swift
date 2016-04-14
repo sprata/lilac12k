@@ -523,7 +523,8 @@ class IBNewRunViewController: UIViewController {
                     //print("\nCalled return prev location...")
                     if (success != nil && lat == nil && lon == nil) {
                         dispatch_async(dispatch_get_main_queue(), {
-                            let name = UserInformation.sharedInstance.friendNames[i-2]
+                            //Chauncy, check this please
+                            let name = UserInformation.sharedInstance.friendNames[i-1]
                             ToastView.showToastInParentView(self.view, withText:  name + "is not transmitting position", withDuration:  1.5)
                         })
                     } else if (success != nil) {
@@ -547,10 +548,12 @@ class IBNewRunViewController: UIViewController {
                                 print(self.friendsRunning)
                                 self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
                                 if numberOfFriends != self.friendsRunning {
-                                    self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
+                                    //Chauncy, check this please
+                                    self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x], indexNumber: userIDSame!)
                                     addedPin = true
                                 }
-                                self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
+                                //Chauncy, check
+                                self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x], indexNumber: userIDSame!)
                                 //self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
                             })
                             //note after appended!

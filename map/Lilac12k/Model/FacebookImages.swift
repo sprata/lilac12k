@@ -34,8 +34,9 @@ public class FacebookImages {
                 }
             }
         }
-        for i in 0 ..< UserInformation.sharedInstance.friendNames.count
+        for i in 0 ..< UserInformation.sharedInstance.friendNames.count-1 //-1 because user name included
         {
+            //consider try catch for out of range exception, eventhough practically impossible
             let x = i
             if let checkedUrl = NSURL(string: "https://graph.facebook.com/\(UserInformation.sharedInstance.friendIDs[i])/picture?type=large&return_ssl_resources=1")
             {

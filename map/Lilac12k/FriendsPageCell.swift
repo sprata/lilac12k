@@ -29,5 +29,13 @@ class FriendsPageCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    override func prepareForReuse()
+    {
+        super.prepareForReuse()
+        // Reset the cell for new row's data
+        print("Cellname:", CellName.text, TrackerSwitch.on)
+        TrackerSwitch.on = false;
+    }
 
 }
