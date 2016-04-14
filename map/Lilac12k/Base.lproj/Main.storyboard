@@ -170,7 +170,7 @@
         <!--FBController-->
         <scene sceneID="jKF-jO-gjU">
             <objects>
-                <viewController title="FBController" id="qaL-Be-jq4" customClass="FBViewController" customModule="Lilac12k" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FBController" title="FBController" id="qaL-Be-jq4" customClass="FBViewController" customModule="Lilac12k" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rMt-wC-WUm"/>
                         <viewControllerLayoutGuide type="bottom" id="8zH-ZS-fQo"/>
