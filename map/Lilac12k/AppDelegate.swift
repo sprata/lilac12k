@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //Code to go to home view controllera
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 
-                let initialViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+                let initialViewController = storyboard.instantiateViewControllerWithIdentifier("FBController")
                 
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
