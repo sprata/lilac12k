@@ -14,6 +14,12 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     var friendImages = [UIImage]()
     var refreshControl:UIRefreshControl!
     var numFriendsBeingTracked = 0;
+    var data : [String] = [] //["San Francisco","New York","San Jose","Chicago","Los Angeles","Austin","Seattle"]
+
+    var filtered:[String] = []
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    var searchActive : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +37,9 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
                 numFriendsBeingTracked += 1;
             }
         }
+        /*for i in 0..<UserInformation.sharedInstance.friendNames.count{
+            data[i] = UserInformation.sharedInstance.friendNames[i]
+        }*/
         //refresh
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -46,7 +55,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
         if(UserInformation.sharedInstance.countOfRunners == 0) //either no friends or network error
         {
             //Currently no friends
-            ToastView.showToastInParentView(self.view, withText: "Please check your network connection. \nUnable to retrieve friend information.", withDuration: 10.0)
+            ToastView.showToastInParentView(self.view, withText: "Please check your network connection. \nUnable to retrieve friend information.", withDuration: 5.0)
         }
         return UserInformation.sharedInstance.countOfRunners;
     }
@@ -140,6 +149,40 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
         }
         self.refreshControl?.endRefreshing()
     }
+    
+    //search bar
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filtered = data.filter({ (text) -> Bool in
+            let tmp: NSString = text
+            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return range.location != NSNotFound
+        })
+        if(filtered.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.tableView.reloadData()
+    }
+
+    
     
     
     

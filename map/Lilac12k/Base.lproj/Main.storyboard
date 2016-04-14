@@ -21,18 +21,8 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Edp-AC-DXH" userLabel="Status Bar Background">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                                <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Run History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9D-os-HfR">
-                                <rect key="frame" x="0.0" y="20" width="320" height="73"/>
                                 <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="73" id="yZQ-23-kfH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pLb-ZZ-P4K">
                                 <rect key="frame" x="0.0" y="93" width="320" height="475"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -134,6 +124,22 @@
                                     <outlet property="delegate" destination="tcr-YF-plX" id="xaZ-xg-Zxh"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Run History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9D-os-HfR">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="fHA-T0-dNa"/>
+                                    <constraint firstAttribute="height" constant="44" id="yZQ-23-kfH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fHA-T0-dNa"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Edp-AC-DXH" firstAttribute="top" secondItem="Llq-0Q-BMo" secondAttribute="top" id="6OM-s7-MvQ"/>
@@ -232,21 +238,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select your friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G50-09-aPx">
-                                <rect key="frame" x="88" y="20" width="144" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Your Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUx-70-Bbb">
-                                <rect key="frame" x="0.0" y="20" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="nUc-9W-d67"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qsr-C4-Pw4">
-                                <rect key="frame" x="0.0" y="96" width="320" height="472"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuF-Ao-e3F" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="4W3-Ce-oay"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qsr-C4-Pw4">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" id="6Gk-ZJ-Mqz" customClass="FriendsPageCell" customModule="Lilac12k" customModuleProvider="target">
@@ -296,42 +306,26 @@
                                     <outlet property="delegate" destination="CAL-DJ-3Dl" id="I9B-B8-JyG"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuF-Ao-e3F" userLabel="Status Bar Background">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                                <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="4W3-Ce-oay"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="uuF-Ao-e3F" firstAttribute="leading" secondItem="mUx-70-Bbb" secondAttribute="leading" id="6Yn-K7-0on"/>
-                            <constraint firstItem="Qsr-C4-Pw4" firstAttribute="top" secondItem="mUx-70-Bbb" secondAttribute="bottom" id="AWj-1Z-Ztp"/>
                             <constraint firstItem="mUx-70-Bbb" firstAttribute="width" secondItem="Qvm-1r-Ihq" secondAttribute="width" id="AgT-Pn-Ktb"/>
-                            <constraint firstItem="Qsr-C4-Pw4" firstAttribute="top" secondItem="Qvm-1r-Ihq" secondAttribute="top" constant="96" id="BLu-Sh-okW"/>
                             <constraint firstItem="uuF-Ao-e3F" firstAttribute="width" secondItem="Qvm-1r-Ihq" secondAttribute="width" id="Bg8-XP-ZTA"/>
                             <constraint firstItem="Qsr-C4-Pw4" firstAttribute="bottom" secondItem="dL9-I1-d5U" secondAttribute="top" id="Bmz-Tn-SbU"/>
-                            <constraint firstItem="uuF-Ao-e3F" firstAttribute="centerX" secondItem="G50-09-aPx" secondAttribute="centerX" id="NC2-cj-agv"/>
-                            <constraint firstItem="G50-09-aPx" firstAttribute="top" secondItem="mUx-70-Bbb" secondAttribute="top" id="OfZ-1v-7C4"/>
                             <constraint firstItem="Qsr-C4-Pw4" firstAttribute="height" secondItem="Qvm-1r-Ihq" secondAttribute="height" id="PTE-Ow-5Ja" userLabel="Table View.height = 200"/>
-                            <constraint firstItem="Qsr-C4-Pw4" firstAttribute="top" secondItem="mUx-70-Bbb" secondAttribute="bottom" id="Ulr-CC-Ik2"/>
-                            <constraint firstItem="Qsr-C4-Pw4" firstAttribute="centerX" secondItem="G50-09-aPx" secondAttribute="centerX" id="WAw-r2-Ksa"/>
-                            <constraint firstItem="Qsr-C4-Pw4" firstAttribute="top" secondItem="G50-09-aPx" secondAttribute="bottom" constant="54" id="ZdC-ca-xIu"/>
                             <constraint firstItem="Qsr-C4-Pw4" firstAttribute="width" secondItem="Qvm-1r-Ihq" secondAttribute="width" id="ZzY-sk-KQg"/>
+                            <constraint firstItem="Qsr-C4-Pw4" firstAttribute="top" secondItem="mUx-70-Bbb" secondAttribute="bottom" id="cYJ-iD-Ab8"/>
                             <constraint firstItem="uuF-Ao-e3F" firstAttribute="width" secondItem="Qvm-1r-Ihq" secondAttribute="width" id="dcf-1S-ESb"/>
                             <constraint firstItem="uuF-Ao-e3F" firstAttribute="leading" secondItem="Qsr-C4-Pw4" secondAttribute="leading" id="dk1-fB-BaN"/>
                             <constraint firstItem="uuF-Ao-e3F" firstAttribute="leading" secondItem="Qvm-1r-Ihq" secondAttribute="leading" id="gOb-0l-aLb"/>
-                            <constraint firstItem="Qsr-C4-Pw4" firstAttribute="top" secondItem="Qvm-1r-Ihq" secondAttribute="top" constant="96" id="itj-ne-abp"/>
                             <constraint firstItem="mUx-70-Bbb" firstAttribute="top" secondItem="2I0-y2-sey" secondAttribute="bottom" id="pGL-Om-gKn"/>
                             <constraint firstItem="uuF-Ao-e3F" firstAttribute="top" secondItem="Qvm-1r-Ihq" secondAttribute="topMargin" id="ppX-xZ-21G"/>
-                            <constraint firstItem="Qsr-C4-Pw4" firstAttribute="top" secondItem="mUx-70-Bbb" secondAttribute="bottom" id="t87-Sa-gLd"/>
+                            <constraint firstItem="Qsr-C4-Pw4" firstAttribute="top" secondItem="2I0-y2-sey" secondAttribute="bottom" id="rlx-bk-C1T"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="NC2-cj-agv"/>
-                                <exclude reference="BLu-Sh-okW"/>
                                 <exclude reference="PTE-Ow-5Ja"/>
-                                <exclude reference="t87-Sa-gLd"/>
+                                <exclude reference="rlx-bk-C1T"/>
                             </mask>
                         </variation>
                     </view>
@@ -344,10 +338,19 @@
                     </tabBarItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="searchDisplayController" destination="UCf-bU-1Iz" id="yKf-hP-LSy"/>
                         <outlet property="tableView" destination="Qsr-C4-Pw4" id="6jP-MT-Dih"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRV-bh-gvx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="UCf-bU-1Iz">
+                    <connections>
+                        <outlet property="delegate" destination="CAL-DJ-3Dl" id="OG7-9A-imV"/>
+                        <outlet property="searchContentsController" destination="CAL-DJ-3Dl" id="p67-Xc-BrQ"/>
+                        <outlet property="searchResultsDataSource" destination="CAL-DJ-3Dl" id="uLd-1S-N3f"/>
+                        <outlet property="searchResultsDelegate" destination="CAL-DJ-3Dl" id="E9L-f1-nzV"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1153" y="-1232"/>
         </scene>
@@ -364,16 +367,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After the Race" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNq-BV-Kqb">
-                                <rect key="frame" x="0.0" y="20" width="320" height="74"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="74" id="r54-WY-732"/>
+                                    <constraint firstAttribute="height" constant="44" id="OtN-ev-knc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEm-9H-hek">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEm-9H-hek">
                                 <rect key="frame" x="16" y="138" width="288" height="46"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Virtual Goodie Bag">
@@ -388,7 +391,7 @@
                                     <action selector="GoodieBag:" destination="kjf-2O-oue" eventType="touchUpInside" id="H15-oo-hDG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrT-Ef-gzf">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrT-Ef-gzf">
                                 <rect key="frame" x="16" y="269" width="288" height="46"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Post to Facebook">
@@ -403,7 +406,7 @@
                                     <action selector="Facebook:" destination="kjf-2O-oue" eventType="touchUpInside" id="IwY-Yy-Qsz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0F-E1-cNw">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0F-E1-cNw">
                                 <rect key="frame" x="16" y="204" width="288" height="45"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Results">
@@ -418,7 +421,7 @@
                                     <action selector="Results:" destination="kjf-2O-oue" eventType="touchUpInside" id="RLM-lk-fzA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLE-EP-WsO">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLE-EP-WsO">
                                 <rect key="frame" x="16" y="335" width="288" height="45"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Sponsors">
@@ -435,12 +438,12 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHM-Ve-BZe" userLabel="Status Bar Background">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                                <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="NAE-Mj-8eV"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6N-ME-gzB">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6N-ME-gzB">
                                 <rect key="frame" x="16" y="400" width="288" height="46"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Race Photos">
@@ -499,7 +502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DK9-92-wbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-408.75" y="-1670.0704225352108"/>
+            <point key="canvasLocation" x="-409" y="-1671"/>
         </scene>
         <!--PostRace-->
         <scene sceneID="Bcm-IS-coW">
@@ -547,7 +550,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5P-B1-Lq5" userLabel="Status Bar Background">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
-                                        <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="L0e-Qv-zbv"/>
                                         </constraints>
@@ -695,7 +698,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.62745098040000002" green="0.37254901959999998" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dQi-zX-cqU" firstAttribute="width" secondItem="hEA-J3-Y2R" secondAttribute="width" id="73u-tu-RnH"/>
@@ -1467,14 +1470,17 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before the Race" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCJ-TX-ayB">
-                                <rect key="frame" x="0.0" y="20" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="z2Z-Am-4mQ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    More Information " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azu-6k-LLA">
-                                <rect key="frame" x="0.0" y="247" width="320" height="24"/>
+                                <rect key="frame" x="0.0" y="215" width="320" height="24"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="cdG-11-rdu"/>
@@ -1484,7 +1490,7 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="10" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xGq-Kv-Bc5">
-                                <rect key="frame" x="21" y="130" width="165" height="105"/>
+                                <rect key="frame" x="21" y="98" width="165" height="105"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration Deadline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jl2-p0-Lek">
                                         <rect key="frame" x="0.0" y="0.0" width="134" height="17"/>
@@ -1525,7 +1531,7 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="z2E-RA-YRM">
-                                <rect key="frame" x="165" y="130" width="134" height="105"/>
+                                <rect key="frame" x="165" y="98" width="134" height="105"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 17th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7F-VO-1tE">
                                         <rect key="frame" x="74" y="0.0" width="60" height="17"/>
@@ -1560,7 +1566,7 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Important Dates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhn-T2-5dS">
-                                <rect key="frame" x="0.0" y="94" width="320" height="24"/>
+                                <rect key="frame" x="0.0" y="62" width="320" height="24"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="nmF-Ga-PLj"/>
@@ -1571,13 +1577,13 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqT-aB-uaY" userLabel="Status Bar Background">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                                <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="iQU-7y-gYv"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="gzs-Ls-0qB">
-                                <rect key="frame" x="21" y="291" width="278" height="130"/>
+                                <rect key="frame" x="21" y="259" width="278" height="130"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="H92-tS-Dy4">
                                         <rect key="frame" x="0.0" y="0.0" width="114" height="130"/>
@@ -1724,6 +1730,11 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                             <constraint firstItem="z2E-RA-YRM" firstAttribute="height" secondItem="xGq-Kv-Bc5" secondAttribute="height" id="ofQ-Ie-3Et"/>
                             <constraint firstItem="eCJ-TX-ayB" firstAttribute="width" secondItem="5IR-zR-waP" secondAttribute="width" id="rZN-Vr-cY3"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HMf-GY-lfg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Info" image="infoIcon" id="k9y-gz-mvt"/>
                     <connections>
@@ -1737,7 +1748,7 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xPK-AU-DGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1126.875" y="-2850"/>
+            <point key="canvasLocation" x="1126" y="-2850"/>
         </scene>
         <!--Terms Of Service View Controller-->
         <scene sceneID="myf-xU-A4L">
@@ -1826,6 +1837,6 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fav-gC-Z1s"/>
-        <segue reference="aea-Ao-udj"/>
+        <segue reference="bJJ-aG-hMy"/>
     </inferredMetricsTieBreakers>
 </document>
