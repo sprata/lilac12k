@@ -291,13 +291,13 @@ class IBNewRunViewController: UIViewController {
             }
         } else {
             if self.isCenterOn == false {
-                //sender.setTitle("Center ON", forState: UIControlState.Normal)
+                sender.setTitle("CENTER ON", forState: UIControlState.Normal)
                 //sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
                 sender.backgroundColor = UIColor(red: 255.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 1.0)
                 //sender.highlighted = true;
                 self.isCenterOn = true
             } else {
-                //sender.setTitle("Center OFF", forState: UIControlState.Normal)
+                sender.setTitle("CENTER OFF", forState: UIControlState.Normal)
                 sender.backgroundColor = UIColor(red: 191.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
                 
                 //sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
