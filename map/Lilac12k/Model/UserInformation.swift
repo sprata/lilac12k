@@ -21,6 +21,7 @@ public class UserInformation {
     var accesstoken : NSString
     var currentPersonTrackingByIndex : Int //0 is self
     var isUserBeingTrackedArray : [Bool]
+    var isPinAdded : [Bool]
     var isRunnerTransmittingData : Bool
     var countOfRunners = 0;
     
@@ -34,6 +35,7 @@ public class UserInformation {
         self.accesstoken = "test"
         self.currentPersonTrackingByIndex = 0 //0 is self
         self.isUserBeingTrackedArray = [Bool]()
+        self.isPinAdded = [Bool]()
         self.userIDsArray = [String]()
         self.isRunnerTransmittingData = true
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,friends", parameters: nil)
@@ -62,6 +64,7 @@ public class UserInformation {
                     self.friendNames.append(name)
                     self.friendIDs.append(id)
                     self.isUserBeingTrackedArray.append(false)
+                    self.isPinAdded.append(false)
                     self.userIDsArray.append(id)
                     self.countOfRunners += 1; //each friend is a runner
                 }

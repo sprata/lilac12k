@@ -572,9 +572,10 @@ class IBNewRunViewController: UIViewController {
                                 }
                                 print(self.friendsRunning)
                                 self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
-                                if numberOfFriends != self.friendsRunning {
+                                
+                                if(UserInformation.sharedInstance.isPinAdded[x] == false) {
                                     self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x], indexNumber: userIDSame!)
-                                    addedPin = true
+                                    UserInformation.sharedInstance.isPinAdded[x] = true
                                 }
                                 self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x], indexNumber: userIDSame!)
                                 //self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
