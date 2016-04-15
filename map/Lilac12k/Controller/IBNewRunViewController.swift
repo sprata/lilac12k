@@ -274,17 +274,18 @@ class IBNewRunViewController: UIViewController {
     }
     
     func buttonClicked(sender:UIButton) {
-        if (sender.titleLabel!.text == "TRANSMIT OFF" || sender.titleLabel!.text == "TRANSMIT ON") {
+        if (sender.titleLabel!.text == "LIVE-SHARE OFF" || sender.titleLabel!.text == "LIVE-SHARE ON") {
             if self.isTransmitOn == false {
-                sender.setTitle("TRANSMIT ON", forState: UIControlState.Normal)
+                sender.setTitle("LIVE-SHARE ON", forState: UIControlState.Normal)
                 sender.backgroundColor = UIColor(red: 56.0/255.0, green: 134.0/255.0, blue: 121.0/255.0, alpha: 1.0)
                 //sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
                 //sender.highlighted = true;
                 self.isTransmitOn = true
             } else {
-                sender.setTitle("TRANSMIT OFF", forState: UIControlState.Normal)
+                sender.setTitle("LIVE-SHARE OFF", forState: UIControlState.Normal)
                 //sender.backgroundColor = UIColor(red: 0, green: 100, blue: 0, alpha: 1.0)
-                sender.backgroundColor = UIColor(red: 14.0/255.0, green: 91.0/255.0, blue: 78.0/255.0, alpha: 1.0)
+                sender.backgroundColor = UIColor(red: 14.0/255.0, green: 70.0/255.0, blue: 78.0/255.0, alpha: 1.0)
+                //sender.backgroundColor = UIColor(red: 181.0/255.0, green: 101.0/255.0, blue: 166.0/255.0, alpha: 1.0)
                 sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                 //sender.highlighted = false;
                 self.isTransmitOn = false

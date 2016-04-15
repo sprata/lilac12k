@@ -16,7 +16,6 @@ class HomeViewController : UIViewController{
     @IBOutlet weak var days: UILabel!
     @IBOutlet weak var hours: UILabel!
     @IBOutlet weak var minutes: UILabel!
-    @IBOutlet weak var secs: UILabel!
 
     @IBOutlet weak var welcomeMessage: UILabel!
     //@IBOutlet weak var runnerTransmit: UIButton!
