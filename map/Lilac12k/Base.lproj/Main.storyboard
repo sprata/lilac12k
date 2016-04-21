@@ -16,13 +16,29 @@
                         <viewControllerLayoutGuide type="bottom" id="PMc-pc-BJS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Llq-0Q-BMo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Edp-AC-DXH" userLabel="Status Bar Background">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Edp-AC-DXH" userLabel="Status Bar Background">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Run History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9D-os-HfR">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="fHA-T0-dNa"/>
+                                    <constraint firstAttribute="height" constant="44" id="yZQ-23-kfH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fHA-T0-dNa"/>
+                                    </mask>
+                                </variation>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pLb-ZZ-P4K">
                                 <rect key="frame" x="0.0" y="64" width="320" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -124,22 +140,6 @@
                                     <outlet property="delegate" destination="tcr-YF-plX" id="xaZ-xg-Zxh"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Run History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9D-os-HfR">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="fHA-T0-dNa"/>
-                                    <constraint firstAttribute="height" constant="44" id="yZQ-23-kfH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="fHA-T0-dNa"/>
-                                    </mask>
-                                </variation>
-                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Edp-AC-DXH" firstAttribute="top" secondItem="Llq-0Q-BMo" secondAttribute="top" id="6OM-s7-MvQ"/>
@@ -380,23 +380,13 @@
                                     <constraint firstAttribute="height" constant="20" id="NAE-Mj-8eV"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After the Race" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNq-BV-Kqb">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="OtN-ev-knc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEm-9H-hek">
-                                <rect key="frame" x="16" y="237" width="288" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEm-9H-hek">
+                                <rect key="frame" x="16" y="195" width="288" height="46"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="xiK-Ln-WgV"/>
                                 </constraints>
-                                <state key="normal" title="Virtual Goodie Bag">
+                                <state key="normal" title="Coupons and Special Offers">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -408,13 +398,13 @@
                                     <action selector="GoodieBag:" destination="kjf-2O-oue" eventType="touchUpInside" id="H15-oo-hDG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0F-E1-cNw">
-                                <rect key="frame" x="16" y="312" width="288" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0F-E1-cNw">
+                                <rect key="frame" x="16" y="270" width="288" height="46"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="Rzf-Pg-uGd"/>
                                 </constraints>
-                                <state key="normal" title="Results">
+                                <state key="normal" title="Official Bloomsday Results">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -426,13 +416,13 @@
                                     <action selector="Results:" destination="kjf-2O-oue" eventType="touchUpInside" id="RLM-lk-fzA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLE-EP-WsO">
-                                <rect key="frame" x="16" y="388" width="288" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLE-EP-WsO">
+                                <rect key="frame" x="16" y="346" width="288" height="45"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Fbk-JB-O7F"/>
                                 </constraints>
-                                <state key="normal" title="Sponsors">
+                                <state key="normal" title="Bloomsday Sponsors">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -444,13 +434,13 @@
                                     <action selector="Sponsors:" destination="kjf-2O-oue" eventType="touchUpInside" id="DwC-or-AtY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1P-1w-aQk">
-                                <rect key="frame" x="16" y="78" width="288" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1P-1w-aQk">
+                                <rect key="frame" x="16" y="120" width="288" height="46"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="Pst-Kh-6gs"/>
                                 </constraints>
-                                <state key="normal" title="Run History">
+                                <state key="normal" title="View Previous Runs">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -462,50 +452,8 @@
                                     <segue destination="tcr-YF-plX" kind="show" id="G67-N0-ZTq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFo-nb-1sh">
-                                <rect key="frame" x="20" y="132" width="284" height="58"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="Neh-Ea-Fqy"/>
-                                </constraints>
-                                <string key="text">View your previous runs with 'Run History'.
-Your run is color-coded based on pace. Slower sections are more red, while faster paces are more green.</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IiK-61-z1w">
-                                <rect key="frame" x="16" y="198" width="288" height="1"/>
-                                <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="ggx-ca-7md"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Access coupons and special offers Downtown!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yd8-4e-dHD">
-                                <rect key="frame" x="17" y="219" width="288" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn about the generous sponsors who make Bloomsday possible." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuX-jY-WdS">
-                                <rect key="frame" x="16" y="376" width="292" height="14"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="36 hours after the race, view official Bloomsday photos and enjoy free downloads." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nou-oM-89L">
-                                <rect key="frame" x="16" y="455" width="292" height="14"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View official race results of friends, family members and yourself" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkR-8I-hle">
-                                <rect key="frame" x="16" y="298" width="292" height="14"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6N-ME-gzB">
-                                <rect key="frame" x="16" y="469" width="288" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6N-ME-gzB">
+                                <rect key="frame" x="16" y="422" width="288" height="46"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Race Photos">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -519,48 +467,48 @@ Your run is color-coded based on pace. Slower sections are more red, while faste
                                     <action selector="RacePhotos:" destination="kjf-2O-oue" eventType="touchUpInside" id="exz-MB-aJD"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After the Race" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNq-BV-Kqb">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="OtN-ev-knc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="AFo-nb-1sh" firstAttribute="top" secondItem="w1P-1w-aQk" secondAttribute="bottom" constant="8" id="0mf-nK-qc8"/>
                             <constraint firstItem="cEm-9H-hek" firstAttribute="leading" secondItem="q0F-E1-cNw" secondAttribute="leading" id="1G7-bX-zRA"/>
-                            <constraint firstItem="IiK-61-z1w" firstAttribute="top" secondItem="AFo-nb-1sh" secondAttribute="bottom" constant="8" symbolic="YES" id="4I9-qP-7c5"/>
+                            <constraint firstItem="t6N-ME-gzB" firstAttribute="top" secondItem="BLE-EP-WsO" secondAttribute="bottom" constant="30" id="8kM-3D-rMi"/>
                             <constraint firstItem="t6N-ME-gzB" firstAttribute="width" secondItem="BLE-EP-WsO" secondAttribute="width" id="9O9-wY-vUc"/>
+                            <constraint firstItem="w1P-1w-aQk" firstAttribute="leading" secondItem="Qwf-mJ-jVe" secondAttribute="leadingMargin" constant="-4" id="ADm-cy-NUK"/>
                             <constraint firstItem="BLE-EP-WsO" firstAttribute="centerX" secondItem="Qwf-mJ-jVe" secondAttribute="centerX" id="ARm-f7-dFP"/>
                             <constraint firstItem="dHM-Ve-BZe" firstAttribute="top" secondItem="Qwf-mJ-jVe" secondAttribute="topMargin" id="CbT-pT-2Bd"/>
                             <constraint firstItem="cEm-9H-hek" firstAttribute="width" secondItem="w1P-1w-aQk" secondAttribute="width" id="DFt-eI-AAc"/>
-                            <constraint firstItem="q0F-E1-cNw" firstAttribute="leading" secondItem="dkR-8I-hle" secondAttribute="leading" id="Deq-TB-r8W"/>
-                            <constraint firstItem="BLE-EP-WsO" firstAttribute="leading" secondItem="JuX-jY-WdS" secondAttribute="leading" id="F4g-74-Bch"/>
-                            <constraint firstItem="t6N-ME-gzB" firstAttribute="leading" secondItem="nou-oM-89L" secondAttribute="leading" id="GLu-Dj-bRp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IiK-61-z1w" secondAttribute="trailing" id="Hy8-2y-UCU"/>
-                            <constraint firstItem="t6N-ME-gzB" firstAttribute="top" secondItem="nou-oM-89L" secondAttribute="bottom" id="Idn-Z7-DCB"/>
+                            <constraint firstItem="w1P-1w-aQk" firstAttribute="top" secondItem="Hai-SS-mKH" secondAttribute="bottom" constant="100" id="DiK-PB-kYF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w1P-1w-aQk" secondAttribute="trailing" constant="-4" id="ES6-6K-Y43"/>
+                            <constraint firstItem="BLE-EP-WsO" firstAttribute="width" secondItem="q0F-E1-cNw" secondAttribute="width" id="Jh9-yt-Sfz"/>
                             <constraint firstItem="vNq-BV-Kqb" firstAttribute="width" secondItem="Qwf-mJ-jVe" secondAttribute="width" id="K44-Ak-WNG"/>
-                            <constraint firstItem="w1P-1w-aQk" firstAttribute="top" secondItem="vNq-BV-Kqb" secondAttribute="bottom" constant="14" id="Kp3-V0-MXW"/>
                             <constraint firstItem="XKz-BL-6qa" firstAttribute="top" secondItem="w1P-1w-aQk" secondAttribute="bottom" constant="450" id="KvB-0w-0UJ"/>
-                            <constraint firstItem="AFo-nb-1sh" firstAttribute="trailing" secondItem="w1P-1w-aQk" secondAttribute="trailing" id="M6O-cP-M84"/>
-                            <constraint firstItem="cEm-9H-hek" firstAttribute="trailing" secondItem="IiK-61-z1w" secondAttribute="trailing" id="NYw-Qa-Nh7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dkR-8I-hle" secondAttribute="trailing" constant="-4" id="NhX-rH-3qQ"/>
-                            <constraint firstItem="cEm-9H-hek" firstAttribute="top" secondItem="IiK-61-z1w" secondAttribute="bottom" constant="38" id="OS0-wa-HUx"/>
-                            <constraint firstItem="q0F-E1-cNw" firstAttribute="top" secondItem="dkR-8I-hle" secondAttribute="bottom" id="P85-vW-hdJ"/>
+                            <constraint firstItem="w1P-1w-aQk" firstAttribute="top" secondItem="Hai-SS-mKH" secondAttribute="bottom" constant="100" id="LH5-3L-OUC"/>
+                            <constraint firstItem="cEm-9H-hek" firstAttribute="top" secondItem="w1P-1w-aQk" secondAttribute="bottom" constant="29" id="Mbz-wY-5VB"/>
                             <constraint firstItem="q0F-E1-cNw" firstAttribute="height" secondItem="cEm-9H-hek" secondAttribute="height" id="RGm-eZ-s7M"/>
                             <constraint firstItem="q0F-E1-cNw" firstAttribute="top" secondItem="cEm-9H-hek" secondAttribute="bottom" constant="29" id="TiM-KT-3sF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nou-oM-89L" secondAttribute="trailing" constant="-4" id="WF2-Ul-heq"/>
                             <constraint firstItem="BLE-EP-WsO" firstAttribute="top" secondItem="q0F-E1-cNw" secondAttribute="bottom" constant="30" id="XVz-u8-pCl"/>
+                            <constraint firstItem="q0F-E1-cNw" firstAttribute="width" secondItem="cEm-9H-hek" secondAttribute="width" id="XXU-iY-QK2"/>
                             <constraint firstItem="dHM-Ve-BZe" firstAttribute="trailing" secondItem="vNq-BV-Kqb" secondAttribute="trailing" id="ZOt-7E-pFq"/>
                             <constraint firstItem="w1P-1w-aQk" firstAttribute="trailing" secondItem="t6N-ME-gzB" secondAttribute="trailing" id="aSS-hr-boV"/>
-                            <constraint firstItem="t6N-ME-gzB" firstAttribute="top" secondItem="nou-oM-89L" secondAttribute="bottom" id="bpW-nL-X2T"/>
-                            <constraint firstItem="BLE-EP-WsO" firstAttribute="top" secondItem="JuX-jY-WdS" secondAttribute="bottom" constant="-2" id="cHX-Rw-ksf"/>
+                            <constraint firstItem="XKz-BL-6qa" firstAttribute="top" secondItem="t6N-ME-gzB" secondAttribute="bottom" constant="30" id="cEi-CO-iEh"/>
                             <constraint firstItem="t6N-ME-gzB" firstAttribute="height" secondItem="BLE-EP-WsO" secondAttribute="height" constant="1" id="dQ6-9t-chc"/>
                             <constraint firstItem="t6N-ME-gzB" firstAttribute="centerX" secondItem="Qwf-mJ-jVe" secondAttribute="centerX" id="eGE-Uj-48t"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JuX-jY-WdS" secondAttribute="trailing" constant="-4" id="eRK-rX-pZk"/>
+                            <constraint firstItem="BLE-EP-WsO" firstAttribute="height" secondItem="q0F-E1-cNw" secondAttribute="height" id="fGP-5U-XWa"/>
                             <constraint firstItem="cEm-9H-hek" firstAttribute="centerX" secondItem="vNq-BV-Kqb" secondAttribute="centerX" id="gHq-mY-HQC"/>
                             <constraint firstItem="cEm-9H-hek" firstAttribute="height" secondItem="w1P-1w-aQk" secondAttribute="height" id="hju-Be-3Dn"/>
                             <constraint firstItem="w1P-1w-aQk" firstAttribute="leading" secondItem="t6N-ME-gzB" secondAttribute="leading" id="jq0-oh-iAN"/>
-                            <constraint firstItem="vNq-BV-Kqb" firstAttribute="top" secondItem="Hai-SS-mKH" secondAttribute="bottom" id="k0U-Cd-g1X"/>
-                            <constraint firstItem="cEm-9H-hek" firstAttribute="leading" secondItem="IiK-61-z1w" secondAttribute="leading" id="mHy-MG-ssW"/>
-                            <constraint firstItem="IiK-61-z1w" firstAttribute="leading" secondItem="Qwf-mJ-jVe" secondAttribute="leadingMargin" id="n6Q-cV-8mj"/>
                             <constraint firstItem="t6N-ME-gzB" firstAttribute="top" secondItem="BLE-EP-WsO" secondAttribute="bottom" constant="36" id="nJs-uU-4Zs"/>
-                            <constraint firstItem="AFo-nb-1sh" firstAttribute="leading" secondItem="Qwf-mJ-jVe" secondAttribute="leadingMargin" constant="4" id="scb-RY-cY1"/>
+                            <constraint firstItem="vNq-BV-Kqb" firstAttribute="top" secondItem="dHM-Ve-BZe" secondAttribute="bottom" id="qBh-Cy-CVU"/>
                             <constraint firstItem="w1P-1w-aQk" firstAttribute="top" secondItem="t6N-ME-gzB" secondAttribute="bottom" constant="-447" id="wJp-NF-irT"/>
                             <constraint firstItem="q0F-E1-cNw" firstAttribute="centerX" secondItem="Qwf-mJ-jVe" secondAttribute="centerX" id="xi0-Yc-WZR"/>
                             <constraint firstItem="dHM-Ve-BZe" firstAttribute="leading" secondItem="vNq-BV-Kqb" secondAttribute="leading" id="xj8-cu-UCc"/>
@@ -568,7 +516,6 @@ Your run is color-coded based on pace. Slower sections are more red, while faste
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="wJp-NF-irT"/>
-                                <exclude reference="Idn-Z7-DCB"/>
                                 <exclude reference="KvB-0w-0UJ"/>
                             </mask>
                         </variation>
@@ -956,6 +903,18 @@ Your run is color-coded based on pace. Slower sections are more red, while faste
                                     <segue destination="YCN-eH-mrG" kind="presentation" id="IMy-Qx-YOz"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Green lines represent a faster pace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1h0-UP-sz7">
+                                <rect key="frame" x="74" y="681" width="284" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Red lines represent a slower pace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hg-gc-304">
+                                <rect key="frame" x="74" y="706" width="284" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.82972301136363635" green="0.82972301136363635" blue="0.82972301136363635" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -966,10 +925,13 @@ Your run is color-coded based on pace. Slower sections are more red, while faste
                             <constraint firstItem="qvU-gd-j2g" firstAttribute="top" secondItem="mQy-tG-Si4" secondAttribute="bottom" constant="10" id="Myn-oU-Bb4"/>
                             <constraint firstAttribute="leadingMargin" secondItem="mQy-tG-Si4" secondAttribute="leading" id="Trz-mp-P3D"/>
                             <constraint firstAttribute="leadingMargin" secondItem="VCI-xz-MXq" secondAttribute="leading" id="UMR-o4-WSs"/>
+                            <constraint firstItem="1h0-UP-sz7" firstAttribute="top" secondItem="VCI-xz-MXq" secondAttribute="bottom" constant="15" id="Wfp-xU-MUy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qvU-gd-j2g" secondAttribute="trailing" id="aYF-Xq-Y8Y"/>
+                            <constraint firstItem="XpD-W9-sNY" firstAttribute="top" secondItem="2Hg-gc-304" secondAttribute="bottom" constant="9" id="bav-YP-PsR"/>
                             <constraint firstItem="mQy-tG-Si4" firstAttribute="top" secondItem="mYa-QA-8zU" secondAttribute="bottom" constant="8" id="bdr-ot-0wB"/>
                             <constraint firstItem="VCI-xz-MXq" firstAttribute="top" secondItem="qvU-gd-j2g" secondAttribute="bottom" constant="8" id="eVo-yR-sH2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mQy-tG-Si4" secondAttribute="trailing" id="nsi-6H-GXO"/>
+                            <constraint firstItem="2Hg-gc-304" firstAttribute="top" secondItem="1h0-UP-sz7" secondAttribute="bottom" constant="4" id="oaz-He-6bb"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Vh9-G7-RCB" secondAttribute="bottom" constant="14" id="qyQ-JI-5JW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VCI-xz-MXq" secondAttribute="trailing" id="rJG-tU-5sw"/>
                             <constraint firstItem="XpD-W9-sNY" firstAttribute="top" secondItem="VCI-xz-MXq" secondAttribute="bottom" constant="70" id="uAe-0E-nXd"/>
@@ -1116,41 +1078,6 @@ Use this app to track your race results or watch from the comfort of your own ho
                                         <color key="textColor" red="0.39544845480000002" green="0.1218397989" blue="0.42510596740000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="E7D-kD-2Cj">
-                                        <rect key="frame" x="177" y="163" width="134" height="105"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 17th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dS3-EG-t0T">
-                                                <rect key="frame" x="74" y="0.0" width="60" height="17"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                <color key="textColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 24th " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3N-hK-AXZ">
-                                                <rect key="frame" x="70" y="22" width="64" height="17"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                <color key="textColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 29th - April 30th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xd-me-9O2">
-                                                <rect key="frame" x="0.0" y="44" width="134" height="17"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                <color key="textColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 29th - April 30th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50g-dM-Coi">
-                                                <rect key="frame" x="0.0" y="66" width="134" height="17"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                <color key="textColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 1st" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71o-8O-ANy">
-                                                <rect key="frame" x="84" y="88" width="50" height="17"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                <color key="textColor" red="0.50196078430000002" green="0.13725490200000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IMPORTANT DATES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmz-Nl-4qN">
                                         <rect key="frame" x="0.0" y="127" width="320" height="18"/>
                                         <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -1180,6 +1107,7 @@ Use this app to track your race results or watch from the comfort of your own ho
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="Schedule:" destination="qjS-k3-cNX" eventType="touchUpInside" id="DbQ-AN-aF8"/>
+                                                            <action selector="Schedule:" destination="Qcc-MG-kGO" eventType="touchUpInside" id="IrK-xO-gyc"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ge-yr-Jyj">
@@ -1194,6 +1122,7 @@ Use this app to track your race results or watch from the comfort of your own ho
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="TrainingTips:" destination="Qcc-MG-kGO" eventType="touchUpInside" id="3B1-oN-Ezt"/>
                                                             <action selector="TrainingTips:" destination="qjS-k3-cNX" eventType="touchUpInside" id="4F0-Cn-sQa"/>
                                                         </connections>
                                                     </button>
@@ -1209,6 +1138,7 @@ Use this app to track your race results or watch from the comfort of your own ho
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="Bloomsday40:" destination="Qcc-MG-kGO" eventType="touchUpInside" id="EId-nQ-Sfx"/>
                                                             <action selector="Bloomsday40:" destination="qjS-k3-cNX" eventType="touchUpInside" id="kxd-0J-Dgp"/>
                                                         </connections>
                                                     </button>
@@ -1235,6 +1165,7 @@ Use this app to track your race results or watch from the comfort of your own ho
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="Parking:" destination="Qcc-MG-kGO" eventType="touchUpInside" id="Qgk-eq-2t9"/>
                                                             <action selector="Parking:" destination="qjS-k3-cNX" eventType="touchUpInside" id="Vpe-wu-emu"/>
                                                         </connections>
                                                     </button>
@@ -1251,6 +1182,7 @@ Use this app to track your race results or watch from the comfort of your own ho
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="Registration:" destination="qjS-k3-cNX" eventType="touchUpInside" id="2Yb-lf-fNs"/>
+                                                            <action selector="Registration:" destination="Qcc-MG-kGO" eventType="touchUpInside" id="mu3-7z-lEp"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Bc-SE-LgO">
@@ -1266,6 +1198,7 @@ Use this app to track your race results or watch from the comfort of your own ho
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="FAQ:" destination="qjS-k3-cNX" eventType="touchUpInside" id="08n-BK-2iU"/>
+                                                            <action selector="FAQ:" destination="Qcc-MG-kGO" eventType="touchUpInside" id="Cog-xm-sYz"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1278,6 +1211,9 @@ Use this app to track your race results or watch from the comfort of your own ho
                                             </stackView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="83S-KW-kPL" firstAttribute="leading" secondItem="5Ge-yr-Jyj" secondAttribute="trailing" constant="50" id="3ae-yv-g30"/>
+                                            <constraint firstItem="9Bc-SE-LgO" firstAttribute="leading" secondItem="5qc-e6-4qd" secondAttribute="trailing" constant="50" id="BIV-DV-SZ1"/>
+                                            <constraint firstItem="4KD-e7-aef" firstAttribute="leading" secondItem="fef-2Z-GzY" secondAttribute="trailing" constant="50" id="Wt5-i8-BUj"/>
                                             <constraint firstAttribute="height" constant="199" id="kfD-nb-Ow4"/>
                                             <constraint firstItem="ESt-bs-Qmw" firstAttribute="width" secondItem="MAe-Om-TWf" secondAttribute="width" id="n4b-yF-Vit"/>
                                             <constraint firstItem="ESt-bs-Qmw" firstAttribute="height" secondItem="MAe-Om-TWf" secondAttribute="height" id="pyk-cp-E64"/>
@@ -1357,12 +1293,53 @@ Use this app to track your race results or watch from the comfort of your own ho
                                             </mask>
                                         </variation>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="E7D-kD-2Cj">
+                                        <rect key="frame" x="178" y="163" width="134" height="105"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 17th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dS3-EG-t0T">
+                                                <rect key="frame" x="74" y="0.0" width="60" height="17"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                <color key="textColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 24th " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3N-hK-AXZ">
+                                                <rect key="frame" x="70" y="22" width="64" height="17"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                <color key="textColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 29th - April 30th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xd-me-9O2">
+                                                <rect key="frame" x="0.0" y="44" width="134" height="17"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                <color key="textColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 29th - April 30th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50g-dM-Coi">
+                                                <rect key="frame" x="0.0" y="66" width="134" height="17"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                <color key="textColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 1st" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71o-8O-ANy">
+                                                <rect key="frame" x="84" y="88" width="50" height="17"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                <color key="textColor" red="0.50196078430000002" green="0.13725490200000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="qUS-PL-eOD" firstAttribute="top" secondItem="7Kz-fo-W44" secondAttribute="bottom" constant="26" id="0AZ-C4-Mbc"/>
+                                    <constraint firstAttribute="trailing" secondItem="3xd-me-9O2" secondAttribute="trailing" constant="9" id="0ih-pm-5Ev"/>
                                     <constraint firstItem="0OE-d0-7Ji" firstAttribute="leading" secondItem="VyK-Qf-k2e" secondAttribute="trailing" constant="15" id="2eT-EJ-nYL"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Bc-SE-LgO" secondAttribute="trailing" constant="36" id="3Ps-7f-d9d"/>
+                                    <constraint firstAttribute="trailing" secondItem="4KD-e7-aef" secondAttribute="trailing" constant="36" id="5Mk-HI-pvg"/>
+                                    <constraint firstItem="5qc-e6-4qd" firstAttribute="leading" secondItem="Ds4-Tz-kqG" secondAttribute="leading" constant="36" id="5zk-7s-v5B"/>
                                     <constraint firstItem="EIh-yM-jhP" firstAttribute="leading" secondItem="Ds4-Tz-kqG" secondAttribute="leadingMargin" id="6UW-9e-OiD"/>
+                                    <constraint firstAttribute="trailing" secondItem="X3N-hK-AXZ" secondAttribute="trailing" constant="9" id="6aj-CX-RVh"/>
                                     <constraint firstItem="0OE-d0-7Ji" firstAttribute="trailing" secondItem="Ds4-Tz-kqG" secondAttribute="trailingMargin" id="7Ho-gR-llR"/>
+                                    <constraint firstItem="5Ge-yr-Jyj" firstAttribute="leading" secondItem="Ds4-Tz-kqG" secondAttribute="leading" constant="36" id="AcZ-Uv-mm0"/>
                                     <constraint firstItem="EIh-yM-jhP" firstAttribute="top" secondItem="TSu-7C-1tP" secondAttribute="bottom" constant="-12" id="CXr-XK-MGA"/>
                                     <constraint firstItem="VyK-Qf-k2e" firstAttribute="leading" secondItem="TSu-7C-1tP" secondAttribute="trailing" constant="-6" id="Ccb-Ax-Ilb"/>
                                     <constraint firstItem="6Ud-Ax-Dny" firstAttribute="top" secondItem="0OE-d0-7Ji" secondAttribute="bottom" constant="8" id="Fy8-mp-zh3"/>
@@ -1381,13 +1358,18 @@ Use this app to track your race results or watch from the comfort of your own ho
                                     <constraint firstAttribute="trailing" secondItem="hmI-qp-s3Y" secondAttribute="trailing" constant="56" id="ZkY-vu-WVf"/>
                                     <constraint firstItem="0OE-d0-7Ji" firstAttribute="top" secondItem="Ds4-Tz-kqG" secondAttribute="top" id="abV-Tz-XtT"/>
                                     <constraint firstItem="kmz-Nl-4qN" firstAttribute="top" secondItem="EIh-yM-jhP" secondAttribute="bottom" constant="20" id="bb3-oh-bQe"/>
+                                    <constraint firstAttribute="trailing" secondItem="83S-KW-kPL" secondAttribute="trailing" constant="36" id="dI2-uW-dEW"/>
                                     <constraint firstItem="7Kz-fo-W44" firstAttribute="trailing" secondItem="kmz-Nl-4qN" secondAttribute="trailing" id="dMr-AE-gGl"/>
                                     <constraint firstItem="O8B-3X-DNt" firstAttribute="top" secondItem="E7D-kD-2Cj" secondAttribute="top" id="fTN-pD-a8c"/>
                                     <constraint firstItem="0OE-d0-7Ji" firstAttribute="top" secondItem="Ds4-Tz-kqG" secondAttribute="top" constant="14" id="fUY-wL-PJu"/>
+                                    <constraint firstAttribute="trailing" secondItem="50g-dM-Coi" secondAttribute="trailing" constant="9" id="ff3-6z-ygh"/>
                                     <constraint firstItem="hmI-qp-s3Y" firstAttribute="top" secondItem="Ds4-Tz-kqG" secondAttribute="top" constant="185" id="h1n-iR-c9k"/>
                                     <constraint firstItem="O8B-3X-DNt" firstAttribute="top" secondItem="kmz-Nl-4qN" secondAttribute="bottom" constant="18" id="hbd-F1-8yN"/>
                                     <constraint firstAttribute="trailing" secondItem="kmz-Nl-4qN" secondAttribute="trailing" id="jxf-bb-WDm"/>
+                                    <constraint firstAttribute="trailing" secondItem="71o-8O-ANy" secondAttribute="trailing" constant="8" id="lZV-Lc-Qqg"/>
+                                    <constraint firstItem="fef-2Z-GzY" firstAttribute="leading" secondItem="Ds4-Tz-kqG" secondAttribute="leading" constant="36" id="npl-fV-nZ4"/>
                                     <constraint firstItem="6Ud-Ax-Dny" firstAttribute="leading" secondItem="0OE-d0-7Ji" secondAttribute="leading" id="ohP-93-rnf"/>
+                                    <constraint firstAttribute="trailing" secondItem="dS3-EG-t0T" secondAttribute="trailing" constant="9" id="sgY-SA-CAG"/>
                                     <constraint firstItem="0OE-d0-7Ji" firstAttribute="leading" secondItem="EIh-yM-jhP" secondAttribute="trailing" constant="20" id="sp4-wP-sIo"/>
                                     <constraint firstItem="TSu-7C-1tP" firstAttribute="centerX" secondItem="EIh-yM-jhP" secondAttribute="centerX" id="uVM-BW-JcQ"/>
                                     <constraint firstItem="EIh-yM-jhP" firstAttribute="top" secondItem="VyK-Qf-k2e" secondAttribute="bottom" constant="-3" id="x3k-QK-fDR"/>
@@ -1434,6 +1416,12 @@ Use this app to track your race results or watch from the comfort of your own ho
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="700"/>
                     <connections>
+                        <outlet property="Bloomsday40" destination="5qc-e6-4qd" id="ITu-Bb-ddQ"/>
+                        <outlet property="FAQ" destination="9Bc-SE-LgO" id="kcs-Cq-bW5"/>
+                        <outlet property="Parking" destination="4KD-e7-aef" id="aeJ-7t-qdD"/>
+                        <outlet property="Registration" destination="83S-KW-kPL" id="1Ee-sY-WNF"/>
+                        <outlet property="Schedule" destination="fef-2Z-GzY" id="Qma-69-GRg"/>
+                        <outlet property="TrainingTips" destination="5Ge-yr-Jyj" id="5ob-lR-DUP"/>
                         <outlet property="days" destination="TSu-7C-1tP" id="l34-Ss-e2V"/>
                         <outlet property="hours" destination="QLJ-Uu-siC" id="Hb6-jh-03b"/>
                         <outlet property="minutes" destination="a1N-SD-PDl" id="ikE-M1-5fu"/>
@@ -1445,7 +1433,7 @@ Use this app to track your race results or watch from the comfort of your own ho
             </objects>
             <point key="canvasLocation" x="281" y="-350"/>
         </scene>
-        <!--Info-->
+        <!--How To-->
         <scene sceneID="Yap-VZ-gMg">
             <objects>
                 <viewController id="qjS-k3-cNX" customClass="RaceInformationViewController" customModule="Lilac12k" customModuleProvider="target" sceneMemberID="viewController">
@@ -1457,7 +1445,7 @@ Use this app to track your race results or watch from the comfort of your own ho
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Using Bloomsday Connect" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCJ-TX-ayB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How To Use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCJ-TX-ayB">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1475,7 +1463,7 @@ Use this app to track your race results or watch from the comfort of your own ho
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" contentMode="top" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9b-85-egq">
-                                <rect key="frame" x="0.0" y="63" width="320" height="937"/>
+                                <rect key="frame" x="0.0" y="63" width="320" height="1036"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fa8-6C-dcx">
                                         <rect key="frame" x="36" y="60" width="249" height="160"/>
@@ -1730,16 +1718,6 @@ You will still be able to record your run and see your friends.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CENTERING" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-vk-GVi">
-                                        <rect key="frame" x="0.0" y="683" width="320" height="18"/>
-                                        <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="ri1-UN-Sms"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friendsIcon" highlightedImage="friendsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="x4x-Um-dca">
                                         <rect key="frame" x="22" y="553" width="25" height="25"/>
                                     </imageView>
@@ -1785,6 +1763,16 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                             <constraint firstAttribute="height" constant="48" id="q3X-RB-ROm"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CENTERING" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-vk-GVi">
+                                        <rect key="frame" x="0.0" y="683" width="320" height="18"/>
+                                        <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="ri1-UN-Sms"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="x4x-Um-dca" firstAttribute="top" secondItem="bhf-eX-lEp" secondAttribute="bottom" constant="14" id="1F5-D2-vdR"/>
@@ -1929,13 +1917,13 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                             <constraint firstItem="a9b-85-egq" firstAttribute="trailing" secondItem="eCJ-TX-ayB" secondAttribute="trailing" id="yVH-Kd-TnY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Info" image="infoIcon" id="k9y-gz-mvt"/>
+                    <tabBarItem key="tabBarItem" title="How To" image="infoIcon" id="k9y-gz-mvt"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="1000"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xPK-AU-DGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="702" y="250"/>
+            <point key="canvasLocation" x="710" y="196"/>
         </scene>
         <!--Terms Of Service View Controller-->
         <scene sceneID="myf-xU-A4L">
@@ -2023,7 +2011,7 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
         <image name="switches.png" width="116" height="166"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fav-gC-Z1s"/>
-        <segue reference="bJJ-aG-hMy"/>
+        <segue reference="IMy-Qx-YOz"/>
+        <segue reference="aea-Ao-udj"/>
     </inferredMetricsTieBreakers>
 </document>
