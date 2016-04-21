@@ -618,7 +618,7 @@ class IBNewRunViewController: UIViewController {
             "access-token": UserInformation.sharedInstance.accesstoken as String,
         ]
         
-        let request2 = NSMutableURLRequest(URL: NSURL(string: "http://52.33.234.200:8080/api/runner/?latitude=\(lat)&longitude=\(lon)&timestamp=\(NSDate().timeIntervalSince1970)&id=\(userID)")!,
+        let request2 = NSMutableURLRequest(URL: NSURL(string: "https://lilac12k.info:8080/api/runner/?latitude=\(lat)&longitude=\(lon)&timestamp=\(NSDate().timeIntervalSince1970)&id=\(userID)")!,
             cachePolicy: .UseProtocolCachePolicy,
             timeoutInterval: 10.0)
         request2.HTTPMethod = "POST"
@@ -652,7 +652,7 @@ class IBNewRunViewController: UIViewController {
         let headers = [
             "access-token": UserInformation.sharedInstance.accesstoken as String
         ]
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://52.33.234.200:8080/api/runner/?id=\(userID)")!,
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://lilac12k.info:8080/api/runner/?id=\(userID)")!,
             cachePolicy: .UseProtocolCachePolicy,
             timeoutInterval: 10.0)
         request.HTTPMethod = "GET"
