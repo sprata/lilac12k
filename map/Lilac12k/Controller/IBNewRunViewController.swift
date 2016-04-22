@@ -90,7 +90,7 @@ class IBNewRunViewController: UIViewController {
         _locationManager.delegate = self
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest
         _locationManager.activityType = .Fitness
-        
+        _locationManager.requestAlwaysAuthorization()
         //Movement threshold for new events
         _locationManager.distanceFilter = 10.0
         

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../racephotoscontroller.swift">
+   </FileRef>
+   <FileRef
       location = "self:/Users/Sarah/Documents/XcodeProjects/Lilac12k/map/Lilac12k.xcodeproj">
    </FileRef>
 </Workspace>
