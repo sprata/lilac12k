@@ -16,14 +16,14 @@
                         <viewControllerLayoutGuide type="bottom" id="PMc-pc-BJS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Llq-0Q-BMo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Edp-AC-DXH" userLabel="Status Bar Background">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Edp-AC-DXH" userLabel="Status Bar Background">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Run History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9D-os-HfR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Run History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9D-os-HfR">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -39,7 +39,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pLb-ZZ-P4K">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pLb-ZZ-P4K">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <button key="tableFooterView" autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" id="GCW-Kt-XgL">
@@ -172,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zew-1F-xsd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-437" y="-2618"/>
+            <point key="canvasLocation" x="-181" y="-2778"/>
         </scene>
         <!--FBController-->
         <scene sceneID="jKF-jO-gjU">
@@ -387,7 +387,7 @@
                                 <rect key="frame" x="0.0" y="24" width="43" height="37"/>
                                 <state key="normal" title="Button" image="back.png"/>
                                 <connections>
-                                    <segue destination="kjf-2O-oue" kind="show" id="a0L-d8-5ad"/>
+                                    <segue destination="YCN-eH-mrG" kind="show" id="uz4-yV-bJG"/>
                                 </connections>
                             </button>
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28V-ad-Y3q">
@@ -507,13 +507,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRW-5J-VSu">
-                                <rect key="frame" x="33" y="72" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="Ad9-cr-v4p" kind="show" id="3pS-Fe-ysJ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEm-9H-hek">
                                 <rect key="frame" x="16" y="195" width="288" height="46"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2073,7 +2066,7 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <rect key="frame" x="0.0" y="24" width="43" height="37"/>
                                 <state key="normal" title="Button" image="back.png"/>
                                 <connections>
-                                    <segue destination="kjf-2O-oue" kind="show" id="XQm-xn-QyF"/>
+                                    <segue destination="YCN-eH-mrG" kind="show" id="c0L-8O-kzK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2121,7 +2114,7 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <rect key="frame" x="0.0" y="24" width="43" height="37"/>
                                 <state key="normal" title="Button" image="back.png"/>
                                 <connections>
-                                    <segue destination="kjf-2O-oue" kind="show" id="wHS-Kh-p2O"/>
+                                    <segue destination="YCN-eH-mrG" kind="show" id="FcC-OU-2rY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2169,7 +2162,7 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <rect key="frame" x="0.0" y="24" width="43" height="37"/>
                                 <state key="normal" title="Button" image="back.png"/>
                                 <connections>
-                                    <segue destination="kjf-2O-oue" kind="show" id="Ssq-Jw-FVh"/>
+                                    <segue destination="YCN-eH-mrG" kind="show" id="191-9F-SEq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2204,9 +2197,7 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
         <image name="switches.png" width="116" height="166"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IMy-Qx-YOz"/>
+        <segue reference="191-9F-SEq"/>
         <segue reference="aea-Ao-udj"/>
-        <segue reference="Ssq-Jw-FVh"/>
-        <segue reference="3pS-Fe-ysJ"/>
     </inferredMetricsTieBreakers>
 </document>
