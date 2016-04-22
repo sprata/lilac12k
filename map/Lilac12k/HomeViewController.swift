@@ -152,9 +152,9 @@ class HomeViewController : UIViewController{
         let timeLeft = Int( bloomsdayDate - NSDate().timeIntervalSince1970 )
         // s / (60*60*24) is whole days, then take remainder and divide by 3600 to get hours, then find minutes
         let (d,h,m) = (timeLeft / (3600*24), (timeLeft % (3600*24)) / 3600, (timeLeft % 3600) / 60)
-        days.text = String(format: "%02d", d)
-        hours.text = String(format: "%02d", h)
-        minutes.text = String(format: "%02d", m)
+        days.text = String(format: "%02d", max(d,0))
+        hours.text = String(format: "%02d", max(h,0))
+        minutes.text = String(format: "%02d", max(m,0))
     }
     
     
