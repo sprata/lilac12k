@@ -29,8 +29,8 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
     //When the view loads, sets 2 observers and check if user logged in
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "observeProfileChange:", name: FBSDKProfileDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "observeTokenChange:", name: FBSDKAccessTokenDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FBViewController.observeProfileChange(_:)), name: FBSDKProfileDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FBViewController.observeTokenChange(_:)), name: FBSDKAccessTokenDidChangeNotification, object: nil)
 
         if(FBSDKAccessToken.currentAccessToken() == nil)
         {
@@ -171,7 +171,7 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
     //Login Button
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("\n\nUser Logged In")
-        print(FBSDKAccessToken.currentAccessToken())
+        //print(FBSDKAccessToken.currentAccessToken())
         if ((error) != nil)
         {
             // Process error
@@ -183,10 +183,14 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
         else {
             // If you ask for multiple permissions at once, you
             // should check if specific permissions missing
-            dispatch_async(dispatch_get_main_queue()) {
-                [unowned self] in
-                self.performSegueWithIdentifier("HomeSegue", sender: self)
+            if result.grantedPermissions.contains("user_friends"){
+                dispatch_async(dispatch_get_main_queue()) {
+                    [unowned self] in
+                    self.performSegueWithIdentifier("HomeSegue", sender: self)
+                }
             }
+            return
+            
         }
     }
     
