@@ -394,9 +394,18 @@
                                 <rect key="frame" x="0.0" y="61" width="320" height="949"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kut-Xg-W87" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="v4A-EH-Bw5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kut-Xg-W87" firstAttribute="width" secondItem="28V-ad-Y3q" secondAttribute="width" id="Jru-fJ-UU5"/>
+                            <constraint firstItem="vrJ-tO-CUl" firstAttribute="top" secondItem="kut-Xg-W87" secondAttribute="bottom" id="aUv-ra-0EL"/>
                             <constraint firstItem="28V-ad-Y3q" firstAttribute="width" secondItem="02n-nM-bSs" secondAttribute="width" id="hjU-n4-OiK"/>
                             <constraint firstItem="vrJ-tO-CUl" firstAttribute="top" secondItem="Yvk-FK-C1Y" secondAttribute="bottom" constant="-3" id="oUA-Y2-ZOM"/>
                             <constraint firstItem="28V-ad-Y3q" firstAttribute="top" secondItem="Yvk-FK-C1Y" secondAttribute="bottom" constant="41" id="pq7-vr-mTc"/>
@@ -2049,6 +2058,10 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x3R-WM-uaJ">
+                                <rect key="frame" x="0.0" y="61" width="320" height="916"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBd-hg-V1m">
                                 <rect key="frame" x="0.0" y="24" width="43" height="37"/>
                                 <state key="normal" title="Button" image="back.png"/>
@@ -2056,15 +2069,20 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                     <segue destination="YCN-eH-mrG" kind="show" id="c0L-8O-kzK"/>
                                 </connections>
                             </button>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x3R-WM-uaJ">
-                                <rect key="frame" x="0.0" y="61" width="320" height="916"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            </webView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CyV-fT-dZI" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="HaS-4d-nQT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6PD-Yu-9n3" firstAttribute="width" secondItem="wff-Av-Qeo" secondAttribute="width" id="2Yp-3U-Z9E"/>
+                            <constraint firstItem="CyV-fT-dZI" firstAttribute="width" secondItem="x3R-WM-uaJ" secondAttribute="width" id="K98-eA-Szp"/>
                             <constraint firstItem="x3R-WM-uaJ" firstAttribute="top" secondItem="3zS-7v-mtk" secondAttribute="bottom" constant="41" id="U2m-4f-iPB"/>
+                            <constraint firstItem="6PD-Yu-9n3" firstAttribute="top" secondItem="CyV-fT-dZI" secondAttribute="bottom" id="h7f-AY-9hN"/>
                             <constraint firstItem="x3R-WM-uaJ" firstAttribute="width" secondItem="wff-Av-Qeo" secondAttribute="width" id="wOW-Wz-MP9"/>
                         </constraints>
                     </view>
@@ -2099,6 +2117,10 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dr-yy-U8k">
+                                <rect key="frame" x="0.0" y="61" width="320" height="794"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T5-mc-WqE">
                                 <rect key="frame" x="0.0" y="24" width="43" height="37"/>
                                 <state key="normal" title="Button" image="back.png"/>
@@ -2106,16 +2128,21 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                     <segue destination="YCN-eH-mrG" kind="show" id="FcC-OU-2rY"/>
                                 </connections>
                             </button>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dr-yy-U8k">
-                                <rect key="frame" x="0.0" y="61" width="320" height="794"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            </webView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WUv-xk-XXE" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="1uY-lZ-qcm"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2dr-yy-U8k" firstAttribute="top" secondItem="6qt-Qp-uLP" secondAttribute="bottom" constant="41" id="Gjx-Tc-9Hd"/>
                             <constraint firstItem="2dr-yy-U8k" firstAttribute="width" secondItem="pb8-fZ-PI7" secondAttribute="width" id="NPh-rX-duK"/>
                             <constraint firstItem="ZVe-re-qe9" firstAttribute="width" secondItem="pb8-fZ-PI7" secondAttribute="width" id="RI6-ty-HwC"/>
+                            <constraint firstItem="ZVe-re-qe9" firstAttribute="top" secondItem="WUv-xk-XXE" secondAttribute="bottom" id="oWw-08-a5z"/>
+                            <constraint firstItem="WUv-xk-XXE" firstAttribute="width" secondItem="2dr-yy-U8k" secondAttribute="width" id="wDT-Li-eoR"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -2149,6 +2176,10 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K0o-j0-MFs">
+                                <rect key="frame" x="0.0" y="60" width="320" height="823"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIx-gT-csI">
                                 <rect key="frame" x="0.0" y="24" width="43" height="37"/>
                                 <state key="normal" title="Button" image="back.png"/>
@@ -2156,16 +2187,21 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                     <segue destination="YCN-eH-mrG" kind="show" id="191-9F-SEq"/>
                                 </connections>
                             </button>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K0o-j0-MFs">
-                                <rect key="frame" x="0.0" y="60" width="320" height="823"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            </webView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6OX-44-ZKX" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="StH-74-LaL"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="6OX-44-ZKX" firstAttribute="width" secondItem="K0o-j0-MFs" secondAttribute="width" id="BVA-Lg-kZC"/>
                             <constraint firstItem="30g-Iu-Bi7" firstAttribute="width" secondItem="ftt-rp-O9C" secondAttribute="width" id="fI1-Kr-yHM"/>
                             <constraint firstItem="K0o-j0-MFs" firstAttribute="top" secondItem="k65-OP-UWT" secondAttribute="bottom" constant="41" id="iQJ-x5-Cew"/>
                             <constraint firstItem="K0o-j0-MFs" firstAttribute="width" secondItem="ftt-rp-O9C" secondAttribute="width" id="nDa-ZB-cpp"/>
+                            <constraint firstItem="30g-Iu-Bi7" firstAttribute="top" secondItem="6OX-44-ZKX" secondAttribute="bottom" id="v9h-bK-hgM"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -2189,8 +2225,8 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoO-Tk-r4w">
-                                <rect key="frame" x="0.0" y="17" width="320" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoO-Tk-r4w">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="svc-RJ-hge"/>
@@ -2199,21 +2235,30 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="deh-HU-FYK" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="aQL-8M-rv5"/>
+                                </constraints>
+                            </view>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n76-L9-QBE">
+                                <rect key="frame" x="0.0" y="61" width="320" height="969"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUj-mY-eGW">
-                                <rect key="frame" x="0.0" y="24" width="43" height="37"/>
+                                <rect key="frame" x="0.0" y="23" width="43" height="37"/>
                                 <state key="normal" title="Button" image="back.png"/>
                                 <connections>
                                     <segue destination="YCN-eH-mrG" kind="show" id="fww-NP-XbV"/>
                                 </connections>
                             </button>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n76-L9-QBE">
-                                <rect key="frame" x="0.0" y="61" width="320" height="969"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uoO-Tk-r4w" firstAttribute="top" secondItem="deh-HU-FYK" secondAttribute="bottom" id="KWn-lo-oEv"/>
                             <constraint firstItem="n76-L9-QBE" firstAttribute="top" secondItem="8Au-nZ-ZPo" secondAttribute="bottom" constant="41" id="ghE-hV-Ydd"/>
+                            <constraint firstItem="deh-HU-FYK" firstAttribute="width" secondItem="n76-L9-QBE" secondAttribute="width" id="kMR-ro-PdL"/>
                             <constraint firstItem="uoO-Tk-r4w" firstAttribute="width" secondItem="cdb-nZ-Esr" secondAttribute="width" id="q47-ob-VZe"/>
                             <constraint firstItem="n76-L9-QBE" firstAttribute="width" secondItem="cdb-nZ-Esr" secondAttribute="width" id="yt1-WK-Pij"/>
                         </constraints>
@@ -2260,11 +2305,20 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <rect key="frame" x="0.0" y="60" width="320" height="969"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kkz-YW-gsc" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="NxH-xZ-6qr"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kkz-YW-gsc" firstAttribute="width" secondItem="1hc-yL-Vwt" secondAttribute="width" id="5Oy-LA-4Yt"/>
                             <constraint firstItem="1hc-yL-Vwt" firstAttribute="top" secondItem="YVN-uL-Q5X" secondAttribute="bottom" constant="41" id="7n5-4h-wgc"/>
                             <constraint firstItem="1hc-yL-Vwt" firstAttribute="width" secondItem="7Rg-tM-zWs" secondAttribute="width" id="Oqq-T8-SJG"/>
+                            <constraint firstItem="jlH-QC-iTc" firstAttribute="top" secondItem="kkz-YW-gsc" secondAttribute="bottom" id="goW-fP-DvE"/>
                             <constraint firstItem="jlH-QC-iTc" firstAttribute="width" secondItem="7Rg-tM-zWs" secondAttribute="width" id="jC5-BK-uuk"/>
                         </constraints>
                     </view>
@@ -2299,10 +2353,6 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T0b-i4-hY5">
-                                <rect key="frame" x="0.0" y="60" width="320" height="969"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7X7-nW-oE1">
                                 <rect key="frame" x="0.0" y="24" width="43" height="37"/>
                                 <state key="normal" title="Button" image="back.png"/>
@@ -2310,12 +2360,25 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                     <segue destination="YCN-eH-mrG" kind="show" id="Vye-Tb-5FS"/>
                                 </connections>
                             </button>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T0b-i4-hY5">
+                                <rect key="frame" x="0.0" y="60" width="320" height="969"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FpW-cl-ONE" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="biN-5y-baf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="FpW-cl-ONE" firstAttribute="width" secondItem="T0b-i4-hY5" secondAttribute="width" id="7F7-D6-VgP"/>
                             <constraint firstItem="T0b-i4-hY5" firstAttribute="width" secondItem="gJw-Ux-j5C" secondAttribute="width" id="Cgx-Bs-acM"/>
                             <constraint firstItem="T0b-i4-hY5" firstAttribute="top" secondItem="7B7-ef-Aqh" secondAttribute="bottom" constant="41" id="T1R-ut-a09"/>
                             <constraint firstItem="xbd-kV-oBJ" firstAttribute="width" secondItem="gJw-Ux-j5C" secondAttribute="width" id="UYv-Ss-Zaz"/>
+                            <constraint firstItem="xbd-kV-oBJ" firstAttribute="top" secondItem="FpW-cl-ONE" secondAttribute="bottom" id="d4O-oe-acK"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -2349,10 +2412,6 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NIC-7u-DIb">
-                                <rect key="frame" x="0.0" y="60" width="320" height="969"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qx9-mv-YCc">
                                 <rect key="frame" x="0.0" y="24" width="43" height="37"/>
                                 <state key="normal" title="Button" image="back.png"/>
@@ -2360,11 +2419,24 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                     <segue destination="YCN-eH-mrG" kind="show" id="NEi-of-N3F"/>
                                 </connections>
                             </button>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NIC-7u-DIb">
+                                <rect key="frame" x="0.0" y="60" width="320" height="969"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qEH-Yw-dP7" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="jgb-1o-Wxg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ufN-AM-qs4" firstAttribute="top" secondItem="qEH-Yw-dP7" secondAttribute="bottom" id="XPs-sk-IKK"/>
                             <constraint firstItem="NIC-7u-DIb" firstAttribute="width" secondItem="ijG-jt-nqp" secondAttribute="width" id="dpb-Ub-Ni1"/>
                             <constraint firstItem="ufN-AM-qs4" firstAttribute="width" secondItem="ijG-jt-nqp" secondAttribute="width" id="enL-Ej-Z66"/>
+                            <constraint firstItem="qEH-Yw-dP7" firstAttribute="width" secondItem="NIC-7u-DIb" secondAttribute="width" id="frb-la-8Ls"/>
                             <constraint firstItem="NIC-7u-DIb" firstAttribute="top" secondItem="aH0-40-G9R" secondAttribute="bottom" constant="41" id="rmj-Tb-r6s"/>
                         </constraints>
                     </view>
@@ -2399,10 +2471,6 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vyc-h8-Jft">
-                                <rect key="frame" x="0.0" y="60" width="320" height="969"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOu-qQ-pm3">
                                 <rect key="frame" x="0.0" y="24" width="43" height="37"/>
                                 <state key="normal" title="Button" image="back.png"/>
@@ -2410,12 +2478,25 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                     <segue destination="YCN-eH-mrG" kind="show" id="F16-Zl-mek"/>
                                 </connections>
                             </button>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vyc-h8-Jft">
+                                <rect key="frame" x="0.0" y="60" width="320" height="969"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l1f-RR-Q0T" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="gV3-g5-i3U"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="q2F-UE-tM6" firstAttribute="width" secondItem="3XO-B3-pg8" secondAttribute="width" id="K3k-4n-b2T"/>
                             <constraint firstItem="Vyc-h8-Jft" firstAttribute="top" secondItem="hdF-ah-IfW" secondAttribute="bottom" constant="41" id="MRf-Hp-RYP"/>
+                            <constraint firstItem="l1f-RR-Q0T" firstAttribute="width" secondItem="Vyc-h8-Jft" secondAttribute="width" id="dY5-9l-e9s"/>
                             <constraint firstItem="Vyc-h8-Jft" firstAttribute="width" secondItem="3XO-B3-pg8" secondAttribute="width" id="jkW-3X-S3C"/>
+                            <constraint firstItem="q2F-UE-tM6" firstAttribute="top" secondItem="l1f-RR-Q0T" secondAttribute="bottom" id="l7w-nI-Iuf"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -2449,10 +2530,6 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJx-1i-nSP">
-                                <rect key="frame" x="0.0" y="60" width="320" height="969"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="up0-NV-2Qb">
                                 <rect key="frame" x="0.0" y="24" width="43" height="37"/>
                                 <state key="normal" title="Button" image="back.png"/>
@@ -2460,10 +2537,23 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                     <segue destination="YCN-eH-mrG" kind="show" id="Cgy-vH-xYC"/>
                                 </connections>
                             </button>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJx-1i-nSP">
+                                <rect key="frame" x="0.0" y="60" width="320" height="969"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h3B-jV-8xy" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="dbv-hi-KN4"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="h3B-jV-8xy" firstAttribute="width" secondItem="uJx-1i-nSP" secondAttribute="width" id="7mS-6k-CsW"/>
                             <constraint firstItem="KYs-ah-MXx" firstAttribute="width" secondItem="raU-YN-oDp" secondAttribute="width" id="NR0-4M-lBW"/>
+                            <constraint firstItem="KYs-ah-MXx" firstAttribute="top" secondItem="h3B-jV-8xy" secondAttribute="bottom" id="gcK-SH-Lnb"/>
                             <constraint firstItem="uJx-1i-nSP" firstAttribute="top" secondItem="hso-fi-wCC" secondAttribute="bottom" constant="41" id="h3D-6b-awB"/>
                             <constraint firstItem="uJx-1i-nSP" firstAttribute="width" secondItem="raU-YN-oDp" secondAttribute="width" id="uHj-MW-bUm"/>
                         </constraints>
@@ -2494,7 +2584,7 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
         <image name="switches.png" width="116" height="166"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cgy-vH-xYC"/>
+        <segue reference="191-9F-SEq"/>
         <segue reference="aea-Ao-udj"/>
     </inferredMetricsTieBreakers>
 </document>
