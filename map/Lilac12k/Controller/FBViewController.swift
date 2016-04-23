@@ -34,9 +34,12 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
 
         if(FBSDKAccessToken.currentAccessToken() == nil)
         {
+            print("Token is nil")
             loginButton.readPermissions = ["public_profile", "email", "user_friends"]
             loginButton.delegate = self
         }
+//        print("Token is ...")
+//        print(FBSDKAccessToken.currentAccessToken())
         print("FBVIEWCONTROLLER")
     }
     
@@ -72,6 +75,7 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
             
         }
+
         print("END OF FACEBOOK VIEW DID APPEAR")
     }
     
@@ -174,6 +178,7 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         else if result.isCancelled {
             // Handle cancellations
+            return
         }
         else {
             // If you ask for multiple permissions at once, you
