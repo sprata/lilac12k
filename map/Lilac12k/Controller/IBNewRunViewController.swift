@@ -315,6 +315,10 @@ class IBNewRunViewController: UIViewController {
             ToastView.showToastInParentView(self.view, withText: "Sorry, you must enable GPS permissions to use this app!", withDuration: 2.0)
             return
         }
+        else
+        {
+            locationManager.allowsBackgroundLocationUpdates = true;
+        }
         
         seconds = 0.0
         distance = 0.0

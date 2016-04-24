@@ -2,7 +2,7 @@
 //  schedulecontroller.swift
 //  Lilac12k
 //
-//  Created by Chauncy Cullitan on 4/22/16.
+//  Created by Kaitlin Anderson on 4/22/16.
 //  Copyright © 2016 codemysource. All rights reserved.
 //
 
@@ -11,9 +11,8 @@ import WebKit
 
 class schedulecontroller: UIViewController{
     
-
-    @IBOutlet weak var webView: UIWebView!
     
+    @IBOutlet weak var webView: UIWebView!
     let url = "https://www.bloomsdayrun.org/race-information/weekend-schedule"
     
     override func viewDidLoad() {
@@ -24,4 +23,3 @@ class schedulecontroller: UIViewController{
         webView!.loadRequest(request)
     }
 }
-
