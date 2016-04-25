@@ -576,7 +576,6 @@ class IBNewRunViewController: UIViewController {
                                 }
                                 print(self.friendsRunning)
                                 self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
-                                
                                 if(UserInformation.sharedInstance.isPinAdded[x] == false) {
                                     self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x], indexNumber: userIDSame!)
                                     UserInformation.sharedInstance.isPinAdded[x] = true
@@ -779,6 +778,13 @@ class IBNewRunViewController: UIViewController {
         }
         savedRun.locations = NSOrderedSet(array: savedLocations)
         run = savedRun
+        
+        //So after save, the pins will appear again
+        for i in 0...UserInformation.sharedInstance.isPinAdded.count-1
+        {
+            print(i)
+            UserInformation.sharedInstance.isPinAdded[i] = false
+        }
         
         //handle errors
         //        var error : NSError?

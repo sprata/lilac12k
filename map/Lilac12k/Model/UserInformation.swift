@@ -54,6 +54,7 @@ public class UserInformation {
                 self.countOfRunners += 1; //the user is at least there
                 self.friends = result.valueForKey("friends") as! NSDictionary
                 self.isUserBeingTrackedArray.append(true)
+                self.isPinAdded.append(false)
                 self.userIDsArray.append(self.token as String)
                 self.friendNames.append(self.name  as String)
                 let data : NSArray = self.friends.objectForKey("data") as! NSArray
