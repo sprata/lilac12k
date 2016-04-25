@@ -38,7 +38,7 @@ public class UserInformation {
         self.isPinAdded = [Bool]()
         self.userIDsArray = [String]()
         self.isRunnerTransmittingData = true
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,friends", parameters: nil)
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,friends.limit(250)", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             if ((error) != nil)
             {
