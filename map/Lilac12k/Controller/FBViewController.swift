@@ -66,13 +66,19 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
                 //self.logoutFacebook()
                 let loginManager = FBSDKLoginManager()
                 loginManager.logOut()
-            }else
+            }else if(FBSDKAccessToken.currentAccessToken().permissions.contains("user_friends"))
             {
                 dispatch_async(dispatch_get_main_queue()) {
                     [unowned self] in
                     self.performSegueWithIdentifier("HomeSegue", sender: self)
                 }
             }
+            /*else {
+                FBSDKLoginManager().logInWithReadPermissions(["user_friends"],
+                                                             fromViewController:self, //<=== new addition, self is the view controller where you're calling this method.
+                    handler: { (result:FBSDKLoginManagerLoginResult!, error:NSError!) -> Void in
+                })
+            }*/
             
         }
 
@@ -188,6 +194,13 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
                     [unowned self] in
                     self.performSegueWithIdentifier("HomeSegue", sender: self)
                 }
+            }
+            else
+            {
+                FBSDKLoginManager().logInWithReadPermissions(["user_friends"],
+                                                             fromViewController:self, //<=== new addition, self is the view controller where you're calling this method.
+                    handler: { (result:FBSDKLoginManagerLoginResult!, error:NSError!) -> Void in
+                })
             }
             return
             
