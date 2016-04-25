@@ -110,6 +110,7 @@ public class UserInformation {
                         self.friendNames.append(name)
                         self.friendIDs.append(id)
                         self.isUserBeingTrackedArray.append(false)
+                        self.isPinAdded.append(false)
                         self.userIDsArray.append(id)
                         self.countOfRunners += 1; //each friend is a runner
                     }
@@ -128,17 +129,36 @@ public class UserInformation {
                     print("Data Count:", data.count, "Friend Count:", self.countOfRunners-1)
                     if(data.count > self.countOfRunners-1) //add a case for less than
                     {
-                        for i in (self.countOfRunners-1)...data.count-1 {//for i in 0...data.count-1 {
-                            let valueDict : NSDictionary = data[i] as! NSDictionary
-                            let id = valueDict.objectForKey("id") as! String
-                            let name = valueDict.objectForKey("name") as! String
-                            print(name, " : ", id)
-                            self.friendNames.append(name)
-                            self.friendIDs.append(id)
-                            self.isUserBeingTrackedArray.append(false)
-                            self.userIDsArray.append(id)
-                            self.countOfRunners += 1; //each friend is a runner
-                            FacebookImages.sharedInstance.addToFacebookImages(valueDict.objectForKey("id") as! String)
+                        print("new friends!")
+                        for i in 0...data.count-1 {//for i in 0...data.count-1 {
+                        //for i in (self.countOfRunners-1)...data.count-1 {//for i in 0...data.count-1 {
+                            if(i >= self.countOfRunners-1)
+                            {
+                                let valueDict : NSDictionary = data[i] as! NSDictionary
+                                let id = valueDict.objectForKey("id") as! String
+                                let name = valueDict.objectForKey("name") as! String
+                                print("in if!")
+                                print(name, " : ", id)
+                                self.friendNames.append(name)
+                                self.friendIDs.append(id)
+                                self.isPinAdded.append(false)
+                                self.isUserBeingTrackedArray.append(false)
+                                self.userIDsArray.append(id)
+                                self.countOfRunners += 1; //each friend is a runner
+                                FacebookImages.sharedInstance.addToFacebookImages(valueDict.objectForKey("id") as! String)
+                            }
+                            else{
+                                let valueDict : NSDictionary = data[i] as! NSDictionary
+                                let id = valueDict.objectForKey("id") as! String
+                                let name = valueDict.objectForKey("name") as! String
+                                print(name, " : ", id)
+                                self.friendNames[i+1] = name
+                                self.friendIDs[i] = id
+                                self.isUserBeingTrackedArray[i+1] = false
+                                self.userIDsArray[i+1] = id
+                                FacebookImages.sharedInstance.addToFacebookImages(valueDict.objectForKey("id") as! String)
+                            }
+                            
                         }
                     }
                     

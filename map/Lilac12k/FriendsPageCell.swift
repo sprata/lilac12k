@@ -34,7 +34,6 @@ class FriendsPageCell: UITableViewCell {
     {
         super.prepareForReuse()
         // Reset the cell for new row's data
-        print("Cellname:", CellName.text, TrackerSwitch.on)
         TrackerSwitch.on = false;
     }
 
