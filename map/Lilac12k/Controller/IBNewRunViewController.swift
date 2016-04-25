@@ -319,7 +319,10 @@ class IBNewRunViewController: UIViewController {
         {
             locationManager.allowsBackgroundLocationUpdates = true;
         }
-        
+        for i in 0...UserInformation.sharedInstance.isPinAdded.count-1
+        {
+            UserInformation.sharedInstance.isPinAdded[i] = false
+        }
         seconds = 0.0
         distance = 0.0
         runners = 0
@@ -782,7 +785,6 @@ class IBNewRunViewController: UIViewController {
         //So after save, the pins will appear again
         for i in 0...UserInformation.sharedInstance.isPinAdded.count-1
         {
-            print(i)
             UserInformation.sharedInstance.isPinAdded[i] = false
         }
         
