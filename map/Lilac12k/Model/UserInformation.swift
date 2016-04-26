@@ -23,6 +23,7 @@ public class UserInformation {
     var isUserBeingTrackedArray : [Bool]
     var isPinAdded : [Bool]
     var isRunnerTransmittingData : Bool
+    var stopTrackingFriends : Bool
     var countOfRunners = 0;
     
     private init()
@@ -38,6 +39,7 @@ public class UserInformation {
         self.isPinAdded = [Bool]()
         self.userIDsArray = [String]()
         self.isRunnerTransmittingData = true
+        self.stopTrackingFriends = false
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,friends.limit(250)", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             if ((error) != nil)
@@ -47,6 +49,7 @@ public class UserInformation {
             }
             else
             {
+                
                 
                 self.name = result.valueForKey("name") as! NSString
                 self.token = result.valueForKey("id") as! NSString

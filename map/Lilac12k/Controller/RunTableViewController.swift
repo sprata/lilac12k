@@ -82,6 +82,7 @@ class RunTableViewController: UIViewController, UITableViewDelegate, UITableView
         // Pass the selected object to the new view controller.
         if let detailViewController = segue.destinationViewController as? IBRunDetailViewController {
             detailViewController.run = selectedRun
+            UserInformation.sharedInstance.stopTrackingFriends = true //to stop the friend error
         }
     }
     

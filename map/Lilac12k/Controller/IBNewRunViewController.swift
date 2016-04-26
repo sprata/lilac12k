@@ -114,7 +114,7 @@ class IBNewRunViewController: UIViewController {
         {
             self.startButton.removeTarget(self, action: #selector(IBNewRunViewController.stopAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             self.startButton.addTarget(self, action: #selector(IBNewRunViewController.startAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-            self.startButton.setTitle("START", forState: UIControlState.Normal)
+            self.startButton.setTitle("START RACING!", forState: UIControlState.Normal)
             self.startOnFlag = false;
             self.userRunning = false;
             self.stopLocation()
@@ -169,7 +169,6 @@ class IBNewRunViewController: UIViewController {
         mapView.region = region
         addOverlay()
         addAttractionPins()
-        
         
         //self.userPin(userCoords.last!, name: UserInformation.sharedInstance.name as String, indexNumber: String(UserInformation.sharedInstance.token))
         
@@ -244,7 +243,6 @@ class IBNewRunViewController: UIViewController {
         //timer.invalidate()
     }
     
-    //sprata: maybe put in core data then call here?
     func userPin(coordinates: CLLocationCoordinate2D, name: String, indexNumber: String) {
         let newCoordinate = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
         /*
@@ -358,6 +356,7 @@ class IBNewRunViewController: UIViewController {
             ToastView.showToastInParentView(self.view, withText: "You must select at least one friend to track!", withDuration: 2.0)
             return
         }
+        
         spectateButton.removeTarget(self, action: #selector(IBNewRunViewController.spectateAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         spectateButton.addTarget(self, action: #selector(IBNewRunViewController.spectateOffAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         spectateButton.titleLabel?.textAlignment = NSTextAlignment.Center
@@ -385,7 +384,6 @@ class IBNewRunViewController: UIViewController {
         self.spectateButton.setTitle("SPECTATE\nOFF", forState: UIControlState.Normal)
         //self.spectateButton.backgroundColor = UIColor(red: 191.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
         spectateImage.image = UIImage(named: "spectate_white")
-        
         sender.backgroundColor? = UIColor(red: 255.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 1.0)
         spectateImage.backgroundColor = UIColor(red: 255.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 1.0)
         
@@ -494,7 +492,15 @@ class IBNewRunViewController: UIViewController {
     var aBool : Bool = false;
     
     func everySecond(timer2: NSTimer) {
-        if(specOnFlag && updateTimer == 2)
+        print("SECOND!", spectateButton.titleLabel!.text)
+        if(UserInformation.sharedInstance.stopTrackingFriends)//spectateButton.titleLabel!.text == "SPECTATE\nOFF")
+        {
+            print("somehow map turned to spectate off, so invalidating time and stoping the tracking")
+            timer2.invalidate()
+            specOnFlag = false
+            UserInformation.sharedInstance.stopTrackingFriends = false
+        }
+        else if(specOnFlag && updateTimer == 2)
         {
             recieveFriendLocationData()
             updateTimer = 0
@@ -706,6 +712,7 @@ class IBNewRunViewController: UIViewController {
                             print(self.friendsRunning)
                             self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
                             if(UserInformation.sharedInstance.isPinAdded[x] == false) {
+                                print("\nHERE")
                                 self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x], indexNumber: userIDSame!)
                                 UserInformation.sharedInstance.isPinAdded[x] = true
                             }
@@ -892,6 +899,9 @@ class IBNewRunViewController: UIViewController {
         }
         savedRun.locations = NSOrderedSet(array: savedLocations)
         run = savedRun
+        
+        //This is here to prevent the app from running in the background forever and ever
+        UserInformation.sharedInstance.stopTrackingFriends = true
         
         //So after save, the pins will appear again
         for i in 0...UserInformation.sharedInstance.isPinAdded.count-1
