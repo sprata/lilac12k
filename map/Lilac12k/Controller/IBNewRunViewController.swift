@@ -13,6 +13,7 @@ import MapKit
 class IBNewRunViewController: UIViewController {
     @IBOutlet var transmitButton: UIButton!
     @IBOutlet var centerButton: UIButton!
+    @IBOutlet var spectateButton: UIButton!
     var isTransmitOn:Bool = true
     var isCenterOn:Bool = true
     
@@ -26,6 +27,10 @@ class IBNewRunViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     var startOnFlag: Bool = false
+    var specOnFlag: Bool = false
+    var locManagerInt : Int = 0;
+    var prevLocManagerInt : Int = -1;
+    var userRunning : Bool = false
     @IBOutlet weak var mapView: MKMapView!
     
     //t
@@ -99,7 +104,21 @@ class IBNewRunViewController: UIViewController {
     
     lazy var locations = [CLLocation]()
     lazy var timer = NSTimer()
+    lazy var timer2 = NSTimer()
     
+    override func viewDidAppear(animated: Bool) {
+        
+        if(UserInformation.sharedInstance.isUserBeingTrackedArray[0] == false)
+        {
+            self.startButton.removeTarget(self, action: #selector(IBNewRunViewController.stopAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            self.startButton.addTarget(self, action: #selector(IBNewRunViewController.startAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            self.startButton.setTitle("START", forState: UIControlState.Normal)
+            self.startOnFlag = false;
+            self.userRunning = false;
+            self.stopLocation()
+        }
+ 
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -274,15 +293,15 @@ class IBNewRunViewController: UIViewController {
     }
     
     func buttonClicked(sender:UIButton) {
-        if (sender.titleLabel!.text == "LIVE-SHARE OFF" || sender.titleLabel!.text == "LIVE-SHARE ON") {
+        if (sender.titleLabel!.text == "SHARE\n  OFF" || sender.titleLabel!.text == "SHARE\n   ON") {
             if self.isTransmitOn == false {
-                sender.setTitle("LIVE-SHARE ON", forState: UIControlState.Normal)
+                sender.setTitle("SHARE\n   ON", forState: UIControlState.Normal)
                 sender.backgroundColor = UIColor(red: 56.0/255.0, green: 134.0/255.0, blue: 121.0/255.0, alpha: 1.0)
                 //sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
                 //sender.highlighted = true;
                 self.isTransmitOn = true
             } else {
-                sender.setTitle("LIVE-SHARE OFF", forState: UIControlState.Normal)
+                sender.setTitle("SHARE\n  OFF", forState: UIControlState.Normal)
                 //sender.backgroundColor = UIColor(red: 0, green: 100, blue: 0, alpha: 1.0)
                 sender.backgroundColor = UIColor(red: 14.0/255.0, green: 70.0/255.0, blue: 78.0/255.0, alpha: 1.0)
                 //sender.backgroundColor = UIColor(red: 181.0/255.0, green: 101.0/255.0, blue: 166.0/255.0, alpha: 1.0)
@@ -294,12 +313,12 @@ class IBNewRunViewController: UIViewController {
             if self.isCenterOn == false {
                 sender.setTitle("CENTER ON", forState: UIControlState.Normal)
                 //sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-                sender.backgroundColor = UIColor(red: 255.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 1.0)
+                sender.backgroundColor = UIColor(red: 255.0/255.0, green: 171.0/255.0, blue: 0.0/255.0, alpha: 1.0)
                 //sender.highlighted = true;
                 self.isCenterOn = true
             } else {
                 sender.setTitle("CENTER OFF", forState: UIControlState.Normal)
-                sender.backgroundColor = UIColor(red: 191.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
+                sender.backgroundColor = UIColor(red: 216.0/255.0, green: 146.0/255.0, blue: 2.0/255.0, alpha: 1.0)
                 
                 //sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                 //sender.highlighted = false;
@@ -308,53 +327,83 @@ class IBNewRunViewController: UIViewController {
         }
     }
     
+    @IBAction func spectateAction(sender: UIButton) {
+        var isAnyoneTracked = false
+        for i in 0...UserInformation.sharedInstance.isPinAdded.count-1
+        {
+            UserInformation.sharedInstance.isPinAdded[i] = false
+        }
+        
+        for i in 1..<UserInformation.sharedInstance.isUserBeingTrackedArray.count
+        {
+            if(UserInformation.sharedInstance.isUserBeingTrackedArray[i])
+            {
+                isAnyoneTracked = true
+            }
+        }
+        if(!isAnyoneTracked) {
+            ToastView.showToastInParentView(self.view, withText: "You must select at least one friend to track!", withDuration: 2.0)
+            return
+        }
+        spectateButton.removeTarget(self, action: #selector(IBNewRunViewController.spectateAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        spectateButton.addTarget(self, action: #selector(IBNewRunViewController.spectateOffAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        spectateButton.setTitle("    STOP\nSPECTATE", forState: UIControlState.Normal)
+        //self.spectateButton.backgroundColor = UIColor(red: 255.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 1.0)
+        timer2 = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(IBNewRunViewController.everySecond(_:)), userInfo: nil, repeats: true)
+        specOnFlag = true
+        
+    }
+    
+    @IBAction func spectateOffAction(sender: UIButton) {
+        self.spectateButton.removeTarget(self, action: #selector(IBNewRunViewController.spectateOffAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.spectateButton.addTarget(self, action: #selector(IBNewRunViewController.spectateAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.spectateButton.setTitle("   START\nSPECTATE", forState: UIControlState.Normal)
+        //self.spectateButton.backgroundColor = UIColor(red: 191.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
+        timer2.invalidate()
+        specOnFlag = false;
+    }
+    
     @IBAction func startAction(sender: UIButton) {
         //If they denied GPS permission, disable start
+        
+        if(!UserInformation.sharedInstance.isUserBeingTrackedArray[0]) {
+            ToastView.showToastInParentView(self.view, withText: "You must select yourself to track in the\nfriends page!", withDuration: 2.0)
+            return
+        }
+        
         if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedAlways &&
             CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse) {
             ToastView.showToastInParentView(self.view, withText: "Sorry, you must enable GPS permissions to use this app!", withDuration: 2.0)
             return
         }
-        else
-        {
-            locationManager.allowsBackgroundLocationUpdates = true;
-        }
+        
         for i in 0...UserInformation.sharedInstance.isPinAdded.count-1
         {
             UserInformation.sharedInstance.isPinAdded[i] = false
         }
+        
         seconds = 0.0
         distance = 0.0
         runners = 0
-        //figure out number of runners:
-        for i in 0..<UserInformation.sharedInstance.userIDsArray.count {
-            if(UserInformation.sharedInstance.isUserBeingTrackedArray[i]) {
-                self.runners += 1;
-            }
-        }
-        //If nobody is running or runnerDictionary hasn't initialized, disable start
-        if (self.runners == 0 || UserInformation.sharedInstance.countOfRunners == 0 || runnerDictionary[UserInformation.sharedInstance.userIDsArray[0]] == nil) {
-            ToastView.showToastInParentView(self.view, withText: "You must select at least one friend to track!", withDuration: 2.0)
-            return
-        }
+        userRunning = true;
         startButton.removeTarget(self, action: #selector(IBNewRunViewController.startAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         startButton.addTarget(self, action: #selector(IBNewRunViewController.stopAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         startButton.setTitle("STOP", forState: UIControlState.Normal)
         
         locations.removeAll(keepCapacity: false)
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(IBNewRunViewController.eachSecond(_:)), userInfo: nil, repeats: true)
-
+        
         flagStartLocation = false
         startOnFlag = true
         startLocation()
         /*
-        if(UserInformation.sharedInstance.isUserBeingTrackedArray[0])
-        {
-        startLocation()
-        }else
-        {
-        recieveFriendLocationData()
-        }*/
+         if(UserInformation.sharedInstance.isUserBeingTrackedArray[0])
+         {
+         startLocation()
+         }else
+         {
+         recieveFriendLocationData()
+         }*/
     }
     
     @IBAction func stopAction(sender: UIButton)
@@ -373,6 +422,7 @@ class IBNewRunViewController: UIViewController {
             self.startButton.addTarget(self, action: #selector(IBNewRunViewController.startAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             self.startButton.setTitle("START", forState: UIControlState.Normal)
             self.startOnFlag = false;
+            self.userRunning = false;
             self.saveRun()
             self.performSegueWithIdentifier("ShowRunDetail", sender: nil)
             self.stopLocation()
@@ -384,6 +434,7 @@ class IBNewRunViewController: UIViewController {
             self.startButton.addTarget(self, action: #selector(IBNewRunViewController.startAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             self.startButton.setTitle("START", forState: UIControlState.Normal)
             self.startOnFlag = false;
+            self.userRunning = false;
             self.stopLocation()
         }))
         
@@ -406,12 +457,47 @@ class IBNewRunViewController: UIViewController {
         timer.invalidate()
         
     }
-    func eachSecond(timer : NSTimer) {
-        if(!UserInformation.sharedInstance.isUserBeingTrackedArray[0] && startOnFlag && updateTimer == 2)
+    var aBool : Bool = false;
+    
+    func everySecond(timer2: NSTimer) {
+        if(specOnFlag && updateTimer == 2)
         {
             recieveFriendLocationData()
             updateTimer = 0
+            if(aBool && userRunning && (locManagerInt != prevLocManagerInt))
+            {
+                prevLocManagerInt = locManagerInt;
+                recenterMapView();
+                aBool = false;
+            }
+            else if(aBool && !userRunning)
+            {
+                recenterMapView();
+                aBool = false;
+            }
+            else{
+                aBool = true;
+            }
         }
+        
+        //figure out number of runners:
+        for i in 0..<UserInformation.sharedInstance.userIDsArray.count {
+            if(UserInformation.sharedInstance.isUserBeingTrackedArray[i]) {
+                self.runners += 1;
+            }
+        }
+        /*
+         //If nobody is running or runnerDictionary hasn't initialized, disable start
+         if (self.runners == 0 || UserInformation.sharedInstance.countOfRunners == 0 || runnerDictionary[UserInformation.sharedInstance.userIDsArray[0]] == nil) {
+         ToastView.showToastInParentView(self.view, withText: "You must select at least one friend to track!", withDuration: 2.0)
+         return
+         }
+         */
+        updateTimer += 1
+    }
+    
+    func eachSecond(timer : NSTimer) {
+        
         seconds += 1;
         //floor(1.5679999 * 1000) / 1000
         let secondsQuantity =  Int((floor((seconds)*100)/100) % 60)
@@ -443,8 +529,9 @@ class IBNewRunViewController: UIViewController {
         else{
             paceLabel.text = paceQuantity.description
         }
-        updateTimer += 1;
+        
     }
+    
     
     
     // MARK: - Start log the run
@@ -455,6 +542,7 @@ class IBNewRunViewController: UIViewController {
     //TRY CATCH NEEDED
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         for location in locations as [CLLocation] {
+            locManagerInt += 1;
             let howRecent = location.timestamp.timeIntervalSinceNow
             if abs(howRecent) < 10 && location.horizontalAccuracy < 20 {
                 //var coords = [CLLocationCoordinate2D]()
@@ -466,7 +554,9 @@ class IBNewRunViewController: UIViewController {
                     distance += location.distanceFromLocation(self.locations.last!)
                     var userCoords = [CLLocationCoordinate2D]()
                     userCoords.append(location.coordinate)
+                    
                     isSmallestOrLargestXorY(location.coordinate)
+                    
                     dispatch_async(dispatch_get_main_queue(), {
                         //self.mapView.setRegion(region, animated: true)
                         self.currentRunner = self.runnerDictionary[UserInformation.sharedInstance.userIDsArray[0]]!;
@@ -485,12 +575,15 @@ class IBNewRunViewController: UIViewController {
                     }
                 }
                 //Update distances for everyone else
-                recieveFriendLocationData();
+                //recieveFriendLocationData();
                 //save location
                 self.locations.append(CLLocation(latitude: curLocation.latitude, longitude: curLocation.longitude))
                 notStartLocation = true
             }
-            recenterMapView();
+            if(!specOnFlag) {
+                print("CENTER")
+                recenterMapView();
+            }
         }
     }
     
@@ -562,44 +655,29 @@ class IBNewRunViewController: UIViewController {
                             ToastView.showToastInParentView(self.view, withText:  name + "is not transmitting position", withDuration:  2.5)
                         })
                     } else if (success != nil) {
-                        if(!self.flagStartLocation){ //make sure not first run
-                            self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
-                            self.arrayOfRunnerCoordinates[userIDSame!] = runnerCoordinates(runnerID: userIDSame!, lastCoordinate: CLLocationCoordinate2DMake(lat!, lon!))
+                        self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
+                        self.arrayOfRunnerCoordinates[userIDSame!] = runnerCoordinates(runnerID: userIDSame!, lastCoordinate: CLLocationCoordinate2DMake(lat!, lon!))
+                        
+                        //Required to change the visual within a thread
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.currentRunner = self.runnerDictionary[userIDSame!]!;
+                            //print("Current Runner:", self.currentRunner, " lastCoord", self.arrayOfRunnerCoordinates[userIDSame!]?.lastCoordinate)
+                            var lC = self.arrayOfRunnerCoordinates[userIDSame!]!.lastCoordinate
                             
-                            //Required to change the visual within a thread
-                            dispatch_async(dispatch_get_main_queue(), {
-                                self.currentRunner = self.runnerDictionary[userIDSame!]!;
-                                //print("Current Runner:", self.currentRunner, " lastCoord", self.arrayOfRunnerCoordinates[userIDSame!]?.lastCoordinate)
-                                var lC = self.arrayOfRunnerCoordinates[userIDSame!]!.lastCoordinate
-                                
-                                for trackedFriends in UserInformation.sharedInstance.isUserBeingTrackedArray {
-                                    if trackedFriends.boolValue == true {
-                                        numberOfFriends += 1;
-                                    }
+                            for trackedFriends in UserInformation.sharedInstance.isUserBeingTrackedArray {
+                                if trackedFriends.boolValue == true {
+                                    numberOfFriends += 1;
                                 }
-                                print(self.friendsRunning)
-                                self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
-                                if(UserInformation.sharedInstance.isPinAdded[x] == false) {
-                                    self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x], indexNumber: userIDSame!)
-                                    UserInformation.sharedInstance.isPinAdded[x] = true
-                                }
-                                self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x], indexNumber: userIDSame!)
-                                //self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
-                            })
-                            //note after appended!
-                            ////prevLocation.latitude = lat!
-                            ////prevLocation.longitude = lon!
-                        }else if(self.notStartLocation) {
-                            print("------------First time, set lat&lon different")
-                            ////prevLocation.latitude = lat!
-                            ////prevLocation.longitude = lon!
-                            self.flagStartLocation = false
-                        } else {
-                            print("First time, set lat&lon different")
-                            ////prevLocation.latitude = lat!
-                            ////prevLocation.longitude = lon!
-                        }
-                        // set this to false after first for loop
+                            }
+                            print(self.friendsRunning)
+                            self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
+                            if(UserInformation.sharedInstance.isPinAdded[x] == false) {
+                                self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x], indexNumber: userIDSame!)
+                                UserInformation.sharedInstance.isPinAdded[x] = true
+                            }
+                            self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x], indexNumber: userIDSame!)
+                            //self.addUserPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
+                        })
                     } else {
                         // download fail
                         print("Something went wrong in locationManager()")
@@ -608,7 +686,7 @@ class IBNewRunViewController: UIViewController {
 
             }
         }
-        recenterMapView();
+        //recenterMapView();
         if(addedPin) {
             self.friendsRunning = numberOfFriends
         }
