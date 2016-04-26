@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="G49-xF-z2q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="G49-xF-z2q">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -1258,7 +1258,7 @@ Use this app to track your race results or watch from the comfort of your own ho
                         <viewControllerLayoutGuide type="bottom" id="qkA-TO-9pZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5IR-zR-waP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1260"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How To Use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCJ-TX-ayB">
@@ -1278,20 +1278,20 @@ Use this app to track your race results or watch from the comfort of your own ho
                                     <constraint firstAttribute="height" constant="20" id="iQU-7y-gYv"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" contentMode="top" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9b-85-egq">
-                                <rect key="frame" x="0.0" y="63" width="320" height="1036"/>
+                            <scrollView clipsSubviews="YES" contentMode="top" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9b-85-egq">
+                                <rect key="frame" x="0.0" y="63" width="320" height="1197"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fa8-6C-dcx">
-                                        <rect key="frame" x="36" y="60" width="249" height="160"/>
+                                        <rect key="frame" x="36" y="60" width="249" height="168"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Uu4-qM-WBM">
-                                                <rect key="frame" x="0.0" y="0.0" width="249" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="249" height="27"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeImage" highlightedImage="infoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="puF-QC-Joa">
-                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="27"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Important dates, information, and links" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTr-E8-JpX">
-                                                        <rect key="frame" x="45" y="0.0" width="204" height="25"/>
+                                                        <rect key="frame" x="45" y="0.0" width="204" height="27"/>
                                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                                         <color key="textColor" red="0.42745098040000001" green="0.1333333333" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1302,13 +1302,13 @@ Use this app to track your race results or watch from the comfort of your own ho
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9Gv-KH-N5k">
-                                                <rect key="frame" x="0.0" y="45" width="218" height="25"/>
+                                                <rect key="frame" x="0.0" y="47" width="218" height="27"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapIcon" highlightedImage="mapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="3lg-KP-Lm8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="27"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View the map and track your run" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxM-Fj-NLt">
-                                                        <rect key="frame" x="45" y="0.0" width="173" height="25"/>
+                                                        <rect key="frame" x="45" y="0.0" width="173" height="27"/>
                                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                                         <color key="textColor" red="0.42745098040000001" green="0.1333333333" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1316,13 +1316,13 @@ Use this app to track your race results or watch from the comfort of your own ho
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7mN-cp-sWh">
-                                                <rect key="frame" x="0.0" y="90" width="198" height="25"/>
+                                                <rect key="frame" x="0.0" y="94" width="198" height="27"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friendsIcon" highlightedImage="friendsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="L9v-jI-Fb0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="27"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select which friends to track " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mei-wH-hRx">
-                                                        <rect key="frame" x="45" y="0.0" width="153" height="25"/>
+                                                        <rect key="frame" x="45" y="0.0" width="153" height="27"/>
                                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                                         <color key="textColor" red="0.42745098040000001" green="0.1333333333" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1330,13 +1330,13 @@ Use this app to track your race results or watch from the comfort of your own ho
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="obC-yO-OAn">
-                                                <rect key="frame" x="0.0" y="135" width="236" height="25"/>
+                                                <rect key="frame" x="0.0" y="141" width="236" height="27"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flagIcon" translatesAutoresizingMaskIntoConstraints="NO" id="KfM-zM-g1y">
-                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="27"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coupons and links for after the race" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEA-1W-cJW">
-                                                        <rect key="frame" x="45" y="0.0" width="191" height="25"/>
+                                                        <rect key="frame" x="45" y="0.0" width="191" height="27"/>
                                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                                         <color key="textColor" red="0.42745098040000001" green="0.1333333333" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1362,7 +1362,7 @@ Use this app to track your race results or watch from the comfort of your own ho
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="mfH-hz-5T3">
-                                        <rect key="frame" x="153" y="359" width="159" height="74"/>
+                                        <rect key="frame" x="153" y="367" width="159" height="74"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="84d-xl-V1r"/>
                                         </constraints>
@@ -1387,7 +1387,7 @@ Use this app to track your race results or watch from the comfort of your own ho
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="eB2-Lq-ROi">
-                                        <rect key="frame" x="153" y="266" width="159" height="48"/>
+                                        <rect key="frame" x="153" y="274" width="159" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="n8W-o9-9Qu"/>
                                         </constraints>
@@ -1411,14 +1411,15 @@ Use this app to track your race results or watch from the comfort of your own ho
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="fHb-IG-uWg">
-                                        <rect key="frame" x="153" y="709" width="159" height="71"/>
+                                        <rect key="frame" x="153" y="717" width="159" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="MQ5-uN-qCj"/>
                                             <constraint firstAttribute="height" constant="71" id="mnj-WQ-4V6"/>
                                         </constraints>
                                         <attributedString key="attributedText">
                                             <fragment>
-                                                <string key="content">To make viewing multiple runners easier, you can use the CENTER button to zoom the view and show all the runners you selected at one time.</string>
+                                                <string key="content">To view your selected friends' progress in real-time, make sure you have "SPECTATE ON" selected.
+Be sure they are Live-Sharing.</string>
                                                 <attributes>
                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="11" name="HelveticaNeue"/>
@@ -1437,7 +1438,7 @@ Use this app to track your race results or watch from the comfort of your own ho
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LIVE-SHARING A RUN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwf-TP-rRa">
-                                        <rect key="frame" x="0.0" y="328" width="320" height="18"/>
+                                        <rect key="frame" x="0.0" y="336" width="320" height="18"/>
                                         <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="sGW-2X-QI0"/>
@@ -1447,7 +1448,7 @@ Use this app to track your race results or watch from the comfort of your own ho
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="START YOUR RUN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gh-nL-eCG">
-                                        <rect key="frame" x="0.0" y="234" width="320" height="18"/>
+                                        <rect key="frame" x="0.0" y="242" width="320" height="18"/>
                                         <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="va5-vn-jTx"/>
@@ -1457,13 +1458,13 @@ Use this app to track your race results or watch from the comfort of your own ho
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="liveShareOn.png" translatesAutoresizingMaskIntoConstraints="NO" id="Oi2-JL-J9b">
-                                        <rect key="frame" x="8" y="359" width="110" height="74"/>
+                                        <rect key="frame" x="8" y="367" width="110" height="74"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="74" id="x2H-3i-ceh"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="centerOn.png" translatesAutoresizingMaskIntoConstraints="NO" id="HSm-ST-WXE">
-                                        <rect key="frame" x="8" y="709" width="110" height="71"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="spectateOnImg.png" translatesAutoresizingMaskIntoConstraints="NO" id="HSm-ST-WXE">
+                                        <rect key="frame" x="8" y="717" width="110" height="71"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="YSK-fP-AvY">
                                         <rect key="frame" x="153" y="788" width="159" height="71"/>
@@ -1471,7 +1472,8 @@ Use this app to track your race results or watch from the comfort of your own ho
                                             <constraint firstAttribute="height" constant="100" id="pCg-lY-oeK"/>
                                         </constraints>
                                         <attributedString key="attributedText">
-                                            <fragment content="If you want to stop the auto-centering, tap the button and you will now be able to zoom and use the map normally.">
+                                            <fragment>
+                                                <string key="content">If you want to stop seeing your friend's progress, simply tap for Spectate Off. Your friend's last location may still be displayed.</string>
                                                 <attributes>
                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="11" name="HelveticaNeue"/>
@@ -1489,11 +1491,69 @@ Use this app to track your race results or watch from the comfort of your own ho
                                             </mask>
                                         </variation>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="centerOff.png" translatesAutoresizingMaskIntoConstraints="NO" id="mBh-Ja-pnm">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="spectateOffImg.png" translatesAutoresizingMaskIntoConstraints="NO" id="mBh-Ja-pnm">
                                         <rect key="frame" x="8" y="788" width="110" height="71"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="bGk-lX-6oi">
+                                        <rect key="frame" x="153" y="893" width="159" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="a43-bD-LB4"/>
+                                            <constraint firstAttribute="height" constant="100" id="uNf-ja-ASQ"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="To make viewing multiple runners easier, use the CENTER button to focus the view.">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustFontToRealIPhoneSize" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="uNf-ja-ASQ"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="centerOn.png" translatesAutoresizingMaskIntoConstraints="NO" id="NvZ-fU-lAe">
+                                        <rect key="frame" x="8" y="893" width="110" height="50"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="wAt-6X-rJH">
+                                        <rect key="frame" x="153" y="938" width="159" height="71"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="qB8-ov-013"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="If you want to stop the auto-centering, tap the button and you will now be able to zoom and use the map normally.">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustFontToRealIPhoneSize" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="qB8-ov-013"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="centerOff.png" translatesAutoresizingMaskIntoConstraints="NO" id="P8K-jC-VnS">
+                                        <rect key="frame" x="8" y="938" width="110" height="71"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="71" id="W92-ag-oU9"/>
+                                        </constraints>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="l1t-93-4xS">
-                                        <rect key="frame" x="153" y="433" width="159" height="74"/>
+                                        <rect key="frame" x="153" y="441" width="159" height="74"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Iya-6s-q2e"/>
                                         </constraints>
@@ -1519,13 +1579,13 @@ You will still be able to record your run and see your friends.</string>
                                         </variation>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="liveShareOff.png" translatesAutoresizingMaskIntoConstraints="NO" id="0R1-kJ-RdH">
-                                        <rect key="frame" x="8" y="433" width="110" height="74"/>
+                                        <rect key="frame" x="8" y="441" width="110" height="74"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="74" id="6pZ-K9-3Ac"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECTING FRIENDS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhf-eX-lEp">
-                                        <rect key="frame" x="0.0" y="521" width="320" height="18"/>
+                                        <rect key="frame" x="0.0" y="529" width="320" height="18"/>
                                         <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="0S5-Z9-0oL"/>
@@ -1535,16 +1595,16 @@ You will still be able to record your run and see your friends.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friendsIcon" highlightedImage="friendsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="x4x-Um-dca">
-                                        <rect key="frame" x="22" y="553" width="25" height="25"/>
+                                        <rect key="frame" x="22" y="561" width="25" height="25"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="switches.png" translatesAutoresizingMaskIntoConstraints="NO" id="yh5-PQ-Ijk">
-                                        <rect key="frame" x="0.0" y="595" width="68" height="68"/>
+                                        <rect key="frame" x="0.0" y="603" width="68" height="68"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="68" id="nA4-ml-b3o"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="qYm-Vi-r17">
-                                        <rect key="frame" x="82" y="553" width="230" height="116"/>
+                                        <rect key="frame" x="82" y="561" width="230" height="116"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="gIy-yZ-nZL"/>
                                         </constraints>
@@ -1555,7 +1615,7 @@ Pull down to refresh if no friends appear.
 
 A green switch means the friend is selected for tracking. 
 Only people who are your Facebook friends AND have logged into the app will appear.
-A friend can only be tracked if they have transmitted a run in the last hour.</string>
+A friend can only be tracked if they have transmitted a run recently.</string>
                                                 <attributes>
                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="11" name="HelveticaNeue"/>
@@ -1573,14 +1633,40 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                             </mask>
                                         </variation>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="Gka-Q8-L2T">
+                                        <rect key="frame" x="82" y="1043" width="230" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="EOO-eh-crE"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <string key="content">Your saved runs will be located in Finish. 
+Simply tap "View Previous Runs" to see all saved runs and select one to see your detailed run information. </string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustFontToRealIPhoneSize" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="EOO-eh-crE"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZOV-3T-q0p">
-                                        <rect key="frame" x="8" y="266" width="137" height="48"/>
+                                        <rect key="frame" x="8" y="274" width="137" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="q3X-RB-ROm"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CENTERING" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-vk-GVi">
-                                        <rect key="frame" x="0.0" y="683" width="320" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPECTATING FRIENDS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-vk-GVi">
+                                        <rect key="frame" x="0.0" y="691" width="320" height="18"/>
                                         <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="ri1-UN-Sms"/>
@@ -1589,25 +1675,58 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CENTERING" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0Y-72-cb1">
+                                        <rect key="frame" x="0.0" y="867" width="320" height="18"/>
+                                        <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="y9r-GN-aUR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIEWING SAVED RUNS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjO-hk-aVJ">
+                                        <rect key="frame" x="0.0" y="1017" width="320" height="18"/>
+                                        <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="zvQ-4A-xRz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flagIcon" highlightedImage="friendsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="2Tf-lu-I0Q">
+                                        <rect key="frame" x="22" y="1056" width="25" height="25"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Gka-Q8-L2T" firstAttribute="top" secondItem="vjO-hk-aVJ" secondAttribute="bottom" constant="8" id="03c-mx-c9b"/>
                                     <constraint firstItem="x4x-Um-dca" firstAttribute="top" secondItem="bhf-eX-lEp" secondAttribute="bottom" constant="14" id="1F5-D2-vdR"/>
                                     <constraint firstItem="Oi2-JL-J9b" firstAttribute="bottom" secondItem="mfH-hz-5T3" secondAttribute="bottom" id="1Ly-52-PD9"/>
                                     <constraint firstItem="bhf-eX-lEp" firstAttribute="trailing" secondItem="j8x-vk-GVi" secondAttribute="trailing" id="1Og-CW-Cum"/>
                                     <constraint firstItem="fHb-IG-uWg" firstAttribute="trailing" secondItem="l1t-93-4xS" secondAttribute="trailing" id="1VW-Ng-a0O"/>
                                     <constraint firstItem="0R1-kJ-RdH" firstAttribute="leading" secondItem="HSm-ST-WXE" secondAttribute="leading" id="1ax-fj-pFF"/>
                                     <constraint firstItem="YSK-fP-AvY" firstAttribute="leading" secondItem="mBh-Ja-pnm" secondAttribute="trailing" constant="35" id="1fM-fx-49b"/>
+                                    <constraint firstItem="N0Y-72-cb1" firstAttribute="width" secondItem="a9b-85-egq" secondAttribute="width" id="1jx-dF-8jj"/>
                                     <constraint firstItem="fa8-6C-dcx" firstAttribute="centerX" secondItem="a9b-85-egq" secondAttribute="centerX" id="3Cz-Bz-6Yh"/>
+                                    <constraint firstItem="N0Y-72-cb1" firstAttribute="top" secondItem="mBh-Ja-pnm" secondAttribute="bottom" constant="14" id="3u0-ed-WBO"/>
+                                    <constraint firstItem="NvZ-fU-lAe" firstAttribute="top" secondItem="N0Y-72-cb1" secondAttribute="bottom" constant="8" symbolic="YES" id="4BN-Er-xzY"/>
+                                    <constraint firstItem="2Tf-lu-I0Q" firstAttribute="centerY" secondItem="Gka-Q8-L2T" secondAttribute="centerY" id="4Zt-UW-cYm"/>
                                     <constraint firstItem="x4x-Um-dca" firstAttribute="centerX" secondItem="0R1-kJ-RdH" secondAttribute="centerX" constant="-28.5" id="5Jn-He-Qkt"/>
                                     <constraint firstItem="l1t-93-4xS" firstAttribute="top" secondItem="mfH-hz-5T3" secondAttribute="bottom" id="66G-vJ-Hml"/>
                                     <constraint firstItem="l1t-93-4xS" firstAttribute="leading" secondItem="0R1-kJ-RdH" secondAttribute="trailing" constant="35" id="6J4-9G-Lbm"/>
+                                    <constraint firstItem="bGk-lX-6oi" firstAttribute="bottom" secondItem="NvZ-fU-lAe" secondAttribute="bottom" id="6bC-TO-VsW"/>
+                                    <constraint firstItem="mBh-Ja-pnm" firstAttribute="height" secondItem="HSm-ST-WXE" secondAttribute="height" id="7LK-do-wM7"/>
                                     <constraint firstItem="fa8-6C-dcx" firstAttribute="centerX" secondItem="a9b-85-egq" secondAttribute="centerX" id="888-bn-XpS"/>
-                                    <constraint firstAttribute="bottom" secondItem="YSK-fP-AvY" secondAttribute="bottom" constant="94" id="8uA-mB-uwy"/>
                                     <constraint firstItem="qYm-Vi-r17" firstAttribute="leading" secondItem="yh5-PQ-Ijk" secondAttribute="trailing" constant="14" id="9jY-rq-n2b"/>
                                     <constraint firstItem="YSK-fP-AvY" firstAttribute="height" secondItem="mBh-Ja-pnm" secondAttribute="height" id="9oC-pU-7Mc"/>
+                                    <constraint firstItem="wAt-6X-rJH" firstAttribute="top" secondItem="bGk-lX-6oi" secondAttribute="bottom" constant="-5" id="A02-E0-CWl"/>
+                                    <constraint firstAttribute="bottom" secondItem="P8K-jC-VnS" secondAttribute="bottom" constant="127" id="Anq-7r-akt"/>
+                                    <constraint firstItem="NvZ-fU-lAe" firstAttribute="leading" secondItem="mBh-Ja-pnm" secondAttribute="leading" id="BTp-oH-vIG"/>
                                     <constraint firstItem="Jwf-TP-rRa" firstAttribute="top" secondItem="eB2-Lq-ROi" secondAttribute="bottom" constant="14" id="BcM-Zf-ahx"/>
                                     <constraint firstItem="7gh-nL-eCG" firstAttribute="top" secondItem="fa8-6C-dcx" secondAttribute="bottom" constant="14" id="ByC-4y-qa3"/>
                                     <constraint firstItem="fHb-IG-uWg" firstAttribute="height" secondItem="HSm-ST-WXE" secondAttribute="height" id="Ctw-CD-C2t"/>
+                                    <constraint firstItem="bGk-lX-6oi" firstAttribute="leading" secondItem="wAt-6X-rJH" secondAttribute="leading" id="Dle-e6-Pw6"/>
                                     <constraint firstItem="fHb-IG-uWg" firstAttribute="trailing" secondItem="qYm-Vi-r17" secondAttribute="trailing" id="Eiz-qu-wr3"/>
                                     <constraint firstItem="mfH-hz-5T3" firstAttribute="leading" secondItem="l1t-93-4xS" secondAttribute="leading" id="Epf-Nx-4iR"/>
                                     <constraint firstItem="HSm-ST-WXE" firstAttribute="centerX" secondItem="0R1-kJ-RdH" secondAttribute="centerX" id="FWi-w2-Qte"/>
@@ -1627,6 +1746,8 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                     <constraint firstItem="xTO-A1-UbS" firstAttribute="width" secondItem="a9b-85-egq" secondAttribute="width" id="NUb-ii-cUM"/>
                                     <constraint firstItem="xTO-A1-UbS" firstAttribute="top" secondItem="AfL-Os-Iyx" secondAttribute="bottom" constant="8" symbolic="YES" id="NXa-EB-bfG"/>
                                     <constraint firstItem="ZOV-3T-q0p" firstAttribute="centerY" secondItem="eB2-Lq-ROi" secondAttribute="centerY" id="OAS-Qe-p9d"/>
+                                    <constraint firstItem="YSK-fP-AvY" firstAttribute="height" secondItem="mBh-Ja-pnm" secondAttribute="height" id="PQK-sB-NvF"/>
+                                    <constraint firstItem="mBh-Ja-pnm" firstAttribute="width" secondItem="HSm-ST-WXE" secondAttribute="width" id="PaU-QW-dhz"/>
                                     <constraint firstItem="Jwf-TP-rRa" firstAttribute="top" secondItem="fa8-6C-dcx" secondAttribute="bottom" constant="14" id="Q3i-1m-rCj"/>
                                     <constraint firstItem="xTO-A1-UbS" firstAttribute="top" secondItem="AfL-Os-Iyx" secondAttribute="bottom" constant="8" symbolic="YES" id="Qgc-U4-myd"/>
                                     <constraint firstItem="mfH-hz-5T3" firstAttribute="top" secondItem="Jwf-TP-rRa" secondAttribute="bottom" constant="13" id="Qpe-eh-588"/>
@@ -1640,13 +1761,21 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                     <constraint firstItem="qYm-Vi-r17" firstAttribute="top" secondItem="x4x-Um-dca" secondAttribute="top" id="UwQ-kF-FYR"/>
                                     <constraint firstItem="xTO-A1-UbS" firstAttribute="leading" secondItem="a9b-85-egq" secondAttribute="leading" id="WW6-0G-ZwT"/>
                                     <constraint firstItem="mBh-Ja-pnm" firstAttribute="centerX" secondItem="HSm-ST-WXE" secondAttribute="centerX" id="Wfo-8v-xIh"/>
+                                    <constraint firstItem="Gka-Q8-L2T" firstAttribute="leading" secondItem="2Tf-lu-I0Q" secondAttribute="trailing" constant="35" id="WhM-6o-6bs"/>
+                                    <constraint firstItem="wAt-6X-rJH" firstAttribute="leading" secondItem="P8K-jC-VnS" secondAttribute="trailing" constant="35" id="Wxc-h7-Cl5"/>
+                                    <constraint firstItem="bGk-lX-6oi" firstAttribute="height" secondItem="NvZ-fU-lAe" secondAttribute="height" id="Xah-hJ-Jic"/>
+                                    <constraint firstItem="vjO-hk-aVJ" firstAttribute="leading" secondItem="a9b-85-egq" secondAttribute="leading" id="Ymh-MV-cuw"/>
+                                    <constraint firstItem="bGk-lX-6oi" firstAttribute="top" secondItem="NvZ-fU-lAe" secondAttribute="top" id="Z15-GE-HO5"/>
                                     <constraint firstItem="fHb-IG-uWg" firstAttribute="top" secondItem="HSm-ST-WXE" secondAttribute="top" id="ZP4-IT-Cg2"/>
                                     <constraint firstAttribute="bottom" secondItem="mBh-Ja-pnm" secondAttribute="bottom" constant="94" id="ZTg-E4-Uem"/>
+                                    <constraint firstItem="bGk-lX-6oi" firstAttribute="centerX" secondItem="YSK-fP-AvY" secondAttribute="centerX" id="ZU1-ex-UH3"/>
                                     <constraint firstItem="xTO-A1-UbS" firstAttribute="leading" secondItem="7gh-nL-eCG" secondAttribute="leading" id="ZcV-Ru-bui"/>
                                     <constraint firstItem="HSm-ST-WXE" firstAttribute="leading" secondItem="mBh-Ja-pnm" secondAttribute="leading" id="aNQ-Ih-MIf"/>
                                     <constraint firstItem="fHb-IG-uWg" firstAttribute="top" secondItem="j8x-vk-GVi" secondAttribute="bottom" constant="8" symbolic="YES" id="aZ1-1b-jaz"/>
+                                    <constraint firstItem="NvZ-fU-lAe" firstAttribute="top" secondItem="N0Y-72-cb1" secondAttribute="bottom" constant="8" symbolic="YES" id="apB-dW-xYv"/>
                                     <constraint firstItem="l1t-93-4xS" firstAttribute="height" secondItem="0R1-kJ-RdH" secondAttribute="height" id="arM-MM-hjr"/>
                                     <constraint firstItem="7gh-nL-eCG" firstAttribute="leading" secondItem="Jwf-TP-rRa" secondAttribute="leading" id="avX-KI-rg1"/>
+                                    <constraint firstItem="bGk-lX-6oi" firstAttribute="trailing" secondItem="wAt-6X-rJH" secondAttribute="trailing" id="bkr-7a-7MI"/>
                                     <constraint firstItem="ZOV-3T-q0p" firstAttribute="top" secondItem="eB2-Lq-ROi" secondAttribute="top" id="bli-by-b5P"/>
                                     <constraint firstItem="l1t-93-4xS" firstAttribute="top" secondItem="mfH-hz-5T3" secondAttribute="bottom" id="btY-Qa-u7I"/>
                                     <constraint firstItem="mfH-hz-5T3" firstAttribute="top" secondItem="Oi2-JL-J9b" secondAttribute="top" id="bzc-Ej-ddK"/>
@@ -1654,35 +1783,49 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                     <constraint firstItem="eB2-Lq-ROi" firstAttribute="top" secondItem="7gh-nL-eCG" secondAttribute="bottom" constant="14" id="cr4-Jn-lOS"/>
                                     <constraint firstItem="ZOV-3T-q0p" firstAttribute="height" secondItem="eB2-Lq-ROi" secondAttribute="height" constant="-4" id="d2W-2k-GqS"/>
                                     <constraint firstItem="YSK-fP-AvY" firstAttribute="top" secondItem="mBh-Ja-pnm" secondAttribute="top" id="ePA-kV-ySK"/>
-                                    <constraint firstAttribute="bottom" secondItem="fHb-IG-uWg" secondAttribute="bottom" constant="173" id="gAj-hL-ZRk"/>
+                                    <constraint firstItem="wAt-6X-rJH" firstAttribute="top" secondItem="P8K-jC-VnS" secondAttribute="top" id="fdM-Bd-cZb"/>
                                     <constraint firstItem="Jwf-TP-rRa" firstAttribute="leading" secondItem="bhf-eX-lEp" secondAttribute="leading" id="gDu-4d-83f"/>
                                     <constraint firstItem="eB2-Lq-ROi" firstAttribute="trailing" secondItem="a9b-85-egq" secondAttribute="trailingMargin" id="goo-xm-C9w"/>
+                                    <constraint firstItem="P8K-jC-VnS" firstAttribute="width" secondItem="NvZ-fU-lAe" secondAttribute="width" id="gtf-Sg-YDR"/>
                                     <constraint firstItem="Oi2-JL-J9b" firstAttribute="width" secondItem="mfH-hz-5T3" secondAttribute="width" constant="-49" id="hUJ-ao-Sqp"/>
                                     <constraint firstItem="mfH-hz-5T3" firstAttribute="top" secondItem="Oi2-JL-J9b" secondAttribute="top" id="htx-7v-agQ"/>
                                     <constraint firstItem="fHb-IG-uWg" firstAttribute="bottom" secondItem="HSm-ST-WXE" secondAttribute="bottom" id="hxm-6l-JIh"/>
                                     <constraint firstItem="mBh-Ja-pnm" firstAttribute="width" secondItem="HSm-ST-WXE" secondAttribute="width" id="iBw-4D-JfO"/>
-                                    <constraint firstItem="YSK-fP-AvY" firstAttribute="top" secondItem="fHb-IG-uWg" secondAttribute="bottom" constant="8" symbolic="YES" id="iYU-a4-N07"/>
+                                    <constraint firstItem="YSK-fP-AvY" firstAttribute="top" secondItem="fHb-IG-uWg" secondAttribute="bottom" id="iYU-a4-N07"/>
+                                    <constraint firstItem="NvZ-fU-lAe" firstAttribute="leading" secondItem="P8K-jC-VnS" secondAttribute="leading" id="imm-sq-kpb"/>
                                     <constraint firstItem="bhf-eX-lEp" firstAttribute="top" secondItem="l1t-93-4xS" secondAttribute="bottom" constant="14" id="isW-Yn-O7h"/>
+                                    <constraint firstAttribute="bottom" secondItem="wAt-6X-rJH" secondAttribute="bottom" constant="127" id="iwl-dn-F9H"/>
                                     <constraint firstItem="yh5-PQ-Ijk" firstAttribute="leading" secondItem="j8x-vk-GVi" secondAttribute="leading" id="k7N-uz-J1g"/>
+                                    <constraint firstItem="P8K-jC-VnS" firstAttribute="bottom" secondItem="wAt-6X-rJH" secondAttribute="bottom" id="kMp-17-eeN"/>
+                                    <constraint firstItem="NvZ-fU-lAe" firstAttribute="top" secondItem="a9b-85-egq" secondAttribute="top" constant="893" id="kSg-am-0LB"/>
                                     <constraint firstAttribute="bottom" secondItem="fa8-6C-dcx" secondAttribute="bottom" constant="506" id="krh-0B-4Cr"/>
                                     <constraint firstItem="fHb-IG-uWg" firstAttribute="trailing" secondItem="YSK-fP-AvY" secondAttribute="trailing" id="la1-Wu-54d"/>
+                                    <constraint firstItem="N0Y-72-cb1" firstAttribute="top" secondItem="mBh-Ja-pnm" secondAttribute="bottom" constant="8" symbolic="YES" id="mGM-tx-jaT"/>
                                     <constraint firstAttribute="trailing" secondItem="l1t-93-4xS" secondAttribute="trailing" constant="8" id="nmJ-5X-5FM"/>
+                                    <constraint firstItem="vjO-hk-aVJ" firstAttribute="top" secondItem="P8K-jC-VnS" secondAttribute="bottom" constant="8" id="oFN-eR-eUE"/>
                                     <constraint firstItem="j8x-vk-GVi" firstAttribute="top" secondItem="qYm-Vi-r17" secondAttribute="bottom" constant="14" id="oHm-Hd-g9c"/>
                                     <constraint firstItem="fHb-IG-uWg" firstAttribute="leading" secondItem="YSK-fP-AvY" secondAttribute="leading" id="pJA-Cf-Zr8"/>
+                                    <constraint firstItem="Gka-Q8-L2T" firstAttribute="trailing" secondItem="qYm-Vi-r17" secondAttribute="trailing" id="peg-du-WnH"/>
                                     <constraint firstItem="Jwf-TP-rRa" firstAttribute="trailing" secondItem="bhf-eX-lEp" secondAttribute="trailing" id="qXX-Wl-4XR"/>
+                                    <constraint firstItem="N0Y-72-cb1" firstAttribute="leading" secondItem="a9b-85-egq" secondAttribute="leading" id="rAe-GF-K1U"/>
                                     <constraint firstItem="fa8-6C-dcx" firstAttribute="top" secondItem="xTO-A1-UbS" secondAttribute="bottom" constant="14" id="rsj-a7-X0m"/>
                                     <constraint firstItem="fa8-6C-dcx" firstAttribute="top" secondItem="xTO-A1-UbS" secondAttribute="bottom" constant="5" id="sAN-Vf-PhW"/>
                                     <constraint firstItem="xTO-A1-UbS" firstAttribute="centerX" secondItem="fa8-6C-dcx" secondAttribute="centerX" id="sDN-CE-WLz"/>
                                     <constraint firstItem="yh5-PQ-Ijk" firstAttribute="top" secondItem="x4x-Um-dca" secondAttribute="bottom" constant="17" id="sLV-gy-L9X"/>
+                                    <constraint firstItem="vjO-hk-aVJ" firstAttribute="width" secondItem="a9b-85-egq" secondAttribute="width" id="sZN-pw-5b8"/>
                                     <constraint firstItem="eB2-Lq-ROi" firstAttribute="leading" secondItem="ZOV-3T-q0p" secondAttribute="trailing" constant="8" id="smR-UH-VAg"/>
                                     <constraint firstItem="YSK-fP-AvY" firstAttribute="height" secondItem="mBh-Ja-pnm" secondAttribute="height" id="tKB-XB-JfK"/>
                                     <constraint firstItem="ZOV-3T-q0p" firstAttribute="top" secondItem="7gh-nL-eCG" secondAttribute="bottom" constant="8" symbolic="YES" id="tx5-Y0-No0"/>
                                     <constraint firstItem="AfL-Os-Iyx" firstAttribute="top" secondItem="a9b-85-egq" secondAttribute="topMargin" id="u4p-Ur-jTs"/>
+                                    <constraint firstItem="N0Y-72-cb1" firstAttribute="top" secondItem="YSK-fP-AvY" secondAttribute="bottom" constant="8" symbolic="YES" id="uYK-zo-uYN"/>
                                     <constraint firstItem="xTO-A1-UbS" firstAttribute="centerX" secondItem="a9b-85-egq" secondAttribute="centerX" id="uob-W2-WG0"/>
+                                    <constraint firstItem="bGk-lX-6oi" firstAttribute="leading" secondItem="fHb-IG-uWg" secondAttribute="leading" id="vIv-2W-dIL"/>
                                     <constraint firstItem="mfH-hz-5T3" firstAttribute="height" secondItem="Oi2-JL-J9b" secondAttribute="height" id="xeg-Hg-Ih9"/>
                                     <constraint firstItem="fHb-IG-uWg" firstAttribute="width" secondItem="HSm-ST-WXE" secondAttribute="width" id="yL0-s2-E32"/>
                                     <constraint firstItem="Jwf-TP-rRa" firstAttribute="top" secondItem="ZOV-3T-q0p" secondAttribute="bottom" constant="8" symbolic="YES" id="yeI-Sv-Xqb"/>
                                     <constraint firstItem="mfH-hz-5T3" firstAttribute="leading" secondItem="Oi2-JL-J9b" secondAttribute="trailing" constant="35" id="yhc-Md-dyk"/>
+                                    <constraint firstItem="2Tf-lu-I0Q" firstAttribute="leading" secondItem="a9b-85-egq" secondAttribute="leading" constant="22" id="yy3-hx-sY4"/>
+                                    <constraint firstItem="N0Y-72-cb1" firstAttribute="top" secondItem="mBh-Ja-pnm" secondAttribute="bottom" constant="8" id="zDf-KM-IdG"/>
                                     <constraint firstItem="fHb-IG-uWg" firstAttribute="leading" secondItem="HSm-ST-WXE" secondAttribute="trailing" constant="35" id="zf2-e2-P6D"/>
                                     <constraint firstItem="fa8-6C-dcx" firstAttribute="top" secondItem="AfL-Os-Iyx" secondAttribute="bottom" constant="9" id="zhE-Cr-Gtt"/>
                                 </constraints>
@@ -1712,9 +1855,13 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                         <exclude reference="yL0-s2-E32"/>
                                         <exclude reference="zf2-e2-P6D"/>
                                         <exclude reference="Wfo-8v-xIh"/>
+                                        <exclude reference="ZTg-E4-Uem"/>
                                         <exclude reference="9oC-pU-7Mc"/>
                                         <exclude reference="SZx-hW-aF5"/>
                                         <exclude reference="tKB-XB-JfK"/>
+                                        <exclude reference="3u0-ed-WBO"/>
+                                        <exclude reference="apB-dW-xYv"/>
+                                        <exclude reference="Anq-7r-akt"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -1735,7 +1882,7 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                     </view>
                     <tabBarItem key="tabBarItem" title="How To" image="infoIcon" id="k9y-gz-mvt"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="1000"/>
+                    <size key="freeformSize" width="320" height="1260"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xPK-AU-DGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2451,48 +2598,60 @@ A friend can only be tracked if they have transmitted a run in the last hour.</s
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Aj-C8-DcB">
-                                        <rect key="frame" x="0.0" y="47" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="47" width="414" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="TopLeft" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BUS-qc-yYJ" userLabel="Recenter">
-                                                <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
-                                                <color key="backgroundColor" red="1" green="0.35686274509999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="ZTi-hV-F1M"/>
-                                                    <constraint firstAttribute="width" constant="70" id="htI-yh-uCI"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
-                                                <state key="normal">
-                                                    <string key="title">   START
-SPECTATE</string>
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                                        <color key="value" red="0.054901960780000002" green="0.35686274509999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="10"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="spectateAction:" destination="JG0-SD-1Tt" eventType="touchUpInside" id="1XT-Iu-noo"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="U0a-Nb-oPT">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spectate_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="jmc-Wr-Od8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+                                                        <color key="backgroundColor" red="1" green="0.35686274509999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="Kpz-4Z-ANf"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="TopLeft" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BUS-qc-yYJ" userLabel="Recenter">
+                                                        <rect key="frame" x="0.0" y="30" width="80" height="30"/>
+                                                        <color key="backgroundColor" red="1" green="0.35686274509999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="ZTi-hV-F1M"/>
+                                                            <constraint firstAttribute="width" constant="80" id="htI-yh-uCI"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                                                        <state key="normal">
+                                                            <string key="title">SPECTATE
+     OFF</string>
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                                <color key="value" red="0.054901960780000002" green="0.35686274509999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="10"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="spectateAction:" destination="JG0-SD-1Tt" eventType="touchUpInside" id="1XT-Iu-noo"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2D7-oi-Cwc">
-                                                <rect key="frame" x="70" y="0.0" width="274" height="50"/>
+                                                <rect key="frame" x="80" y="0.0" width="254" height="60"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RBZ-9M-c0c">
-                                                        <rect key="frame" x="0.0" y="0.0" width="274" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="254" height="60"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nhr-a1-vu6">
-                                                                <rect key="frame" x="0.0" y="0.0" width="274" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="254" height="60"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8r-zz-Ehr">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="274" height="50"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="254" height="60"/>
                                                                         <color key="backgroundColor" red="0.50196078430000002" green="0.13725490200000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ipi-0d-BHR"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                                        <state key="normal" title="START">
+                                                                        <state key="normal" title="START RACING!">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
                                                                         <connections>
@@ -2506,32 +2665,45 @@ SPECTATE</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QY6-SN-ZSh">
-                                                <rect key="frame" x="344" y="0.0" width="70" height="50"/>
+                                                <rect key="frame" x="334" y="0.0" width="80" height="60"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="TopLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BPU-jI-dPx" userLabel="Transmit">
-                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
-                                                        <color key="backgroundColor" red="0.21960784310000001" green="0.52549019610000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="70" id="V5H-PD-fX2"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                                        <state key="normal">
-                                                            <string key="title">SHARE
-   ON</string>
-                                                        </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="8"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yxh-pb-Xaa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share.png" translatesAutoresizingMaskIntoConstraints="NO" id="2bP-7y-sTb">
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+                                                                <color key="backgroundColor" red="0.21960784310000001" green="0.52549019610000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="pce-UJ-qzU"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <button opaque="NO" contentMode="TopLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BPU-jI-dPx" userLabel="Transmit">
+                                                                <rect key="frame" x="0.0" y="30" width="80" height="30"/>
+                                                                <color key="backgroundColor" red="0.21960784310000001" green="0.52549019610000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="1Y1-oj-7O8"/>
+                                                                    <constraint firstAttribute="width" constant="80" id="V5H-PD-fX2"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                                <state key="normal">
+                                                                    <string key="title">LIVE-SHARE
+        ON</string>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="8"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                     </stackView>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NZw-pv-H2E">
-                                        <rect key="frame" x="0.0" y="98" width="414" height="540"/>
+                                        <rect key="frame" x="0.0" y="108" width="414" height="513"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="600" id="BOM-oT-JJg"/>
                                         </constraints>
@@ -2545,7 +2717,7 @@ SPECTATE</string>
                                         </connections>
                                     </mapView>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKJ-rh-ltC">
-                                        <rect key="frame" x="0.0" y="639" width="414" height="51"/>
+                                        <rect key="frame" x="0.0" y="622" width="414" height="68"/>
                                         <color key="backgroundColor" red="1" green="0.6705882353" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="CENTER ON"/>
                                     </button>
@@ -2590,7 +2762,9 @@ SPECTATE</string>
                         <outlet property="distanceLabel" destination="plX-DB-503" id="0ce-MS-H6R"/>
                         <outlet property="mapView" destination="NZw-pv-H2E" id="vIs-vt-5R5"/>
                         <outlet property="paceLabel" destination="cWT-1W-5d1" id="jTV-Fz-5cW"/>
+                        <outlet property="shareImage" destination="2bP-7y-sTb" id="pcx-Vo-Id8"/>
                         <outlet property="spectateButton" destination="BUS-qc-yYJ" id="QMo-ad-wOk"/>
+                        <outlet property="spectateImage" destination="jmc-Wr-Od8" id="Jbz-0e-LeO"/>
                         <outlet property="startButton" destination="p8r-zz-Ehr" id="wqA-hW-5v9"/>
                         <outlet property="timeLabel" destination="dB9-lB-1Ca" id="25I-Rl-cSf"/>
                         <outlet property="transmitButton" destination="BPU-jI-dPx" id="t4q-Gp-Tgy"/>
@@ -2605,15 +2779,19 @@ SPECTATE</string>
     <resources>
         <image name="back.png" width="512" height="512"/>
         <image name="bloomsdaylogo_clean.png" width="364" height="105"/>
-        <image name="centerOff.png" width="298" height="112"/>
-        <image name="centerOn.png" width="298" height="112"/>
+        <image name="centerOff.png" width="232" height="58"/>
+        <image name="centerOn.png" width="232" height="58"/>
         <image name="flagIcon" width="25" height="25"/>
         <image name="friendsIcon" width="25" height="25"/>
         <image name="homeImage" width="25" height="25"/>
         <image name="infoIcon" width="25" height="25"/>
-        <image name="liveShareOff.png" width="300" height="107"/>
-        <image name="liveShareOn.png" width="300" height="109"/>
+        <image name="liveShareOff.png" width="160" height="120"/>
+        <image name="liveShareOn.png" width="160" height="120"/>
         <image name="mapIcon" width="25" height="25"/>
+        <image name="share.png" width="750" height="426"/>
+        <image name="spectateOffImg.png" width="160" height="120"/>
+        <image name="spectateOnImg.png" width="159" height="120"/>
+        <image name="spectate_white.png" width="750" height="426"/>
         <image name="start.png" width="349" height="74"/>
         <image name="switches.png" width="116" height="166"/>
     </resources>

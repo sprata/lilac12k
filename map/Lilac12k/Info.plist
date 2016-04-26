@@ -73,7 +73,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Lilac12k wants to track your run</string>
+	<string>Lilac12k will use your location to give detailed results after the race</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Lilac12k wants to track your run</string>
 	<key>UIBackgroundModes</key>

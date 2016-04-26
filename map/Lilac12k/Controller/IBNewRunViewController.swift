@@ -23,6 +23,8 @@ class IBNewRunViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var paceLabel: UILabel!
+    @IBOutlet weak var shareImage: UIImageView!
+    @IBOutlet weak var spectateImage: UIImageView!
     
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
@@ -293,17 +295,28 @@ class IBNewRunViewController: UIViewController {
     }
     
     func buttonClicked(sender:UIButton) {
-        if (sender.titleLabel!.text == "SHARE\n  OFF" || sender.titleLabel!.text == "SHARE\n   ON") {
+        //if ((sender.titleLabel!.text?.containsString("LIVE-SHARE")) != nil) {
+        if (sender.titleLabel!.text == "LIVE-SHARE\nOFF" || sender.titleLabel!.text == "LIVE-SHARE\nON" || sender.titleLabel!.text == "LIVE-SHARE\n        ON") {
             if self.isTransmitOn == false {
-                sender.setTitle("SHARE\n   ON", forState: UIControlState.Normal)
+                sender.titleLabel?.textAlignment = NSTextAlignment.Center
+                sender.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping;
+                sender.setTitle("LIVE-SHARE\nON", forState: UIControlState.Normal)
                 sender.backgroundColor = UIColor(red: 56.0/255.0, green: 134.0/255.0, blue: 121.0/255.0, alpha: 1.0)
+                shareImage.image = UIImage(named: "share")
+                shareImage.backgroundColor = UIColor(red: 56.0/255.0, green: 134.0/255.0, blue: 121.0/255.0, alpha: 1.0)
+                //@IBOutlet weak var spectateImage: UIImageView!
                 //sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
                 //sender.highlighted = true;
                 self.isTransmitOn = true
             } else {
-                sender.setTitle("SHARE\n  OFF", forState: UIControlState.Normal)
+                sender.titleLabel?.textAlignment = NSTextAlignment.Center
+                sender.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping;
+                sender.setTitle("LIVE-SHARE\nOFF", forState: UIControlState.Normal)
                 //sender.backgroundColor = UIColor(red: 0, green: 100, blue: 0, alpha: 1.0)
                 sender.backgroundColor = UIColor(red: 14.0/255.0, green: 70.0/255.0, blue: 78.0/255.0, alpha: 1.0)
+                shareImage.image = UIImage(named: "share_white")
+                shareImage.backgroundColor = UIColor(red: 14.0/255.0, green: 70.0/255.0, blue: 78.0/255.0, alpha: 1.0)
+                
                 //sender.backgroundColor = UIColor(red: 181.0/255.0, green: 101.0/255.0, blue: 166.0/255.0, alpha: 1.0)
                 sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                 //sender.highlighted = false;
@@ -347,8 +360,18 @@ class IBNewRunViewController: UIViewController {
         }
         spectateButton.removeTarget(self, action: #selector(IBNewRunViewController.spectateAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         spectateButton.addTarget(self, action: #selector(IBNewRunViewController.spectateOffAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-        spectateButton.setTitle("    STOP\nSPECTATE", forState: UIControlState.Normal)
-        //self.spectateButton.backgroundColor = UIColor(red: 255.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 1.0)
+        spectateButton.titleLabel?.textAlignment = NSTextAlignment.Center
+        spectateButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping;
+        spectateButton.setTitle("SPECTATE\nON", forState: UIControlState.Normal)
+        
+        
+        spectateImage.backgroundColor = UIColor(red: 191.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
+        sender.backgroundColor? = UIColor(red: 191.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
+
+        
+        spectateImage.image = UIImage(named: "spectate")
+        
+        
         timer2 = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(IBNewRunViewController.everySecond(_:)), userInfo: nil, repeats: true)
         specOnFlag = true
         
@@ -357,8 +380,15 @@ class IBNewRunViewController: UIViewController {
     @IBAction func spectateOffAction(sender: UIButton) {
         self.spectateButton.removeTarget(self, action: #selector(IBNewRunViewController.spectateOffAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.spectateButton.addTarget(self, action: #selector(IBNewRunViewController.spectateAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-        self.spectateButton.setTitle("   START\nSPECTATE", forState: UIControlState.Normal)
+        spectateButton.titleLabel?.textAlignment = NSTextAlignment.Center
+        spectateButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping;
+        self.spectateButton.setTitle("SPECTATE\nOFF", forState: UIControlState.Normal)
         //self.spectateButton.backgroundColor = UIColor(red: 191.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
+        spectateImage.image = UIImage(named: "spectate_white")
+        
+        sender.backgroundColor? = UIColor(red: 255.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 1.0)
+        spectateImage.backgroundColor = UIColor(red: 255.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 1.0)
+        
         timer2.invalidate()
         specOnFlag = false;
     }
@@ -373,7 +403,7 @@ class IBNewRunViewController: UIViewController {
         
         if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedAlways &&
             CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse) {
-            ToastView.showToastInParentView(self.view, withText: "Sorry, you must enable GPS permissions to use this app!", withDuration: 2.0)
+            ToastView.showToastInParentView(self.view, withText: "Sorry, you must enable GPS permissions \nto use this app!", withDuration: 2.0)
             return
         }
         
@@ -388,7 +418,9 @@ class IBNewRunViewController: UIViewController {
         userRunning = true;
         startButton.removeTarget(self, action: #selector(IBNewRunViewController.startAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         startButton.addTarget(self, action: #selector(IBNewRunViewController.stopAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-        startButton.setTitle("STOP", forState: UIControlState.Normal)
+        startButton.titleLabel?.textAlignment = NSTextAlignment.Center
+        startButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping;
+        startButton.setTitle("Stop\nRecording Run", forState: UIControlState.Normal)
         
         locations.removeAll(keepCapacity: false)
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(IBNewRunViewController.eachSecond(_:)), userInfo: nil, repeats: true)
@@ -420,7 +452,8 @@ class IBNewRunViewController: UIViewController {
         actionSheetController.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: { (actionSheetController) -> Void in
             self.startButton.removeTarget(self, action: #selector(IBNewRunViewController.stopAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             self.startButton.addTarget(self, action: #selector(IBNewRunViewController.startAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-            self.startButton.setTitle("START", forState: UIControlState.Normal)
+            self.startButton.titleLabel?.textAlignment = NSTextAlignment.Center
+            self.startButton.setTitle("START RACING!", forState: UIControlState.Normal)
             self.startOnFlag = false;
             self.userRunning = false;
             self.saveRun()
@@ -432,7 +465,8 @@ class IBNewRunViewController: UIViewController {
         actionSheetController.addAction(UIAlertAction(title: "Discard", style: UIAlertActionStyle.Default, handler: { (actionSheetController) -> Void in
             self.startButton.removeTarget(self, action: #selector(IBNewRunViewController.stopAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             self.startButton.addTarget(self, action: #selector(IBNewRunViewController.startAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-            self.startButton.setTitle("START", forState: UIControlState.Normal)
+            self.startButton.titleLabel?.textAlignment = NSTextAlignment.Center
+            self.startButton.setTitle("START RACING!", forState: UIControlState.Normal)
             self.startOnFlag = false;
             self.userRunning = false;
             self.stopLocation()
@@ -626,14 +660,14 @@ class IBNewRunViewController: UIViewController {
                         {
                             dispatch_async(dispatch_get_main_queue(), {
                                 let name = UserInformation.sharedInstance.friendNames[x]
-                                ToastView.showToastInParentView(self.view, withText: name + " has not transmitted a run.\nMake sure your friend has \"Transmit On\" selected.", withDuration: 4.0)
+                                ToastView.showToastInParentView(self.view, withText: name + " has not shared a run.\nMake sure your friend has LIVE-SHARE On.", withDuration: 4.0)
                             })
                         }
                         else if ((err?.containsString("time")) != nil && (err?.containsString("time"))!)
                         {
                             dispatch_async(dispatch_get_main_queue(), {
                                 let name = UserInformation.sharedInstance.friendNames[x]
-                                ToastView.showToastInParentView(self.view, withText: name + " has not transmitted recently.\nMake sure your friend has \"Transmit On\" selected.", withDuration: 4.0)
+                                ToastView.showToastInParentView(self.view, withText: name + " has not shared recently.\nMake sure your friend has LIVE-SHARE On.", withDuration: 4.0)
                             })
                         }
                         else if ((err?.containsString("standard")) != nil && (err?.containsString("standard"))!){
@@ -645,14 +679,14 @@ class IBNewRunViewController: UIViewController {
                         else {
                             dispatch_async(dispatch_get_main_queue(), {
                                 let name = UserInformation.sharedInstance.friendNames[x]
-                                ToastView.showToastInParentView(self.view, withText:  name + "is not transmitting their position", withDuration:  1.5)
+                                ToastView.showToastInParentView(self.view, withText:  name + "is not sharing their position", withDuration:  1.5)
                             })
                         }
                         
                     } else if ( success != nil && lat == nil && lon == nil ) {
                         dispatch_async(dispatch_get_main_queue(), {
                             let name = UserInformation.sharedInstance.friendNames[x]
-                            ToastView.showToastInParentView(self.view, withText:  name + "is not transmitting position", withDuration:  2.5)
+                            ToastView.showToastInParentView(self.view, withText:  name + "is not sharing their position", withDuration:  2.5)
                         })
                     } else if (success != nil) {
                         self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
@@ -680,7 +714,6 @@ class IBNewRunViewController: UIViewController {
                         })
                     } else {
                         // download fail
-                        print("Something went wrong in locationManager()")
                     }
                 })
 
